@@ -12,4 +12,6 @@ Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
 
-import "controllers"
+import "controllers";
+
+import "stylesheets/application";
