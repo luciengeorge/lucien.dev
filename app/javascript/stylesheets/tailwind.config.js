@@ -9,24 +9,28 @@ module.exports = {
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {
-      margin: ['important'],
-      fontWeight: ['important'],
-      borderRadius: ['important']
-    }
-  },
+  variants: [
+    'responsive',
+    'hover',
+    'focus',
+    'active',
+    'important',
+    'first',
+    'last',
+    'odd',
+    'even',
+    'visited',
+    'checked',
+    'group-hover',
+    'group-focus',
+    'focus-within',
+    'hover',
+    'focus',
+    'focus-visible',
+    'active'
+  ],
   plugins: [
     require('@tailwindcss/forms'),
-    plugin(function({ addVariant }) {
-      addVariant('important', ({ container }) => {
-        container.walkRules(rule => {
-          rule.selector = `.\\!${rule.selector.slice(1)}`
-          rule.walkDecls(decl => {
-            decl.important = true
-          })
-        })
-      })
-    })
+    require('@neojp/tailwindcss-important-variant')
   ],
 }
