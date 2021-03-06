@@ -3,17 +3,17 @@
     <div>
       <img class="mx-auto h-12 w-auto" src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg" alt="Workflow">
       <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        Sign in to your account
+        Resend confirmation instructions
       </h2>
     </div>
     <%= simple_form_for(resource, as: resource_name, url: user_confirmation_path(resource_name), html: { method: :post }) do |f| %>
       <div class="rounded-md shadow-sm -space-y-px">
         <%= f.input :email, require: true, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), placeholder: 'Email address', input_html: { autocomplete: "email", class: 'appearance-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm mb-0' }, label_html: { class: "sr-only" } %>
-        <div class="flex items-center justify-between !mb-4">
-          <%= f.input :remember_me, as: :boolean, label: 'Remember me', input_html: { class: 'h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded' }, label_html: { class: 'block text-sm text-gray-900 !font-normal' }, wrapper_html: { class: 'flex items-center !mb-0' } if devise_mapping.rememberable? %>
+        <div class="flex items-center justify-between mb-4!">
+          <%= f.input :remember_me, as: :boolean, label: 'Remember me', input_html: { class: 'h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded' }, label_html: { class: 'block text-sm text-gray-900 font-normal!' }, wrapper_html: { class: 'flex items-center !mb-0' } if devise_mapping.rememberable? %>
           <%= link_to "Forgot your password?", new_password_path(resource_name), class: 'text-sm font-medium text-indigo-600 hover:text-indigo-500' %>
         </div>
-        <%= f.button :button, type: :submit, class: 'group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm !font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' do %>
+        <%= f.button :button, type: :submit, class: 'group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium! rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' do %>
           <span class="absolute left-0 inset-y-0 flex items-center pl-3">
             <svg class="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
