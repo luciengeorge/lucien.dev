@@ -1,7 +1,3 @@
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
-
 .container {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 sm:py-5;
 }
@@ -40,4 +36,18 @@ a {
 
 body {
   @apply bg-gray-50;
+}
+
+.nav-link {
+  @apply text-gray-500 hover:bg-gray-300 hover:bg-opacity-25 hover:text-gray-900 px-4 py-2 rounded-full text-sm font-medium;
+  &.active {
+    @apply bg-gray-900 rounded-full text-white px-4 py-2 text-sm font-medium;
+  }
+}
+
+.menu-link {
+  @apply text-gray-500 hover:bg-gray-300 hover:bg-opacity-25 hover:text-gray-900 block px-3 py-2 rounded-md text-base font-medium;
+  &.active {
+    @apply bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium;
+  }
 }
