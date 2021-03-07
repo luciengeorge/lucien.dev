@@ -1,4 +1,5 @@
 const plugin = require('tailwindcss/plugin');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
   purge: [
@@ -11,7 +12,11 @@ module.exports = {
     preflight: true
   },
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        gray: colors.blueGray,
+      }
+    },
   },
   variants: [
     'responsive',
