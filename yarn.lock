@@ -7057,6 +7057,13 @@ stdout-stream@^1.4.0:
   dependencies:
     readable-stream "^2.0.1"
 
+stimulus-lazy-loader@^1.1.2:
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/stimulus-lazy-loader/-/stimulus-lazy-loader-1.1.2.tgz#93fdfabe8b58819dbaa3c132c64570d25ea1a2b4"
+  integrity sha512-iYo0KpMUOhJFBcA40O0bX4nX2VXo+Tn3a8PXALoXi8Dsebw/O83jdksMFUDTwz0UL50QGi4MLIQBG1PPNcibZA==
+  dependencies:
+    stimulus "^2.0.0"
+
 stimulus@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-2.0.0.tgz#713c8b91a72ef90914b90955f0e705f004403047"
