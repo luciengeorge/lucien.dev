@@ -1,7 +1,11 @@
 const plugin = require('tailwindcss/plugin');
 
 module.exports = {
-  purge: [],
+  purge: [
+    './app/**/*.html.erb',
+    './app/helpers/**/*.rb',
+    './app/javascript/**/*.js'
+  ],
   darkMode: false, // or 'media' or 'class'
   corePlugins: {
     preflight: true
