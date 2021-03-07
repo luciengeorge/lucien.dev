@@ -13,8 +13,8 @@
 
   <body>
     <div data-controller="lazy-loader">
-      <%= render 'shared/flashes' %>
-      <%= render 'shared/navbar' %>
+      <%= render FlashesComponent.new(notice: notice, alert: alert) %>
+      <%= render Navbar::BaseComponent.new %>
       <%= yield %>
     </div>
   </body>

@@ -19,6 +19,7 @@ gem 'simple_form-tailwind'
 gem 'tailwindcss-rails', '~> 0.3.3'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'view_component', require: 'view_component/engine'
 gem 'webpacker', '~> 5.0'
 
 group :development, :test do
