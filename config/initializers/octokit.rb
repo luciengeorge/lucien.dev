@@ -5,3 +5,4 @@ stack = Faraday::RackBuilder.new do |builder|
 end
 Octokit.middleware = stack
 $octokit = Octokit::Client.new access_token: Rails.application.credentials.github_access_token
+$octokit.auto_paginate = true
