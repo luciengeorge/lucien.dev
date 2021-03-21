@@ -7,4 +7,6 @@ class Repo < ApplicationRecord
 
   has_many :repo_collaborators
   has_many :collaborators, through: :repo_collaborators
+  has_many :repo_languages
+  has_many :languages, through: :repo_languages
 end

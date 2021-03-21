@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_21_122308) do
+ActiveRecord::Schema.define(version: 2021_03_21_124345) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,16 @@ ActiveRecord::Schema.define(version: 2021_03_21_122308) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["collaborator_id"], name: "index_repo_collaborators_on_collaborator_id"
     t.index ["repo_id"], name: "index_repo_collaborators_on_repo_id"
+  end
+
+  create_table "repo_languages", force: :cascade do |t|
+    t.bigint "language_id", null: false
+    t.bigint "repo_id", null: false
+    t.integer "size"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["language_id"], name: "index_repo_languages_on_language_id"
+    t.index ["repo_id"], name: "index_repo_languages_on_repo_id"
   end
 
   create_table "repos", force: :cascade do |t|
@@ -84,4 +94,6 @@ ActiveRecord::Schema.define(version: 2021_03_21_122308) do
 
   add_foreign_key "repo_collaborators", "collaborators"
   add_foreign_key "repo_collaborators", "repos"
+  add_foreign_key "repo_languages", "languages"
+  add_foreign_key "repo_languages", "repos"
 end
