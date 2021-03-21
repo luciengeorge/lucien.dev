@@ -4,6 +4,7 @@ class UpdateRepoJob < ApplicationJob
   def perform(repo_gh_id)
     @repo = Repo.find_by gh_id: repo_gh_id
     @repo.present? ? update_repo : create_repo
+    UpdateRepoLanguagesJob.perform_later(@repo)
   end
 
   private
