@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_22_152232) do
+ActiveRecord::Schema.define(version: 2021_03_22_181131) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,20 @@ ActiveRecord::Schema.define(version: 2021_03_22_152232) do
     t.string "api_url"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "commits", force: :cascade do |t|
+    t.bigint "collaborator_id", null: false
+    t.bigint "repo_id", null: false
+    t.text "message"
+    t.string "sha"
+    t.jsonb "commit"
+    t.string "url"
+    t.string "html_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["collaborator_id"], name: "index_commits_on_collaborator_id"
+    t.index ["repo_id"], name: "index_commits_on_repo_id"
   end
 
   create_table "languages", force: :cascade do |t|
@@ -93,6 +107,8 @@ ActiveRecord::Schema.define(version: 2021_03_22_152232) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "commits", "collaborators"
+  add_foreign_key "commits", "repos"
   add_foreign_key "repo_collaborators", "collaborators"
   add_foreign_key "repo_collaborators", "repos"
   add_foreign_key "repo_languages", "languages"
