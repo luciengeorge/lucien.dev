@@ -8,7 +8,7 @@ class CreateCollaborators < ActiveRecord::Migration[6.1]
       t.string :following_url
       t.string :starred_url
       t.integer :gh_id
-      t.string :type
+      t.string :gh_type
       t.string :api_url
 
       t.timestamps
