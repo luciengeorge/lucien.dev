@@ -18,6 +18,7 @@ class UpdateRepoCollaboratorsJob < ApplicationJob
       ).find_or_create_by(gh_id: collaborator.gh_id)
 
       RepoCollaborator.find_or_create_by repo: repo, collaborator: @collaborator
+      UpdateRepoCommitsJob.perform_later(repo)
     end
   end
 end

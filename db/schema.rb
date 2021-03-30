@@ -30,11 +30,10 @@ ActiveRecord::Schema.define(version: 2021_03_22_181131) do
   end
 
   create_table "commits", force: :cascade do |t|
-    t.bigint "collaborator_id", null: false
+    t.bigint "collaborator_id"
     t.bigint "repo_id", null: false
     t.text "message"
     t.string "sha"
-    t.jsonb "commit"
     t.string "url"
     t.string "html_url"
     t.datetime "created_at", precision: 6, null: false
