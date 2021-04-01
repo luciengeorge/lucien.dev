@@ -1,4 +1,4 @@
 class RepoLanguage < ApplicationRecord
-  belongs_to :language
-  belongs_to :repo
+  belongs_to :language, touch: true
+  belongs_to :repo, touch: true
 end

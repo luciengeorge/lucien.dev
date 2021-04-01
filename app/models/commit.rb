@@ -1,6 +1,6 @@
 class Commit < ApplicationRecord
-  belongs_to :collaborator, optional: true
-  belongs_to :repo
+  belongs_to :collaborator, optional: true, touch: true
+  belongs_to :repo, touch: true, counter_cache: true
 
   validates :sha, presence: true, uniqueness: true
   validates :message, presence: true

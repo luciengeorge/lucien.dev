@@ -9,4 +9,11 @@ class Repo < ApplicationRecord
   has_many :collaborators, through: :repo_collaborators
   has_many :repo_languages
   has_many :languages, through: :repo_languages
+  has_many :commits
+
+  def language
+    return nil if repo_languages.empty?
+
+    repo_languages.order(size: :desc).first.language
+  end
 end

@@ -1,4 +1,4 @@
 class RepoCollaborator < ApplicationRecord
-  belongs_to :repo
-  belongs_to :collaborator
+  belongs_to :repo, touch: true
+  belongs_to :collaborator, touch: true
 end
