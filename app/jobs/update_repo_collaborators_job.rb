@@ -15,10 +15,10 @@ class UpdateRepoCollaboratorsJob < ApplicationJob
         starred_url: collaborator.starred_url,
         gh_type: collaborator.type,
         api_url: collaborator.url
-      ).find_or_create_by(gh_id: collaborator.gh_id)
+      ).find_or_create_by(gh_id: collaborator.id)
 
       RepoCollaborator.find_or_create_by repo: repo, collaborator: @collaborator
-      UpdateRepoCommitsJob.perform_later(repo)
     end
+    UpdateRepoCommitsJob.perform_later(repo)
   end
 end
