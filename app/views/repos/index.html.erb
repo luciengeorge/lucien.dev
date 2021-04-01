@@ -1,10 +1,7 @@
 <div class="container">
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
     <% @repos.each do |repo| %>
-      <div class="w-full bg-white rounded shadow-lg p-3">
-        <%= render BreadcrumbsComponent.new(path: repo.full_name) %>
-        <p><%= repo.full_name %> - <%= repo.language %></p>
-      </div>
+      <%= render Repos::RepoComponent.new(repo: repo) %>
     <% end %>
   </div>
 </div>
