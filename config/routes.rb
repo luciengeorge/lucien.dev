@@ -6,6 +6,6 @@ Rails.application.routes.draw do
     mount Sidekiq::Web => '/sidekiq'
   end
   root to: 'pages#home'
-  resources :projects, only: :index
+  resources :repos, only: :index
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
