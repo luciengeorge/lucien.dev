@@ -4,4 +4,9 @@
       <%= render Repos::RepoComponent.new(repo: repo) %>
     <% end %>
   </div>
+  <% if @pagy.pages > 1 %>
+    <div class="my-3 flex justify-end">
+      <%== pagy_nav @pagy %>
+    </div>
+  <% end %>
 </div>
