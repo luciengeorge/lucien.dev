@@ -17,6 +17,7 @@
     "stimulus-lazy-loader": "^1.1.2",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "tailwindcss-stimulus-components": "^2.1.2",
+    "tippy.js": "^6.3.1",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",
