@@ -1,17 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  collaborator: one
+  contributor: one
   message: MyText
   sha: MyString
-  commit: 
+  commit:
   url: MyString
   html_url: MyString
 
 two:
-  collaborator: two
+  contributor: two
   message: MyText
   sha: MyString
-  commit: 
+  commit:
   url: MyString
   html_url: MyString

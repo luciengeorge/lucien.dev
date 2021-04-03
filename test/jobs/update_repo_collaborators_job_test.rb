@@ -1,6 +1,6 @@
 require "test_helper"
 
-class UpdateRepoCollaboratorsJobTest < ActiveJob::TestCase
+class UpdateRepoContributorsJobTest < ActiveJob::TestCase
   # test "the truth" do
   #   assert true
   # end

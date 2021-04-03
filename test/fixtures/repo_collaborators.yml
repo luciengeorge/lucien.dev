@@ -2,8 +2,8 @@
 
 one:
   repo: one
-  collaborator: one
+  contributor: one
 
 two:
   repo: two
-  collaborator: two
+  contributor: two
