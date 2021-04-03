@@ -2,8 +2,7 @@ class UpdateRepoLanguagesJob < ApplicationJob
   queue_as :default
 
   def perform(repo)
-    @repo = $octokit.repo(repo.gh_id)
-    languages = @repo.rels[:languages].get.data
+    languages = $octokit.languages(repo.gh_id)
     languages_json = JSON.parse(RestClient.get('https://raw.githubusercontent.com/ozh/github-colors/master/colors.json'))
     languages.each do |language, size|
       color = languages_json.dig(language.to_s, 'color')

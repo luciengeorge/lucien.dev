@@ -2,8 +2,7 @@ class UpdateRepoCommitsJob < ApplicationJob
   queue_as :default
 
   def perform(repo)
-    @repo = $octokit.repo(repo.gh_id)
-    commits = @repo.rels[:commits].get.data
+    commits = $octokit.commits(repo.gh_id)
     commits.each do |commit|
       @commit = Commit.find_or_create_by(sha: commit.sha, url: commit.url, html_url: commit.html_url)
       @commit.update(
@@ -16,6 +15,7 @@ class UpdateRepoCommitsJob < ApplicationJob
         html_url: commit.html_url
       )
     end
+    Repo.reset_counters(repo.id, :commits)
   rescue Octokit::Error => e
     p e
   end

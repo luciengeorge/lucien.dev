@@ -2,8 +2,7 @@ class UpdateRepoContributorsJob < ApplicationJob
   queue_as :default
 
   def perform(repo)
-    @repo = $octokit.repo(repo.gh_id)
-    contributors = @repo.rels[:contributors].get.data
+    contributors = $octokit.contributors(repo.gh_id)
     return if contributors.empty?
 
     contributors.each do |contributor|
