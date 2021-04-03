@@ -5,9 +5,9 @@ class Repo < ApplicationRecord
 
   store :owner, accessors: %i[login id avatar_url html_url type], prefix: true, coder: JSON
 
-  has_many :repo_collaborators
-  has_many :collaborators, through: :repo_collaborators
-  has_many :repo_languages
+  has_many :repo_contributors, -> { joins(:contributor).order('contributors.contribution_count desc') }
+  has_many :contributors, through: :repo_contributors
+  has_many :repo_languages, -> { order 'size desc' }
   has_many :languages, through: :repo_languages
   has_many :commits
 
@@ -15,5 +15,9 @@ class Repo < ApplicationRecord
     return nil if repo_languages.empty?
 
     repo_languages.order(size: :desc).first.language
+  end
+
+  def empty?
+    contributors.empty?
   end
 end
