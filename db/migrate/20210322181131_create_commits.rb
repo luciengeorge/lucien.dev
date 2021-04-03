@@ -1,7 +1,7 @@
 class CreateCommits < ActiveRecord::Migration[6.1]
   def change
     create_table :commits do |t|
-      t.references :collaborator, foreign_key: true
+      t.references :contributor, foreign_key: true
       t.references :repo, null: false, foreign_key: true
       t.text :message
       t.string :sha

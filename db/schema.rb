@@ -10,12 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_01_193416) do
+ActiveRecord::Schema.define(version: 2021_04_03_181047) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "collaborators", force: :cascade do |t|
+  create_table "commits", force: :cascade do |t|
+    t.bigint "contributor_id"
+    t.bigint "repo_id", null: false
+    t.text "message"
+    t.string "sha"
+    t.string "url"
+    t.string "html_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "pushed_at"
+    t.index ["contributor_id"], name: "index_commits_on_contributor_id"
+    t.index ["repo_id"], name: "index_commits_on_repo_id"
+  end
+
+  create_table "contributors", force: :cascade do |t|
     t.string "login"
     t.string "avatar_url"
     t.string "profile_url"
@@ -29,19 +43,6 @@ ActiveRecord::Schema.define(version: 2021_04_01_193416) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "commits", force: :cascade do |t|
-    t.bigint "collaborator_id"
-    t.bigint "repo_id", null: false
-    t.text "message"
-    t.string "sha"
-    t.string "url"
-    t.string "html_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["collaborator_id"], name: "index_commits_on_collaborator_id"
-    t.index ["repo_id"], name: "index_commits_on_repo_id"
-  end
-
   create_table "languages", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -49,13 +50,14 @@ ActiveRecord::Schema.define(version: 2021_04_01_193416) do
     t.string "color"
   end
 
-  create_table "repo_collaborators", force: :cascade do |t|
+  create_table "repo_contributors", force: :cascade do |t|
     t.bigint "repo_id", null: false
-    t.bigint "collaborator_id", null: false
+    t.bigint "contributor_id", null: false
+    t.integer "contribution_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["collaborator_id"], name: "index_repo_collaborators_on_collaborator_id"
-    t.index ["repo_id"], name: "index_repo_collaborators_on_repo_id"
+    t.index ["contributor_id"], name: "index_repo_contributors_on_contributor_id"
+    t.index ["repo_id"], name: "index_repo_contributors_on_repo_id"
   end
 
   create_table "repo_languages", force: :cascade do |t|
@@ -107,10 +109,10 @@ ActiveRecord::Schema.define(version: 2021_04_01_193416) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "commits", "collaborators"
+  add_foreign_key "commits", "contributors"
   add_foreign_key "commits", "repos"
-  add_foreign_key "repo_collaborators", "collaborators"
-  add_foreign_key "repo_collaborators", "repos"
+  add_foreign_key "repo_contributors", "contributors"
+  add_foreign_key "repo_contributors", "repos"
   add_foreign_key "repo_languages", "languages"
   add_foreign_key "repo_languages", "repos"
 end

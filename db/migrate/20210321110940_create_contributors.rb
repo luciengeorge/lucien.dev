@@ -1,6 +1,6 @@
-class CreateCollaborators < ActiveRecord::Migration[6.1]
+class CreateContributors < ActiveRecord::Migration[6.1]
   def change
-    create_table :collaborators do |t|
+    create_table :contributors do |t|
       t.string :login
       t.string :avatar_url
       t.string :profile_url
