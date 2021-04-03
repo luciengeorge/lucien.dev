@@ -10,4 +10,8 @@ class Repos::RepoComponent < MainComponent
   def language_name
     repo.language&.name
   end
+
+  def contributors
+    repo.contributors
+  end
 end
