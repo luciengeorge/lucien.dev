@@ -7,7 +7,7 @@ class UpdateRepoJob < ApplicationJob
     @github_repo = $octokit.repo(@repo_gh_id)
     @repo.present? ? update_repo : create_repo
     UpdateRepoLanguagesJob.perform_later(@repo)
-    UpdateRepoCollaboratorsJob.perform_later(@repo)
+    UpdateRepoContributorsJob.perform_later(@repo)
   end
 
   private

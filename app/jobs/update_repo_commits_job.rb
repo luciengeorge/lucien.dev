@@ -5,14 +5,16 @@ class UpdateRepoCommitsJob < ApplicationJob
     @repo = $octokit.repo(repo.gh_id)
     commits = @repo.rels[:commits].get.data
     commits.each do |commit|
-      @commit = Commit.create_with(
+      @commit = Commit.find_or_create_by(sha: commit.sha, url: commit.url, html_url: commit.html_url)
+      @commit.update(
         sha: commit.sha,
         message: commit.commit&.message,
+        pushed_at: commit.commit&.author&.date,
         repo: repo,
-        collaborator: Collaborator.find_by(login: commit.author&.login),
+        contributor: Contributor.find_by(login: commit.author&.login),
         url: commit.url,
         html_url: commit.html_url
-      ).find_or_create_by(sha: commit.sha)
+      )
     end
   rescue Octokit::Error => e
     p e
