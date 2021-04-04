@@ -8,6 +8,7 @@ gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
 gem 'faraday-http-cache'
 gem 'font-awesome-sass'
+gem 'groupdate'
 gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'octokit', '~> 4.20'
