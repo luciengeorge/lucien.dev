@@ -1,4 +1,8 @@
-<div class="repo-card border-l-2 flex flex-col justify-between" style="border-color: <%= repo.language&.color %>" data-controller="modal" data-action="keyup@window->modal#closeWithKeyboard">
+<div class="repo-card border-l-2 flex flex-col justify-between"
+     style="border-color: <%= repo.language&.color %>"
+     data-controller="modal"
+     data-action="keyup@window->modal#closeWithKeyboard"
+     data-aos="slide-up">
   <%= render Repos::BreadcrumbsComponent.new(repo: repo) %>
   <div class="flex flex-wrap">
     <% repo.languages.each do |language| %>
@@ -24,6 +28,7 @@
       <%= render Repos::ContributorModalComponent.new(repo: repo, contributors: contributors) %>
     </div>
     <small class="text-gray-500">
-    <%= link_to pluralize(repo.commits.size, 'commit'), repo.commits_url, target: :blank, class:'text-gray-500 hover:text-gray-700 hover:underline' %> <%= distance_of_time_in_words_to_now(repo.pushed_at) %> ago</small>
+      <%= link_to pluralize(repo.commits.size, 'commit'), repo.commits_url, target: :blank, class:'text-gray-500 hover:text-gray-700 hover:underline' %> <%= distance_of_time_in_words_to_now(repo.pushed_at) %> ago
+    </small>
   </div>
 </div>

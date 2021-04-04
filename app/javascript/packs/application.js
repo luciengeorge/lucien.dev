@@ -8,10 +8,16 @@ import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
 import "controllers";
+import AOS from 'aos';
 import 'stylesheets/tailwind/before.scss';
 import 'stylesheets/application.scss';
 import 'stylesheets/tailwind/after.scss';
+import 'aos/dist/aos.css';
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+document.addEventListener('turbolinks:load', () => {
+  AOS.init();
+});
