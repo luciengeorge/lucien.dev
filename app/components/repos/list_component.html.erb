@@ -1,3 +1,6 @@
 <% repos.each do |repo| %>
-  <%= render Repos::RepoComponent.new(repo: repo) %>
+  <div data-controller="modal">
+    <%= render Repos::RepoComponent.new(repo: repo) %>
+    <%= render Repos::ContributorModalComponent.new(repo: repo, contributors: repo.contributors) %>
+  </div>
 <% end %>
