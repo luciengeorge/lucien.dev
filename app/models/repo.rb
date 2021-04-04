@@ -20,4 +20,8 @@ class Repo < ApplicationRecord
   def empty?
     contributors.empty?
   end
+
+  def commits_url
+    "#{html_url}/commits"
+  end
 end

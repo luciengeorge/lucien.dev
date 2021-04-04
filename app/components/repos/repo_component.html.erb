@@ -12,15 +12,18 @@
           <%= image_tag contributor.avatar_url, alt: contributor.login, class: "avatar-sm avatar-bordered" %>
         <% end %>
       <% end %>
-      <% if contributors.size > 10 %>
-        <small>
-          <%= link_to '#', data: { action: 'click->modal#toggle' }, class:'ml-2 text-gray-500 hover:text-gray-700 hover:underline' do %>
-            <i class="fas fa-plus"></i><%= contributors.size - 10 %>
+      <small>
+        <%= link_to '#', data: { action: 'click->modal#toggle' }, class:'ml-2 text-gray-500 hover:text-gray-700 hover:underline' do %>
+          <% if contributors.size > 10 %>
+            <i class="fas fa-plus fa-sm"></i><%= contributors.size - 10 %>
+          <% else %>
+            all
           <% end %>
-        </small>
-        <%= render Repos::ContributorModalComponent.new(repo: repo, contributors: contributors) %>
-      <% end %>
+        <% end %>
+      </small>
+      <%= render Repos::ContributorModalComponent.new(repo: repo, contributors: contributors) %>
     </div>
-    <small class="text-gray-500"><%= pluralize(repo.commits.size, 'commit') %> <%= distance_of_time_in_words_to_now(repo.pushed_at) %> ago</small>
+    <small class="text-gray-500">
+    <%= link_to pluralize(repo.commits.size, 'commit'), repo.commits_url, target: :blank, class:'text-gray-500 hover:text-gray-700 hover:underline' %> <%= distance_of_time_in_words_to_now(repo.pushed_at) %> ago</small>
   </div>
 </div>
