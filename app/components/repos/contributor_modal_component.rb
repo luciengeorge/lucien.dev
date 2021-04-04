@@ -7,5 +7,4 @@ class Repos::ContributorModalComponent < MainComponent
     @repo = repo
     @contributors = contributors
   end
-
 end
