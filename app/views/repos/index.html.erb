@@ -1,12 +1,11 @@
-<div class="container">
-  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-    <% @repos.each do |repo| %>
-      <%= render Repos::RepoComponent.new(repo: repo) %>
-    <% end %>
+<div class="container" data-controller="infinite-scroll" data-action="scroll@window->infinite-scroll#scroll">
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" data-infinite-scroll-target="entries">
+    <%= render Repos::ListComponent.new(repos: @repos) %>
   </div>
-  <% if @pagy.pages > 1 %>
-    <div class="my-3 flex justify-end">
-      <%== pagy_nav @pagy %>
-    </div>
-  <% end %>
+  <div class="hidden" data-infinite-scroll-target="pagination">
+    <%== pagy_nav @pagy %>
+  </div>
+  <div class="flex w-full hidden items-center justify-center my-4" data-infinite-scroll-target="loader">
+    <i class="fas fa-circle-notch fa-spin fa-3x text-indigo-700"></i>
+  </div>
 </div>

@@ -21,6 +21,6 @@
         <%= render Repos::ContributorModalComponent.new(repo: repo, contributors: contributors) %>
       <% end %>
     </div>
-    <small class="text-gray-500"><%= pluralize(repo.commits.size, 'commit') %></small>
+    <small class="text-gray-500"><%= pluralize(repo.commits.size, 'commit') %> <%= distance_of_time_in_words_to_now(repo.pushed_at) %> ago</small>
   </div>
 </div>
