@@ -2,6 +2,7 @@ const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
+  mode: 'jit',
   purge: [
     './app/**/*.html.erb',
     './app/helpers/**/*.rb',
@@ -40,6 +41,6 @@ module.exports = {
   ],
   plugins: [
     require('@tailwindcss/forms'),
-    require('@neojp/tailwindcss-important-variant')
+    require('tailwindcss-important')
   ],
 }
