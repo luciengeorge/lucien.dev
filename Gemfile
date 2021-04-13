@@ -30,7 +30,7 @@ gem 'tailwindcss-rails', '~> 0.3.3'
 gem 'turbolinks', '~> 5'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'view_component', require: 'view_component/engine'
-gem 'webpacker', '~> 5.0'
+gem 'webpacker', '6.0.0.beta.6'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
