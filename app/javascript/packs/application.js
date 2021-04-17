@@ -20,3 +20,6 @@ ActiveStorage.start();
 document.addEventListener('turbolinks:load', () => {
   AOS.init();
 });
+
+require("trix")
+require("@rails/actiontext")
