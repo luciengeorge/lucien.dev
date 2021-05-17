@@ -4,4 +4,9 @@ class ExperiencesController < ApplicationController
   def index
     @experiences = policy_scope(Experience)
   end
+
+  def new
+    @experience = Experience.new
+    authorize @experience
+  end
 end
