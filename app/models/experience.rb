@@ -1,7 +1,11 @@
 class Experience < ApplicationRecord
-  validates :start_date, presence: true
   belongs_to :company
-  has_rich_text :experience
+
+  has_rich_text :description
+
+  validates :title, presence: true
+  validates :description, presence: true
+  validates :start_date, presence: true
   validate :start_before_end_date
 
   private
