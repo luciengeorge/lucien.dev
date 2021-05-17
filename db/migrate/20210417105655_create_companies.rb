@@ -3,8 +3,8 @@ class CreateCompanies < ActiveRecord::Migration[6.1]
     create_table :companies do |t|
       t.string :name
       t.string :website
-      t.string :location
-      t.float :latitute
+      t.string :address
+      t.float :latitude
       t.float :longitude
 
       t.timestamps
