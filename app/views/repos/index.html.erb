@@ -1,3 +1,5 @@
+<%= content_for :meta_title, "Repositories" %>
+
 <div class="container" data-controller="infinite-scroll" data-action="scroll@window->infinite-scroll#scroll">
   <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" data-infinite-scroll-target="entries">
     <%= render Repos::ListComponent.new(repos: @repos) %>
