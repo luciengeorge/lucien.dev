@@ -1,0 +1,16 @@
+<%= content_for :meta_title, "New Company" %>
+
+<div class="grid grid-cols-12">
+  <div class="bg-white p-3 md:col-start-2 md:col-end-11 lg:col-start-4 lg:col-end-10 col-span-12 md:col-span-8 lg:col-span-6 rounded shadow-lg">
+    <h2 class="mb-3 text-center">New company</h2>
+    <%= simple_form_for @company do |f| %>
+      <div class="mb-3">
+        <%= f.input :name, placeholder: 'Name', wrapper_html: { class: 'mb-0' }, input_html: { class: 'form-input rounded-none rounded-t-md' }, label_html: { class: 'sr-only' } %>
+        <%= f.input :website, placeholder: 'Website', wrapper_html: { class: 'mb-0' }, input_html: { class: 'form-input rounded-none' }, label_html: { class: 'sr-only' } %>
+        <%= f.input :address, placeholder: 'Address', wrapper_html: { class: 'mb-0' }, input_html: { class: 'form-input rounded-none rounded-b-md' }, label_html: { class: 'sr-only' } %>
+        <%= f.input :photo, label_html: { class: 'sr-only' }, input_html: { class: 'border-none' }, wrapper_html: { class: 'mt-2' } %>
+      </div>
+      <%= f.submit class: 'btn-primary w-full' %>
+    <% end %>
+  </div>
+</div>
