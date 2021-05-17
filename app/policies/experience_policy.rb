@@ -4,4 +4,14 @@ class ExperiencePolicy < ApplicationPolicy
       scope.all
     end
   end
+
+  def create?
+    admin?
+  end
+
+  private
+
+  def admin?
+    user&.admin?
+  end
 end
