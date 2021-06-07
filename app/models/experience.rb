@@ -8,6 +8,8 @@ class Experience < ApplicationRecord
   validates :start_date, presence: true
   validate :start_before_end_date
 
+  enum job_type: %i[full_time part_time self_employed freelance contract internship apprenticeship temporary]
+
   private
 
   def start_before_end_date

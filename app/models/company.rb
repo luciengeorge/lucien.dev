@@ -9,4 +9,15 @@ class Company < ApplicationRecord
   validates :address, presence: true
 
   after_validation :geocode, if: :will_save_change_to_address?
+  before_save :normalize_website, if: :will_save_change_to_website?
+
+  def url
+    "http://#{website}"
+  end
+
+  private
+
+  def normalize_website
+    self.website = (website || "").sub(/https?\:\/\//, '').sub(/\/$/, '').strip
+  end
 end
