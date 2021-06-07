@@ -2,15 +2,14 @@
   <div class="relative pb-8">
     <span class="absolute top-5 left-5 -ml-px h-4/5 w-0.5 bg-gray-200" aria-hidden="true"></span>
     <div class="relative flex items-start space-x-3">
-      <%= image_tag experience.company.photo.service_url, alt: experience.company.name, class: 'h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white' %>
+      <%= image_tag company_logo, alt: company_name, class: 'h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white' %>
       <div class="min-w-0 flex-1">
         <div>
           <div class="text-sm">
-            <a href="#" class="font-medium text-gray-900"><%= experience.company.name %></a>
+            <%= link_to company_name, company_website, class: 'font-medium text-gray-900', target: :blank %>
           </div>
-          <p class="mt-0.5 text-sm text-gray-500">
-            <%= date(experience.start_date) %> - <%= experience.end_date.present? ? date(experience.end_date) : 'present' %>
-          </p>
+          <p class="mt-0.5 text-sm text-gray-900"><%= job_type %></p>
+          <p class="text-sm text-gray-500"><%= start_date %> - <%= end_date %></p>
         </div>
         <div class="mt-2 text-sm text-gray-700">
           <%= experience.description %>

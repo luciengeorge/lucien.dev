@@ -4,14 +4,15 @@
   <div class="bg-white p-3 md:col-start-2 md:col-end-11 lg:col-start-4 lg:col-end-10 col-span-12 md:col-span-8 lg:col-span-6 rounded shadow-lg">
     <h2 class="mb-3 text-center">New experience</h2>
     <%= simple_form_for @experience do |f| %>
-      <%= f.input :title, placeholder: 'Job title', wrapper_html: { class: 'mb-3' }, input_html: { class: 'form-input' }, label_html: { class: "sr-only" } %>
+      <%= f.input :title, placeholder: 'Job title', wrapper_html: { class: 'mb-3' }, input_html: { class: 'form-input' }, label_html: { class: 'sr-only' } %>
+      <%= f.input :job_type, as: :select, collection: Experience.job_types.keys, wrapper_html: { class: 'mb-3' }, input_html: { class: 'form-input' }, label_html: { class: 'sr-only' } %>
       <%= f.rich_text_area :description, input_html: { class: 'form-input' } %>
       <div class="flex items-center justify-around">
-        <%= f.input :start_date, html5: true, legend_tag: false, wrapper_html: { class: 'w-full date-wrapper mr-2' }, input_html: { class: 'w-full form-input' }, label_html: { class: "sr-only" } %>
+        <%= f.input :start_date, html5: true, legend_tag: false, wrapper_html: { class: 'w-full date-wrapper mr-2' }, input_html: { class: 'w-full form-input' }, label_html: { class: 'sr-only' } %>
         <i class="fas fa-long-arrow-alt-right"></i>
-        <%= f.input :end_date, html5: true, legend_tag: false, wrapper_html: { class: 'w-full date-wrapper ml-2' }, input_html: { class: 'w-full form-input' }, label_html: { class: "sr-only" } %>
+        <%= f.input :end_date, html5: true, legend_tag: false, wrapper_html: { class: 'w-full date-wrapper ml-2' }, input_html: { class: 'w-full form-input' }, label_html: { class: 'sr-only' } %>
       </div>
-      <%= f.association :company, prompt: 'Choose a company', label_html: { class: "sr-only" }, input_html: { class: 'form-input mb-3' } %>
+      <%= f.association :company, prompt: 'Choose a company', label_html: { class: 'sr-only' }, input_html: { class: 'form-input mb-3' } %>
       <%= f.submit class: 'btn-primary w-full' %>
     <% end %>
   </div>

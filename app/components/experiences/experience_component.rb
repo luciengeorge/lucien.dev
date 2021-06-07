@@ -7,7 +7,27 @@ class Experiences::ExperienceComponent < MainComponent
     @experience = experience
   end
 
-  def date(date)
-    date.strftime('%B %Y')
+  def start_date
+    experience.start_date.strftime('%B %Y')
+  end
+
+  def end_date
+    experience.end_date.present? ? experience.end_date.strftime('%B %Y') : 'present'
+  end
+
+  def job_type
+    experience.job_type.dasherize.capitalize
+  end
+
+  def company_website
+    experience.company.url
+  end
+
+  def company_logo
+    experience.company.photo.service_url
+  end
+
+  def company_name
+    experience.company.name
   end
 end
