@@ -25,27 +25,7 @@
       <div class="flow-root">
         <ul class="-mb-8">
           <% @experiences.each do |experience| %>
-            <li>
-              <div class="relative pb-8">
-                <span class="absolute top-5 left-5 -ml-px h-4/5 w-0.5 bg-gray-200" aria-hidden="true"></span>
-                <div class="relative flex items-start space-x-3">
-                  <%= image_tag experience.company.photo.service_url, alt: experience.company.name, class: 'h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white' %>
-                  <div class="min-w-0 flex-1">
-                    <div>
-                      <div class="text-sm">
-                        <a href="#" class="font-medium text-gray-900"><%= experience.company.name %></a>
-                      </div>
-                      <p class="mt-0.5 text-sm text-gray-500">
-                        <%= experience.start_date.strftime('%B %Y') %> - <%= experience.end_date.present? ? experience.end_date.strftime('%B %Y') : 'present' %>
-                      </p>
-                    </div>
-                    <div class="mt-2 text-sm text-gray-700">
-                      <%= experience.description %>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </li>
+            <%= render Experiences::ExperienceComponent.new(experience: experience) %>
           <% end %>
         </ul>
       </div>
