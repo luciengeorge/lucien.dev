@@ -1,3 +1,10 @@
-const { webpackConfig } = require('@rails/webpacker')
+const { webpackConfig, merge } = require('@rails/webpacker')
+const webpack = require('webpack');
 
-module.exports = webpackConfig
+module.exports = merge(webpackConfig, {
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser'
+    })
+  ]
+});
