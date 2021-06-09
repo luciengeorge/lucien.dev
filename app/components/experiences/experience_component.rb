@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class Experiences::ExperienceComponent < MainComponent
-  attr_reader :experience
+  attr_reader :experience, :previous_experience, :next_experience
 
-  def initialize(experience:)
+  def initialize(experience:, previous_experience:, next_experience:)
     @experience = experience
+    @previous_experience = previous_experience
+    @next_experience = next_experience
   end
 
   def start_date
@@ -19,15 +21,35 @@ class Experiences::ExperienceComponent < MainComponent
     experience.job_type.dasherize.capitalize
   end
 
+  def company
+    experience.company
+  end
+
   def company_website
-    experience.company.url
+    company.url
   end
 
   def company_logo
-    experience.company.photo.service_url
+    company.photo.service_url
   end
 
   def company_name
-    experience.company.name
+    company.name
+  end
+
+  def previous_company
+    return nil if previous_experience.blank?
+
+    previous_experience.company
+  end
+
+  def next_company
+    return nil if next_experience.blank?
+
+    next_experience.company
+  end
+
+  def line_height_class
+    'h-full' if next_company.present?
   end
 end

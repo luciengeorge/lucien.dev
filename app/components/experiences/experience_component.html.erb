@@ -1,12 +1,20 @@
 <li>
   <div class="relative pb-8">
-    <span class="absolute top-5 left-5 -ml-px h-5/6 w-0.5 bg-gray-200" aria-hidden="true"></span>
+    <span class="absolute top-5 left-5 -ml-px <%= line_height_class %> w-0.5 bg-gray-200" aria-hidden="true"></span>
     <div class="relative flex items-start space-x-3">
-      <%= image_tag company_logo, alt: company_name, class: 'h-10 w-10 rounded-full bg-gray-400 flex items-center justify-center ring-8 ring-white' %>
-      <div class="min-w-0 flex-1">
+      <% if company == previous_company %>
+        <div class="h-10 w-10 rounded-full flex items-center justify-center ring-white">
+          <div class="h-2 w-2 rounded-full bg-gray-200 ring-8 ring-white"></div>
+        </div>
+      <% else %>
+        <%= image_tag company_logo, alt: company_name, class: 'h-10 w-10 rounded-full bg-white flex items-center justify-center ring-8 ring-white' %>
+      <% end %>
+      <div class="min-w-0 flex-1 relative left-5">
         <div>
           <div class="text-sm">
-            <%= link_to company_name, company_website, class: 'font-medium text-gray-900', target: :blank %>
+            <% unless company == previous_company %>
+              <%= link_to company_name, company_website, class: 'font-medium text-gray-900', target: :blank %>
+            <% end %>
           </div>
           <p class="mt-0.5 text-sm text-gray-900"><%= job_type %></p>
           <p class="text-sm text-gray-500"><%= start_date %> - <%= end_date %></p>
