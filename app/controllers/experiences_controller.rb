@@ -2,7 +2,7 @@ class ExperiencesController < ApplicationController
   skip_before_action :authenticate_user!
 
   def index
-    @experiences = policy_scope(Experience).includes(:company)
+    @experiences = policy_scope(Experience).includes(:rich_text_description, company: { photo_attachment: :blob })
   end
 
   def new
@@ -23,6 +23,6 @@ class ExperiencesController < ApplicationController
   private
 
   def experience_params
-    params.require(:experience).permit(:title, :start_date, :end_date, :company_id, :description)
+    params.require(:experience).permit(:title, :start_date, :end_date, :company_id, :description, :job_type)
   end
 end
