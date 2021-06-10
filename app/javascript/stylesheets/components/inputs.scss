@@ -1,0 +1,6 @@
+.form-input, trix-editor {
+  @apply shadow appearance-none relative block w-full px-3 py-2;
+  @apply border border-gray-300;
+  @apply focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10;
+  @apply placeholder-gray-500 sm:text-sm;
+}
