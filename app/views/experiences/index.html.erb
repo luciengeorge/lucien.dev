@@ -36,19 +36,31 @@
         </div>
       </div>
       <div>
+        <% @educations.each do |education| %>
+          <%= render EducationComponent.new(education: education) %>
+        <% end %>
+      </div>
+      <div>
         <div class="relative inline-block my-3">
           <h4 class="mb-3 font-normal uppercase mb-1">Programming</h4>
           <div class="absolute bottom-0 left-0 bg-gray-900 w-1/2 h-0.5"></div>
         </div>
       </div>
-      <div>
-
+      <div class="flex items-center justify-start flex-wrap">
+        <% @programming_languages.each do |language| %>
+          <span class="badge mr-2 mb-2"><%= language %></span>
+        <% end %>
       </div>
       <div>
         <div class="relative inline-block my-3">
           <h4 class="mb-3 font-normal uppercase mb-1">Languages</h4>
           <div class="absolute bottom-0 left-0 bg-gray-900 w-1/2 h-0.5"></div>
         </div>
+      </div>
+      <div class="flex items-center justify-start flex-wrap">
+        <% @spoken_languages.each do |language| %>
+          <span class="badge mr-2 mb-2"><%= language %></span>
+        <% end %>
       </div>
     </div>
     <div class="col-span-2">
