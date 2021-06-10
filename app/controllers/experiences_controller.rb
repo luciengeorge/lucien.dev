@@ -5,7 +5,7 @@ class ExperiencesController < ApplicationController
     @experiences = policy_scope(Experience).includes(:rich_text_description, company: { photo_attachment: :blob })
     @programming_languages = ['Ruby on Rails', 'Javascript', 'Python', 'SQL', 'HTML', 'CSS,' 'git', 'Java']
     @spoken_languages = %w[French English Arabic Spanish]
-    @educations = Education.includes(:school)
+    @educations = Education.includes(:school, :rich_text_description)
   end
 
   def new
