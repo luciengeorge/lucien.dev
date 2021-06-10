@@ -19,10 +19,13 @@
         data-transition-leave-start="transform opacity-100 scale-100"
         data-transition-leave-end="transform opacity-0 scale-95">
       <%= link_to new_experience_path, class: 'dropdown-link' do %>
-        <i class="fal fa-briefcase"></i> New experience
+        <i class="fal fa-briefcase"></i> Add experience
       <% end %>
       <%= link_to new_company_path, class: 'dropdown-link' do %>
-        <i class="fal fa-building"></i> New Company
+        <i class="fal fa-building"></i> Add Company
+      <% end %>
+      <%= link_to new_education_path, class: 'dropdown-link' do %>
+        <i class="fal fa-ruler-triangle"></i> Add Education
       <% end %>
       <%= link_to destroy_user_session_path, class: 'dropdown-link', method: :delete do %>
         <i class="fal fa-sign-out"></i> Sign out
