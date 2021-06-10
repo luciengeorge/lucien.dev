@@ -3,6 +3,9 @@ class ExperiencesController < ApplicationController
 
   def index
     @experiences = policy_scope(Experience).includes(:rich_text_description, company: { photo_attachment: :blob })
+    @programming_languages = ['Ruby on Rails', 'Javascript', 'Python', 'SQL', 'HTML', 'CSS,' 'git', 'Java']
+    @spoken_languages = %w[French English Arabic Spanish]
+    @educations = Education.includes(:school)
   end
 
   def new

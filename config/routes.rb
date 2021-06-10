@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
   root to: 'pages#home'
   resources :repos, only: :index
-  resources :companies, except: :show
-  resources :experiences
+  resources :companies, only: [ :new, :create ]
+  resources :experiences, only: [ :index, :new, :create ]
+  resources :educations, only: [ :new, :create ]
+  resources :schools, only: :create
 end
