@@ -3,15 +3,19 @@ class ExperiencesController < ApplicationController
   before_action :set_experiences, only: [ :index, :resume ]
   layout 'full_screen', only: :resume
 
-  def index; end
+  def index
+    respond_to do |format|
+      format.html
+      format.pdf do
+        grover = Grover.new(resume_experiences_url, format: 'A4')
+        pdf = grover.to_pdf
+        send_data(pdf, filename: 'lucien_george_resume.pdf')
+      end
+    end
+  end
 
   def resume
     skip_authorization
-    redirect_to resume_experiences_path(format: :pdf) unless request.format.pdf?
-    html = render_to_string(CvComponent.new(experiences: @experiences, programming_languages: @programming_languages, spoken_languages: @spoken_languages, educations: @educations))
-    grover = Grover.new(html)
-    pdf = grover.to_pdf
-    send_data(File.open(Rails.root.join('cv.pdf'), 'wb') { |f| f.write(pdf) })
   end
 
   def new
@@ -33,15 +37,6 @@ class ExperiencesController < ApplicationController
 
   def experience_params
     params.require(:experience).permit(:title, :start_date, :end_date, :company_id, :description, :job_type)
-  end
-
-  def generate_pdf
-    pdf_content = render_to_string(
-      CvComponent.new(experiences: @experiences, programming_languages: @programming_languages, spoken_languages: @spoken_languages, educations: @educations)
-    )
-    Prawn::Document.new do
-      text pdf_content.force_encoding('Windows-1252'), inline_format: true
-    end.render
   end
 
   def set_experiences
