@@ -1,17 +1,17 @@
 class ExperiencesController < ApplicationController
   skip_before_action :authenticate_user!
+  before_action :set_experiences, only: [ :index, :resume ]
+  layout 'full_screen', only: :resume
 
-  def index
-    @experiences = policy_scope(Experience).includes(:rich_text_description, company: { photo_attachment: :blob })
-    @programming_languages = ['Ruby on Rails', 'Javascript', 'Python', 'SQL', 'HTML', 'CSS,' 'git', 'Java']
-    @spoken_languages = %w[French English Arabic Spanish]
-    @educations = Education.includes(:school, :rich_text_description)
-    respond_to do |format|
-      format.html
-      format.pdf do
-        send_data generate_pdf, filename: 'lucien_george_cv.pdf', type: 'application/pdf'
-      end
-    end
+  def index; end
+
+  def resume
+    skip_authorization
+    redirect_to resume_experiences_path(format: :pdf) unless request.format.pdf?
+    html = render_to_string(CvComponent.new(experiences: @experiences, programming_languages: @programming_languages, spoken_languages: @spoken_languages, educations: @educations))
+    grover = Grover.new(html)
+    pdf = grover.to_pdf
+    send_data(File.open(Rails.root.join('cv.pdf'), 'wb') { |f| f.write(pdf) })
   end
 
   def new
@@ -42,5 +42,12 @@ class ExperiencesController < ApplicationController
     Prawn::Document.new do
       text pdf_content.force_encoding('Windows-1252'), inline_format: true
     end.render
+  end
+
+  def set_experiences
+    @experiences = policy_scope(Experience).includes(:rich_text_description, company: { photo_attachment: :blob })
+    @programming_languages = ['Ruby on Rails', 'Javascript', 'Python', 'SQL', 'HTML', 'CSS,' 'git', 'Java']
+    @spoken_languages = %w[French English Arabic Spanish]
+    @educations = Education.includes(:school, :rich_text_description)
   end
 end

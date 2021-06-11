@@ -34,7 +34,7 @@
   <body>
     <div data-controller="lazy-loader">
       <%= render FlashesComponent.new(notice: notice, alert: alert) %>
-      <%= render Navbar::BaseComponent.new %>
+      <%= render Navbar::BaseComponent.new(user_signed_in: user_signed_in?) %>
       <%= yield %>
     </div>
   </body>
