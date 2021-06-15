@@ -44,6 +44,7 @@ export default class extends Controller {
         },
         { rootMargin: "0px" });
         this.imageTargets.forEach(target => observer.observe(target));
+        this.element.dispatchEvent(new Event('loaded'));
       }
     })
   }

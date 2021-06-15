@@ -30,7 +30,7 @@ class Experiences::ExperienceComponent < MainComponent
   end
 
   def company_logo
-    company.photo.service_url
+    company.photo.url
   end
 
   def company_name

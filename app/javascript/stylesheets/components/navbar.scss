@@ -18,32 +18,5 @@
 
 .logo-neon {
   font-family: $neon-font;
-  color: $white;
-  text-shadow:
-      0 0 7px $white,
-      0 0 10px $white,
-      0 0 21px $white,
-      0 0 42px $indigo,
-      0 0 82px $indigo,
-      0 0 92px $indigo,
-      0 0 102px $indigo;
-  animation: flicker 1.5s infinite alternate;
-}
-
-/* Flickering animation */
-@keyframes flicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
-      text-shadow:
-      0 0 4px $white,
-      0 0 11px $white,
-      0 0 19px $white,
-      0 0 40px $indigo,
-      0 0 80px $indigo,
-      0 0 90px $indigo,
-      0 0 100px $indigo;
-
-  }
-  20%, 24%, 55% {
-      text-shadow: none;
-  }
+  @apply font-bold;
 }

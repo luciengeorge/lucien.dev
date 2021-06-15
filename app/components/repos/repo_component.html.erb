@@ -1,4 +1,4 @@
-<div class="repo-card h-full border-l-2 flex flex-col justify-between"
+<div class="repo-card h-full border-l-2 flex flex-col justify-between mx-2"
      style="border-color: <%= repo.language&.color %>"
      data-action="keyup@window->modal#closeWithKeyboard"
      data-aos="slide-up">
@@ -8,24 +8,18 @@
       <span class="badge mr-2 mb-2" style="background-color: <%= language.color %>33; color: <%= language.color %>; border-color: <%= language.color %>;"><%= language.name %></span>
     <% end %>
   </div>
-  <div class="flex justify-between items-end">
-    <div class="flex items-end">
-      <% contributors.first(10).each_with_index do |contributor, index| %>
-        <%= link_to contributor.profile_url, target: :blank, class: "popover inline-block transition-all duration-300 #{class_names('hover:ml-1 -ml-2' => index.positive?)}", data: { controller: 'tippy', tippy_content_value: contributor.login } do %>
-          <%= image_tag contributor.avatar_url, alt: contributor.login, class: "avatar-sm avatar-bordered" %>
-        <% end %>
+  <div class="flex flex-wrap items-end">
+    <% contributors.each_with_index do |contributor, index| %>
+      <%= link_to contributor.profile_url, target: :blank, class: "popover inline-block transition-all duration-300", data: { controller: 'tippy', tippy_content_value: contributor.login } do %>
+        <%= image_tag contributor.avatar_url, alt: contributor.login, class: "avatar-sm avatar-bordered" %>
       <% end %>
-      <small>
-        <%= link_to '#', data: { action: 'click->modal#toggle' }, class:'ml-2 text-gray-500 hover:text-gray-700 hover:underline' do %>
-          <% if contributors.size > 10 %>
-            <i class="fas fa-plus fa-sm"></i><%= contributors.size - 10 %>
-          <% else %>
-            all
-          <% end %>
-        <% end %>
-      </small>
-    </div>
-    <small class="text-gray-500">
+    <% end %>
+  </div>
+  <div class="flex justify-between items-center w-full mt-3">
+    <small>
+      <%= link_to 'details', '#', data: { action: 'click->modal#toggle' }, class:'ml-2 text-gray-500 hover:text-gray-700 hover:underline' %>
+    </small>
+    <small class="text-gray-500 text-right">
       <%= link_to pluralize(repo.commits.size, 'commit'), repo.commits_url, target: :blank, class:'text-gray-500 hover:text-gray-700 hover:underline' %> <%= distance_of_time_in_words_to_now(repo.pushed_at) %> ago
     </small>
   </div>
