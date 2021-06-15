@@ -1,22 +1,29 @@
-<div class="flex justify-between align-bottom">
-  <div>
-    <h1 class="uppercase mb-5">lucien george</h1>
-    <h3 class="uppercase">fullstack developer</h3>
+<div class="">
+  <div class="flex items-center justify-between mb-5 w-full">
+    <h1 class="uppercase mb-0 mr-2">lucien george</h1>
+    <% if download %>
+      <%= link_to experiences_path(format: :pdf), class: 'btn-primary' do %>
+        <div class="flex items-center"><span>download</span><i class="fal fa-download ml-2"></i></div>
+      <% end %>
+    <% end %>
   </div>
-  <div class="flex flex-col justify-end">
-    <%= link_to User::GITHUB_URL, target: :blank do %>
-      <span class="text-black"><i class="fab fa-github"></i> /lucien-george</span>
-    <% end %>
-    <%= link_to User::LINKEDIN_URL, target: :blank do %>
-      <span class="text-black"><i class="fab fa-linkedin-in"></i> /luciengeorge</span>
-    <% end %>
+  <div class="flex justify-between items-end w-full">
+    <h3 class="uppercase">fullstack developer</h3>
+    <div class="flex flex-col justify-end">
+      <%= link_to User::GITHUB_URL, target: :blank do %>
+        <span class="text-black"><i class="fab fa-github"></i> /lucien-george</span>
+      <% end %>
+      <%= link_to User::LINKEDIN_URL, target: :blank do %>
+        <span class="text-black"><i class="fab fa-linkedin-in"></i> /luciengeorge</span>
+      <% end %>
+    </div>
   </div>
 </div>
 <hr class="my-5">
 <div class="grid grid-cols-3">
   <div class="col-span-1">
     <div>
-      <div class="relative inline-block my-3">
+      <div class="relative inline-block mb-3">
         <h4 class="mb-3 font-normal uppercase mb-1">Contact</h4>
         <div class="absolute bottom-0 left-0 bg-gray-900 w-1/2 h-0.5"></div>
       </div>
@@ -61,7 +68,7 @@
     </div>
   </div>
   <div class="col-span-2">
-    <div class="relative inline-block my-3">
+    <div class="relative inline-block mb-3">
       <h4 class="mb-3 font-normal uppercase mb-1">Experiences</h4>
       <div class="absolute bottom-0 left-0 bg-gray-900 w-1/2 h-0.5"></div>
     </div>

@@ -1,5 +1,5 @@
 <%= content_for :meta_title, "Experiences" %>
 
 <div class="container p-10 bg-white rounded shadow-lg cv m my-5">
-  <%= render CvComponent.new(experiences: @experiences, programming_languages: @programming_languages, spoken_languages: @spoken_languages, educations: @educations) %>
+  <%= render CvComponent.new(experiences: @experiences, programming_languages: @programming_languages, spoken_languages: @spoken_languages, educations: @educations, download: true) %>
 </div>
