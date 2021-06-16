@@ -16,7 +16,11 @@
   @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-900 hover:text-white
 }
 
-.logo-neon {
-  font-family: $neon-font;
-  @apply font-bold;
+.dot {
+  width: 5px;
+  height: 5px;
+  background: $indigo;
+  border-radius: 50%;
+  display: inline-block;
+  @apply mx-1;
 }

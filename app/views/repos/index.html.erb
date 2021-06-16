@@ -1,6 +1,6 @@
 <%= content_for :meta_title, "Repositories" %>
 
-<div class="container" data-controller="infinite-scroll masonry" data-action="scroll@window->infinite-scroll#scroll loaded->masonry#start">
+<div data-controller="infinite-scroll masonry" data-action="scroll@window->infinite-scroll#scroll loaded->masonry#start">
   <div data-infinite-scroll-target="entries" data-masonry-target="grid">
     <%= render Repos::ListComponent.new(repos: @repos) %>
   </div>
