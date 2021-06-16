@@ -24,7 +24,7 @@
           <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-title">
             Contributors
           </h3>
-          <div class="mt-2">
+          <div class="mt-2 max-height-70 overflow-scroll">
             <% contributors.each do |contributor| %>
               <div class="my-2">
                 <%= link_to contributor.profile_url, target: :blank do %>
