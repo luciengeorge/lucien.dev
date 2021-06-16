@@ -12,13 +12,6 @@ module.exports = {
   corePlugins: {
     preflight: true
   },
-  theme: {
-    extend: {
-      colors: {
-        gray: colors.coolGray,
-      }
-    },
-  },
   variants: [
     'responsive',
     'hover',

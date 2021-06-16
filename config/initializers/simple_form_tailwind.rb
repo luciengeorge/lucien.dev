@@ -57,7 +57,7 @@ SimpleForm.setup do |config|
     b.use :html5
     b.optional :readonly
     b.wrapper tag: 'div', class: 'flex items-center h-5' do |ba|
-      ba.use :input, class: 'focus:ring-2 focus:ring-indigo-500:focus ring-offset-2 h-4 w-4 text-indigo-600 border-gray-300 rounded'
+      ba.use :input, class: 'focus:ring-2 focus:ring-green-500:focus ring-offset-2 h-4 w-4 text-green-600 border-gray-300 rounded'
     end
     b.wrapper tag: 'div', class: 'ml-3 text-sm' do |bb|
       bb.use :label, class: 'block', error_class: 'text-red-500'
@@ -74,7 +74,7 @@ SimpleForm.setup do |config|
     b.wrapper :legend_tag, tag: 'legend', class: 'text-sm font-medium text-gray-600', error_class: 'text-red-500' do |ba|
       ba.use :label_text
     end
-    b.use :input, class: 'focus:ring-2 focus:ring-indigo-500 ring-offset-2 h-4 w-4 text-indigo-600 border-gray-300 rounded', error_class: 'text-red-500', valid_class: 'text-green-400'
+    b.use :input, class: 'focus:ring-2 focus:ring-green-500 ring-offset-2 h-4 w-4 text-green-600 border-gray-300 rounded', error_class: 'text-red-500', valid_class: 'text-green-400'
     b.use :full_error, wrap_with: { tag: 'p', class: 'block mt-2 text-red-500 text-xs italic' }
     b.use :hint, wrap_with: { tag: 'p', class: 'mt-2 text-grey-700 text-xs italic' }
   end
