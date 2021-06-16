@@ -7,9 +7,17 @@
 }
 
 .text-primary {
-  color: $indigo !important;
+  color: $primary !important;
 }
 
 .max-height-70 {
   max-height: 70vh;
+}
+
+body {
+  background-image: linear-gradient(180deg, $primary 10%, $white);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
 }
