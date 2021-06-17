@@ -2,8 +2,8 @@
   @apply text-white px-4 py-2 rounded-full text-sm font-medium;
   &.active {
     @apply rounded-full px-4 py-2 text-sm font-medium;
-    background: $white;
-    color: $primary;
+    background: $primary;
+    color: $white;
   }
   &:hover {
     background: $secondary;
@@ -25,7 +25,7 @@
 .dot {
   width: 5px;
   height: 5px;
-  background: $white;
+  background: $primary;
   border-radius: 50%;
   display: inline-block;
   @apply mx-1;
