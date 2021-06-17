@@ -1,7 +1,9 @@
 <%= content_for :meta_title, "Home" %>
 
 <div class="container live-text" data-controller="live-typing" data-live-typing-open-comment-value="false">
-  <style id="style-tag" data-live-typing-target="styleTag"></style>
-  <span id="echo"></span>
-  <pre id="style-text" data-live-typing-target="styleText" contenteditable></pre>
+  <style id="style-tag" data-live-typing-target="style"></style>
+  <div id="flex">
+    <div id="markdown"></div>
+    <pre id="style-text" data-live-typing-target="pre" contenteditable></pre>
+  </div>
 </div>
