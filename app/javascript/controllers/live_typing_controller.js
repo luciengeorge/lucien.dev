@@ -1,52 +1,57 @@
 import { Controller } from 'stimulus';
+import MarkdownIt from 'markdown-it';
 
 export default class extends Controller {
-  static targets = [ 'pre', 'style' ];
+  static targets = [ 'pre', 'style', 'markdown' ];
   static values = {
-    openComment: Boolean
+    openComment: Boolean,
+    introDone: Boolean,
+    markdownDone: Boolean,
   };
 
   connect() {
-    this.writeStyles(this.styles(), 0, this.time());
+    this.writeStyles(this.styles(), this.preTarget, 0, this.time());
   }
 
-  writeStyleChar(char) {
-    // begin wrapping open comments
-    let styles;
-    if (char === '/' && this.openCommentValue === false) {
-      this.openCommentValue = true;
-      styles = this.preTarget.innerHTML + char;
-    } else if (char === '/' && this.openCommentValue === true) {
-      this.openCommentValue = false
-      styles = this.preTarget.innerHTML.replace(/(\/[^\/]*\*)$/, '<em class="comment">$1/</em>');
+  writeStyleChar(char, target) {
+    let text;
+    if (target === this.preTarget) {
+      if (char === '/' && this.openCommentValue === false) {
+        this.openCommentValue = true;
+        text = target.innerHTML + char;
+      } else if (char === '/' && this.openCommentValue === true) {
+        this.openCommentValue = false
+        text = target.innerHTML.replace(/(\/[^\/]*\*)$/, '<em class="comment">$1/</em>');
+      }
+      else if (char === ':') {
+        text = target.innerHTML.replace(/([a-zA-Z- ^\n]*)$/, '<em class="key">$1</em>:');
+      }
+      else if (char === ';') {
+        text = target.innerHTML.replace(/([^:]*)$/, '<em class="value">$1</em>;');
+      }
+      else if (char === '{') {
+        text = target.innerHTML.replace(/(.*)$/, '<em class="selector">$1</em>{');
+      } else {
+        text = target.innerHTML + char;
+      }
+    } else {
+      text = target.innerHTML + char;
     }
-    // wrap style declaration
-    else if (char === ':') {
-      styles = this.preTarget.innerHTML.replace(/([a-zA-Z- ^\n]*)$/, '<em class="key">$1</em>:');
-    }
-    // wrap style value
-    else if (char === ';') {
-      styles = this.preTarget.innerHTML.replace(/([^:]*)$/, '<em class="value">$1</em>;');
-    }
-    // wrap selector
-    else if (char === '{') {
-      styles = this.preTarget.innerHTML.replace(/(.*)$/, '<em class="selector">$1</em>{');
-    }
-    else {
-      styles = this.preTarget.innerHTML + char;
-    }
-    this.preTarget.innerHTML = styles;
-    this.styleTarget.insertAdjacentHTML('beforeend', char);
+    target.innerHTML = text;
+    if (target === this.preTarget) this.styleTarget.insertAdjacentHTML('beforeend', char);
   }
 
-  writeStyles(message, index, interval) {
+  writeStyles(message, target, index, interval) {
     if (index < message.length) {
-      this.preTarget.scrollTop = this.preTarget.scrollHeight;
-      this.writeStyleChar(message[index++]);
+      target.scrollTop = target.scrollHeight;
+      this.writeStyleChar(message[index++], target);
       const newInterval = this.newInterval(message, index);
       setTimeout(() => {
-        this.writeStyles(message, index, newInterval)
+        this.writeStyles(message, target, index, newInterval)
       }, newInterval);
+    } else {
+      if (!this.introDoneValue) this.introDoneValue = true;
+      if (target === this.markdownTarget && this.introDoneValue && !this.markdownDoneValue) this.markdownDoneValue = true;
     }
   }
 
@@ -63,6 +68,20 @@ export default class extends Controller {
     if (endOfBlock.test(slice)) return this.time() * 50;
     if (endOfSentence.test(slice)) return this.time() * 70;
     return this.time();
+  }
+
+  introDoneValueChanged() {
+    if (!this.introDoneValue) return;
+
+    this.writeStyles(this.markdown(), this.markdownTarget, 0, this.time());
+  }
+
+  markdownDoneValueChanged() {
+    if (!this.markdownDoneValue) return;
+
+    const md = new MarkdownIt()
+    const markdown = md.render(this.markdownTarget.innerHTML);
+    this.markdownTarget.innerHTML = markdown;
   }
 
   styles() {
@@ -110,7 +129,7 @@ pre {
 }
 
 /*
- * That's a start. Let's add some color to it though.
+ * That's a start. Let's add some colors to it though.
  */
 
 pre em:not(.comment) { font-style: normal; }
@@ -145,24 +164,67 @@ pre {
 }
 
 #markdown {
+  white-space: pre-wrap;
+  line-height: initial;
+  max-height: 70vh;
+  overflow: scroll;
+  overflow-wrap: break-word;
   transition: all 500ms;
-  flex: 0 1 50%;
-  margin-right: 50px;
+  flex: 0 0 50%;
+  background: #ffffff;
+  margin-right: 5px;
+  padding: 32px 24px;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(6, 78, 59, 0.3);
+}
+
+#markdown ul {
+  list-style: initial;
+  margin-top: -20px;
+  line-height: 1;
 }`;
   }
 
   markdown() {
-    return `
-### Who am I
+    return `### Who am I?
 I am  a lead teacher and web developer at Le Wagon London.
 I also co-founded [Impact Lebanon](https://www.impactlebanon.org), a charity aiming at helping Lebanon go through its current Financial Crisis.
-Moreover, I co-founded [krowl.io](https://www.krowl.io), a virtual workspace to help student work from home.
+Moreover, I co-founded [krowl.io](https://www.krowl.io), a virtual workspace to help students work from home.
 
-**Some of my projects**
+#### Projects
 - [Impact Lebanon](https://www.impactlebanon.org)
 - [Krowl](https://www.krowl.io)
 and of course,
 - [lucien-george.com](https://www.lucien-george.com)
-`;
+
+#### Open source
+- [stimulus-lazy-loader](https://www.npmjs.com/package/stimulus-lazy-loader)
+- [stimulus-checkbox](https://www.npmjs.com/package/stimulus-checkbox)
+
+#### Technologies
+* Ruby on Rails
+* JavaScript
+* React
+* Python
+* SQL
+* HTML
+* CSS
+* Java
+* Kotlin
+* C#
+* C
+* git
+
+#### Spoken languages
+* French (native)
+* English (fluent)
+* Arabic (fluent)
+* Spanish (basic)
+
+#### Contact
+* [me@lucien-george.com](mailto:me@lucien-george.com)
+* [+44 7845 714513](tel:+447845714513)
+* [GitHub](https://github.com/lucien-george)
+* [LinkedIn](https://www.linkedin.com/in/luciengeorge)`;
   }
 }
