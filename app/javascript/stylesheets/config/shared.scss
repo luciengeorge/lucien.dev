@@ -1,3 +1,12 @@
 abbr {
   text-decoration: none !important;
 }
+
+
+body {
+  background-image: linear-gradient(180deg, rgba(6, 78, 59, 0.5) 10%, $white);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  min-height: 100vh;
+}

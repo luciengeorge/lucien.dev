@@ -1,13 +1,11 @@
 <%= content_for :meta_title, "Home" %>
 
 <div class="container live-text pt-0"
-     data-controller="live-typing"
-     data-live-typing-open-comment-value="false"
-     data-live-typing-intro-done-value="false"
-     data-live-typing-markdown-done-value="false">
-  <style id="style-tag" data-live-typing-target="style"></style>
+     data-controller="styles markdown"
+     data-action="styles-done->markdown#start markdown-done->styles#transition styles-transition-done->markdown#render markdown-rendered->styles#renderSuccess">
+  <style id="style-tag" data-styles-target="style"></style>
   <div id="flex">
-    <div id="markdown" data-live-typing-target="markdown"></div>
-    <pre id="style-text" data-live-typing-target="pre" contenteditable></pre>
+    <div id="markdown" data-markdown-target="markdown"></div>
+    <pre id="style-text" data-styles-target="pre" data-action="keyup->styles#updateStyles" data-open-comment="false" contenteditable></pre>
   </div>
 </div>
