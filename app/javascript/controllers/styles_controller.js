@@ -58,6 +58,7 @@ export default class extends Controller {
 
 pre {
   transition: all 500ms;
+  white-space: pre-wrap;
   width: 100%;
   margin: 0 auto;
   overflow: scroll;
