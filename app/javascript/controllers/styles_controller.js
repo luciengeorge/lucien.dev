@@ -124,7 +124,11 @@ pre {
   list-style: initial;
   margin-top: -20px;
   line-height: 1;
-}`;
+}
+
+/*
+* Okay we're ready now!
+*/`;
   }
 
   transitionText() {
