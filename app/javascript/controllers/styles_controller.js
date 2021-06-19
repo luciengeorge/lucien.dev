@@ -22,7 +22,7 @@ export default class extends Controller {
 
   renderSuccess() {
     writeText(this.transitionSuccessText(), this.preTarget, 0, time(), true, this.styleTarget, () => {
-      this.element.dispatchEvent(new Event(`${this.identifier}-transition-success-done`));
+      this.preTarget.setAttribute('contenteditable', 'true');
     });
   }
 
@@ -57,11 +57,10 @@ export default class extends Controller {
 */
 
 pre {
+  transition: all 500ms;
   width: 100%;
   margin: 0 auto;
-  font-size:
-  transition: all 500ms;
-  overflow: auto;
+  overflow: scroll;
   max-height: 70vh;
   background-color: #090e15;
   color: #ffffff;
@@ -101,17 +100,17 @@ pre em:not(.comment) { font-style: normal; }
 }
 
 pre {
-  flex: 0 1 50%;
+  flex: 0 0 50%;
   margin-left: 5px;
 }
 
 #markdown {
+  transition: all 500ms;
   white-space: pre-wrap;
   line-height: initial;
   max-height: 70vh;
   overflow: scroll;
   overflow-wrap: break-word;
-  transition: all 500ms;
   flex: 0 0 50%;
   background: #ffffff;
   margin-right: 5px;
@@ -147,6 +146,24 @@ pre {
 
 /*
 * Boom! Much better! 😄
+*/
+
+/*
+* This was fun! Hope you enjoyed it as much as I did.
+* Big thanks to Jake Albaugh and Samuel Reed who were the first to do a page like this one.
+* The code used here was heavily inspired from their projects.
+*
+* You can see more of Jake Albaugh's work at http://codepen.io/jakealbaugh/
+* and Samuel Reed's work at https://www.strml.net/.
+*/
+
+/*
+* The best part about this box is that it's completely editable.
+* So have fun, change some of the css, hell, break the page!
+*/
+
+/*
+* Coded with love ✌️. Over and out.
 */`;
   }
 }
