@@ -1,7 +1,7 @@
 <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8 bg-white p-4 rounded shadow-lg">
+  <div class="max-w-md w-full space-y-8 p-4 border border-white rounded-md">
     <div>
-      <h2 class="mt-6 text-center">
+      <h2 class="mt-6 text-center text-white">
         Sign in
       </h2>
     </div>
@@ -10,12 +10,12 @@
         <%= f.input :email, require: true, autofocus: true, placeholder: 'Email address', input_html: { autocomplete: "email", class: 'form-input rounded-none !rounded-t-md  mb-0' }, label_html: { class: "sr-only" }, wrapper_html: { class: '!mb-0' } %>
         <%= f.input :password, required: true, placeholder: 'Password', input_html: { autocomplete: 'current-password', class: 'form-input rounded-none !rounded-b-md  mb-0' }, label_html: { class: 'sr-only' }, wrapper_html: { class: '!mb-4' } %>
         <div class="flex items-center justify-between !mb-4">
-          <%= f.input :remember_me, as: :boolean, label: 'Remember me', input_html: { class: 'checkbox !focus:ring-green-800:focus ring-offset-2 !text-green-800' }, label_html: { class: 'block text-sm text-gray-900 !font-normal' }, wrapper_html: { class: 'flex items-center !mb-0' } if devise_mapping.rememberable? %>
+          <%= f.input :remember_me, as: :boolean, label: 'Remember me', input_html: { class: 'checkbox !focus:ring-gray-300:focus ring-offset-2 !text-gray-900' }, label_html: { class: 'block text-sm text-gray-100 !font-normal' }, wrapper_html: { class: 'flex items-center !mb-0' } if devise_mapping.rememberable? %>
           <%= link_to "Forgot your password?", new_password_path(resource_name), class: 'link-primary' %>
         </div>
-        <%= f.button :button, type: :submit, class: 'group relative w-full btn-primary' do %>
+        <%= f.button :button, type: :submit, class: 'group relative w-full btn-primary !text-gray-900 !hover:text-black' do %>
           <span class="absolute left-0 inset-y-0 flex items-center pl-3">
-            <svg class="h-5 w-5 text-green-800 group-hover:text-green-900" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+            <svg class="h-5 w-5 text-gray-900 group-hover:text-black" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
               <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
             </svg>
           </span>

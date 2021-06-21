@@ -1,12 +1,12 @@
 import { Controller } from 'stimulus';
-import { writeText, time } from '../packs/components/live_typing';
+import { writeText } from '../packs/components/live_typing';
 import MarkdownIt from 'markdown-it';
 
 export default class extends Controller {
   static targets = [ 'markdown' ];
 
   start() {
-    writeText(this.text(), this.markdownTarget, 0, time(), false,  null, () => {
+    writeText(this.text(), this.markdownTarget, 0, null, () => {
       this.element.dispatchEvent(new Event(`${this.identifier}-done`));
     });
   }
@@ -31,8 +31,7 @@ Moreover, I co-founded [krowl.io](https://www.krowl.io), a virtual workspace to 
 ### Main projects
 - [Impact Lebanon](https://www.impactlebanon.org)
 - [Thawra Chronicles](https://www.thawra-chronicles.org)
-- [Krowl](https://www.krowl.io]
-and of course,
+- [Krowl](https://www.krowl.io)
 - [lucien-george.com](https://www.lucien-george.com)
 
 ### Open source projects

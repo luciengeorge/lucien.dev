@@ -1,13 +1,25 @@
 .nav-link {
-  @apply text-white px-4 py-2 rounded-full text-sm font-medium;
+  @apply text-white px-4 py-2 text-sm font-medium;
+  transition: all 0.3s ease;
+  &::after {
+    content: '';
+    display: block;
+    width: 0px;
+    height: 3px;
+    background: $white;
+    transition: width .3s;
+  }
   &.active {
-    @apply rounded-full px-4 py-2 text-sm font-medium;
-    background: $primary;
+    @apply rounded-full px-4 py-2;
     color: $white;
+    &::after {
+      width: 100%;
+    }
   }
   &:hover {
-    background: $secondary;
-    color: $white;
+    &::after {
+      width: 100%;
+    }
   }
 }
 
@@ -25,7 +37,7 @@
 .dot {
   width: 5px;
   height: 5px;
-  background: $primary;
+  background: $white;
   border-radius: 50%;
   display: inline-block;
   @apply mx-1;

@@ -1,5 +1,5 @@
 <% repos.each do |repo| %>
-  <div data-controller="modal" class="repo--js py-0.5 w-full sm:w-1/2 md:w-4/12 lg:w-1/4 mb-3">
+  <div data-controller="modal" class="repo--js py-0.5 w-full sm:w-1/2 md:w-4/12 mb-3">
     <%= render Repos::RepoComponent.new(repo: repo) %>
     <%= render Repos::ContributorModalComponent.new(repo: repo, contributors: repo.contributors) %>
   </div>

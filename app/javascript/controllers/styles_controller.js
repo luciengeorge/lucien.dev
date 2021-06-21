@@ -1,11 +1,11 @@
 import { Controller } from 'stimulus';
-import { writeText, time } from '../packs/components/live_typing';
+import { writeText } from '../packs/components/live_typing';
 
 export default class extends Controller {
   static targets = [ 'pre', 'style' ];
 
   connect() {
-    writeText(this.text(), this.preTarget, 0, time(), true, this.styleTarget, () => {
+    writeText(this.text(), this.preTarget, 0, this.styleTarget, () => {
       this.element.dispatchEvent(new Event(`${this.identifier}-done`));
     });
   }
@@ -15,15 +15,20 @@ export default class extends Controller {
   }
 
   transition() {
-    writeText(this.transitionText(), this.preTarget, 0, time(), true, this.styleTarget, () => {
+    writeText(this.transitionText(), this.preTarget, 0, this.styleTarget, () => {
       this.element.dispatchEvent(new Event(`${this.identifier}-transition-done`));
     });
   }
 
   renderSuccess() {
-    writeText(this.transitionSuccessText(), this.preTarget, 0, time(), true, this.styleTarget, () => {
+    writeText(this.transitionSuccessText(), this.preTarget, 0, this.styleTarget, () => {
       this.preTarget.setAttribute('contenteditable', 'true');
     });
+  }
+
+  skip(event) {
+    event.preventDefault();
+    this.preTarget.setAttribute('data-skip', true);
   }
 
   text() {
@@ -63,11 +68,10 @@ pre {
   margin: 0 auto;
   overflow: scroll;
   max-height: 70vh;
-  background-color: #090e15;
   color: #ffffff;
   padding: 32px 24px;
-  border-radius: 15px;
-  box-shadow: 0px 0px 10px rgba(6, 78, 59, 0.3);
+  border-radius: 5px;
+  border: 1px solid white;
 }
 
 /*
@@ -112,18 +116,24 @@ pre {
   max-height: 70vh;
   overflow: scroll;
   overflow-wrap: break-word;
+  color: white;
   flex: 0 0 50%;
-  background: #ffffff;
   margin-right: 5px;
   padding: 32px 24px;
-  border-radius: 15px;
-  box-shadow: 0px 0px 10px rgba(6, 78, 59, 0.3);
+  border-radius: 5px;
+  border: 1px solid white;
 }
 
 #markdown ul {
   list-style: initial;
   margin-top: -20px;
   line-height: 1;
+}
+
+#markdown a {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 900;
 }
 
 /*
@@ -151,11 +161,9 @@ pre {
 
 /*
 * This was fun! Hope you enjoyed it as much as I did.
-* Big thanks to Jake Albaugh and Samuel Reed who were the first to do a page like this one.
+* Big thanks to Jake Albaugh and Samuel Reed
+* who were the first to do a page like this one.
 * The code used here was heavily inspired from their projects.
-*
-* You can see more of Jake Albaugh's work at http://codepen.io/jakealbaugh/
-* and Samuel Reed's work at https://www.strml.net/.
 */
 
 /*

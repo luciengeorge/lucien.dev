@@ -1,6 +1,6 @@
 <%= content_for :meta_title, "Repositories" %>
 
-<div data-controller="infinite-scroll masonry" data-action="scroll@window->infinite-scroll#scroll loaded->masonry#start resize@window->masonry#start">
+<div class="container" data-controller="infinite-scroll masonry" data-action="scroll@window->infinite-scroll#scroll loaded->masonry#start resize@window->masonry#start">
   <div data-infinite-scroll-target="entries" data-masonry-target="grid">
     <%= render Repos::ListComponent.new(repos: @repos) %>
   </div>
@@ -8,6 +8,6 @@
     <%== pagy_nav @pagy %>
   </div>
   <div class="flex w-full hidden items-center justify-center my-4" data-infinite-scroll-target="loader">
-    <i class="fad fa-spinner-third fa-spin fa-3x text-green-700"></i>
+    <i class="fad fa-spinner-third fa-spin fa-3x text-white"></i>
   </div>
 </div>

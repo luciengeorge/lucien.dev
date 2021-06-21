@@ -1,6 +1,6 @@
-const writeChar = (char, target, styles = false, styleTarget = null) => {
+const writeChar = (char, target, styleTarget = null) => {
   let text;
-  if (styles) {
+  if (styleTarget) {
     let openCommentValue = styleTarget.dataset.openComment === 'true';
     if (char === '/' && openCommentValue === false) {
       styleTarget.setAttribute('data-open-comment', true);
@@ -28,10 +28,13 @@ const writeChar = (char, target, styles = false, styleTarget = null) => {
 }
 
 const time = () => {
+  if (skip()) return 0.001;
+
   return window.innerWidth <= 578 ? 4 : 16;
 }
 
 const newInterval = (message, index) => {
+  if (skip()) return time();
   const comma = /\D[\,]\s$/;
   const endOfBlock = /[^\/]\n\n$/;
   const endOfSentence = /[\.\?\!]\s$/;
@@ -42,17 +45,22 @@ const newInterval = (message, index) => {
   return time();
 }
 
-const writeText = (message, target, index, interval, styles, styleTarget, callback) => {
+const writeText = (message, target, index, styleTarget, callback) => {
+  let timeoutId;
   if (index < message.length) {
     target.scrollTop = target.scrollHeight;
-    writeChar(message[index++], target, styles, styleTarget);
+    writeChar(message[index++], target, styleTarget);
     const nextInterval = newInterval(message, index);
-    setTimeout(() => {
-      writeText(message, target, index, nextInterval, styles, styleTarget, callback);
+    timeoutId = setTimeout(() => {
+      writeText(message, target, index, styleTarget, callback);
     }, nextInterval);
   } else {
     callback();
   }
 }
 
-export { writeText, time };
+const skip = () => {
+  return document.querySelector('#style-text').dataset.skip === 'true';
+}
+
+export { writeText };
