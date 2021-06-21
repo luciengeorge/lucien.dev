@@ -93,7 +93,7 @@ pre em:not(.comment) { font-style: normal; }
  */
 
 /*
- * First, we'll move this s*** over
+ * First, let's move this s*** over
  */
 
 #flex {
@@ -149,6 +149,10 @@ pre {
 * Let's fix that. Shall we?
 *
 * Drum roll... 🥁
+* 3...
+* 2...
+* 1...
+* Go!
 */`;
   }
 
@@ -168,7 +172,7 @@ pre {
 
 /*
 * The best part about this box is that it's completely editable.
-* So have fun, change some of the css, hell, break the page!
+* So have fun, change some of the CSS, hell, break the page!
 */
 
 /*

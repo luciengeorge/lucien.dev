@@ -19,7 +19,7 @@ export default class extends Controller {
     setTimeout(() => {
       this.markdownTarget.classList.remove('shrink-down');
       this.element.dispatchEvent(new Event(`${this.identifier}-rendered`));
-    }, 500);
+    }, 1000);
   }
 
   text() {

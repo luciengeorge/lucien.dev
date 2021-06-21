@@ -15,5 +15,17 @@
 }
 
 .shrink-down {
-  transform: scale(0);
+  animation: rotate 1s linear 1;
+}
+
+@keyframes rotate {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(0) rotate(1800deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
 }
