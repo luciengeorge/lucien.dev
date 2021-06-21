@@ -3,7 +3,7 @@ default: &defaults
   push_api_key: "<%= Rails.application.credentials.appsignal_push_api_key %>"
 
   # Your app's name
-  name: "lucien-george.com"
+  name: "lucien-george-com"
 
   # Actions that should not be monitored by AppSignal
   # ignore_actions:
