@@ -3,7 +3,7 @@
     <div>
       <%= button_tag '', class: 'bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white', id: 'user-menu', aria_expanded: false, aria_haspopup: true, data: { dropdown_target: 'button', action: 'click->dropdown#toggle' } do %>
         <span class="sr-only">Open user menu</span>
-        <%= image_tag '', class: 'avatar-sm', data: { src: asset_path('me.jpeg'), lazy_loader_target: 'image' } %>
+        <%= image_tag '', class: 'avatar-sm', data: { src: asset_path('me.jpg'), lazy_loader_target: 'image' } %>
       <% end %>
     </div>
 
