@@ -1,7 +1,7 @@
 @import "trix/dist/trix";
 
 .trix-content {
-  @apply text-black;
+  @apply text-black bg-white;
   .attachment-gallery {
     > action-text-attachment,
     > .attachment {
@@ -26,4 +26,8 @@
       max-width: 100% !important;
     }
   }
+}
+
+.trix-button-group {
+  @apply bg-white;
 }

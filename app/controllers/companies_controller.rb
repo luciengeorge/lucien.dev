@@ -10,7 +10,7 @@ class CompaniesController < ApplicationController
     @company = Company.new(company_params)
     authorize @company
     if @company.save
-      redirect_to experiences_path
+      redirect_to new_company_path
     else
       flash[:alert] = @company.errors.full_messages.to_sentence
       render :new

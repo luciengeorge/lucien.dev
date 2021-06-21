@@ -1,8 +1,8 @@
 <%= content_for :meta_title, "New Education" %>
 
 <div class="grid grid-cols-12">
-  <div class="bg-white p-3 md:col-start-2 md:col-end-11 lg:col-start-4 lg:col-end-10 col-span-12 md:col-span-8 lg:col-span-6 rounded shadow-lg mb-4">
-    <h2 class="mb-3 text-center">New school</h2>
+  <div class="border border-white p-3 md:col-start-2 md:col-end-11 lg:col-start-4 lg:col-end-10 col-span-12 md:col-span-8 lg:col-span-6 rounded shadow-lg mb-4">
+    <h2 class="mb-3 text-white text-center">New school</h2>
     <%= simple_form_for @school do |f| %>
       <div class="mb-3">
         <%= f.input :name, placeholder: 'Name', wrapper_html: { class: 'mb-0' }, input_html: { class: 'form-input rounded-none rounded-t-md' }, label_html: { class: 'sr-only' } %>
@@ -11,8 +11,8 @@
       <%= f.submit class: 'btn-primary w-full' %>
     <% end %>
   </div>
-  <div class="bg-white p-3 md:col-start-2 md:col-end-11 lg:col-start-4 lg:col-end-10 col-span-12 md:col-span-8 lg:col-span-6 rounded shadow-lg">
-    <h2 class="mb-3 text-center">New education</h2>
+  <div class="border border-white p-3 md:col-start-2 md:col-end-11 lg:col-start-4 lg:col-end-10 col-span-12 md:col-span-8 lg:col-span-6 rounded shadow-lg">
+    <h2 class="mb-3 text-white text-center">New education</h2>
     <%= simple_form_for @education do |f| %>
       <div class="mb-3">
         <%= f.input :degree, placeholder: 'Name', wrapper_html: { class: 'mb-0' }, input_html: { class: 'form-input rounded-none rounded-t-md' }, label_html: { class: 'sr-only' } %>
