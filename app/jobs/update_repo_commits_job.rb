@@ -16,7 +16,5 @@ class UpdateRepoCommitsJob < ApplicationJob
       )
     end
     Repo.reset_counters(repo.id, :commits)
-  rescue Octokit::Error => e
-    p e
   end
 end
