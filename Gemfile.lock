@@ -66,6 +66,8 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    appsignal (2.11.9)
+      rack
     autoprefixer-rails (10.2.4.0)
       execjs
     aws-eventstream (1.1.1)
@@ -391,6 +393,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  appsignal (~> 2.0)
   autoprefixer-rails
   aws-sdk-s3
   bootsnap (>= 1.4.4)

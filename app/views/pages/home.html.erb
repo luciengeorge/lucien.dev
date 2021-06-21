@@ -1,7 +1,12 @@
 <%= content_for :meta_title, "Home" %>
 
-<div class="container">
-  <!-- <div class="flex justify-end align-center w-full mb-5">
-    <%#= image_tag 'main-bg.png', class: 'w-52 h-52 object-cover rounded-full' %>
-  </div> -->
+<div class="container live-text pt-0"
+     data-controller="styles markdown"
+     data-action="styles-done->markdown#start markdown-done->styles#transition styles-transition-done->markdown#render markdown-rendered->styles#renderSuccess">
+  <%#= link_to 'skip animation', '#', class: 'btn-primary mb-3 inline-block', data: { action: 'click->styles#skip' } %>
+  <style id="style-tag" data-styles-target="style" data-open-comment="false"></style>
+  <div id="flex">
+    <div id="markdown" data-markdown-target="markdown"></div>
+    <pre id="style-text" data-styles-target="pre" data-action="keyup->styles#updateStyles" data-skip="false"></pre>
+  </div>
 </div>

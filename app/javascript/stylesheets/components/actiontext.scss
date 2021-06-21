@@ -1,6 +1,7 @@
 @import "trix/dist/trix";
 
 .trix-content {
+  @apply text-black;
   .attachment-gallery {
     > action-text-attachment,
     > .attachment {
