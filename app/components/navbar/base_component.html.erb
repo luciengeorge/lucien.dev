@@ -1,11 +1,27 @@
-<div class="cube-wrapper">
-  <div class="cube">
-    <div class="face top"></div>
-    <div class="face bottom"></div>
-    <div class="face left"></div>
-    <div class="face right"></div>
-    <div class="face front"></div>
-    <div class="face back"></div>
+<nav class="flex w-full items-center justify-end px-10 py-8" data-controller="menu" data-menu-active-class="active">
+  <div class="menu-wrapper relative" data-action="click->menu#toggle keyup@window->menu#toggle">
+    <div class="cube-wrapper">
+      <div class="cube">
+        <div class="face top"></div>
+        <div class="face bottom"></div>
+        <div class="face left"></div>
+        <div class="face right"></div>
+        <div class="face front"></div>
+        <div class="face back"></div>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-between menu absolute" data-menu-target="menu">
+      <%= link_to root_path, class: 'text-white transform hover:scale-105 transition-all' do %>
+        <i class="fal fa-home-alt neon-text"></i>
+      <% end %>
+      <%= link_to repos_path, class: 'text-white transform hover:scale-105 transition-all' do %>
+        <i class="fab fa-github neon-text"></i>
+      <% end %>
+      <%= link_to experiences_path, class: 'text-white transform hover:scale-105 transition-all' do %>
+        <i class="fal fa-file-user neon-text"></i>
+      <% end %>
+      <% if user_signed_in %>
+      <% end %>
+    </div>
   </div>
-</div>
-
+</nav>
