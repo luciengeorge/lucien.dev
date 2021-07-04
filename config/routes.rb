@@ -16,4 +16,5 @@ Rails.application.routes.draw do
   end
   resources :educations, only: [ :new, :create ]
   resources :schools, only: :create
+  resources :websites, only: [ :new, :create ]
 end
