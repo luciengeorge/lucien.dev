@@ -67,7 +67,7 @@ pre {
   width: 100%;
   margin: 0 auto;
   overflow: scroll;
-  max-height: 70vh;
+  max-height: calc(100vh - 100px);
   color: #ffffff;
   padding: 32px 24px;
   border-radius: 5px;
@@ -113,7 +113,7 @@ pre {
   transition: all 500ms;
   white-space: pre-wrap;
   line-height: initial;
-  max-height: 70vh;
+  max-height: calc(100vh - 100px);
   overflow: scroll;
   overflow-wrap: break-word;
   color: white;
@@ -122,6 +122,27 @@ pre {
   padding: 32px 24px;
   border-radius: 5px;
   border: 1px solid white;
+}
+
+/*
+* let's make sure this is responsive
+*/
+
+@media only screen and (max-width: 640px) {
+  #flex {
+    flex-direction: column;
+  }
+
+  pre {
+    flex: 0 0 100%;
+    margin-left: 5px;
+  }
+
+  #markdown {
+    flex: 0 0 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
 }
 
 #markdown ul {

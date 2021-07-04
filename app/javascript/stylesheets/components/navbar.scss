@@ -42,3 +42,21 @@
   display: inline-block;
   @apply mx-1;
 }
+
+.neon-text {
+  color: #fff;
+  text-shadow: 0 0 4px #fff;
+  font-size: 30px;
+}
+
+.menu {
+  height: 0;
+  z-index: 100;
+  transform: translateX(-25%);
+  top: 75px;
+  overflow: hidden;
+  @apply transition-all duration-500;
+  &.active {
+    height: 25vh;
+  }
+}
