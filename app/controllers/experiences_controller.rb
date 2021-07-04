@@ -1,6 +1,6 @@
 class ExperiencesController < ApplicationController
-  skip_before_action :authenticate_user!
-  before_action :set_experiences, only: [ :index, :resume ]
+  skip_before_action :authenticate_user!, only: %i[index resume]
+  before_action :set_experiences, only: %i[index resume]
   layout 'full_screen', only: :resume
 
   def index
