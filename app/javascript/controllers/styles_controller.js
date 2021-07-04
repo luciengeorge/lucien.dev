@@ -124,6 +124,27 @@ pre {
   border: 1px solid white;
 }
 
+/*
+* let's make sure this is responsive
+*/
+
+@media only screen and (max-width: 640px) {
+  #flex {
+    flex-direction: column;
+  }
+
+  pre {
+    flex: 0 0 100%;
+    margin-left: 5px;
+  }
+
+  #markdown {
+    flex: 0 0 100%;
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
 #markdown ul {
   list-style: initial;
   margin-top: -20px;
