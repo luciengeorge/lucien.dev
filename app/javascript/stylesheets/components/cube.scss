@@ -3,6 +3,9 @@
   height: 20px;
   perspective: 500px;
   @apply cursor-pointer;
+  &.active {
+    box-shadow: 0 0 15px rgb(255, 255, 255);
+  }
 }
 
 @keyframes turn {
