@@ -20,6 +20,9 @@
       <%= link_to experiences_path, class: class_names('nav-link', { active: current_page?(experiences_path) }) do %>
         <i class="fal fa-file-user link-icon"></i>
       <% end %>
+      <%= link_to websites_path, class: class_names('nav-link', { active: current_page?(websites_path) }) do %>
+        <i class="fal fa-browser link-icon"></i>
+      <% end %>
       <% if user_signed_in %>
       <% end %>
     </div>
