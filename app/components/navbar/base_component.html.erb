@@ -1,6 +1,6 @@
 <nav class="flex w-full items-center justify-end px-10 py-8" data-controller="menu" data-menu-active-class="active">
   <div class="menu-wrapper relative" data-action="click->menu#toggle keyup@window->menu#toggle">
-    <div class="cube-wrapper">
+    <div class="cube-wrapper" data-menu-target="cubeWrapper">
       <div class="cube">
         <div class="face top" data-menu-target="face"></div>
         <div class="face bottom" data-menu-target="face"></div>
@@ -11,13 +11,13 @@
       </div>
     </div>
     <div class="flex flex-col items-center justify-between menu absolute" data-menu-target="menu">
-      <%= link_to root_path, class: 'text-white transform hover:scale-105 transition-all' do %>
+      <%= link_to root_path, class: class_names('nav-link', { active: current_page?(root_path) }) do %>
         <i class="fal fa-home-alt link-icon"></i>
       <% end %>
-      <%= link_to repos_path, class: 'text-white transform hover:scale-105 transition-all' do %>
+      <%= link_to repos_path, class: class_names('nav-link', { active: current_page?(repos_path) }) do %>
         <i class="fab fa-github link-icon"></i>
       <% end %>
-      <%= link_to experiences_path, class: 'text-white transform hover:scale-105 transition-all' do %>
+      <%= link_to experiences_path, class: class_names('nav-link', { active: current_page?(experiences_path) }) do %>
         <i class="fal fa-file-user link-icon"></i>
       <% end %>
       <% if user_signed_in %>

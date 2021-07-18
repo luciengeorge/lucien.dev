@@ -33,7 +33,7 @@ export default class extends Controller {
 
   text() {
     return `/*
- * Hey! My name is Lucien George 👋
+ * Hey! My name is Lucien 👋
  * I am a Web Developer from Beirut, Lebanon 🇱🇧
  *
  * How are you doing today?
