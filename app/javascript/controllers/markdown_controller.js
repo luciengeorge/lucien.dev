@@ -26,9 +26,13 @@ export default class extends Controller {
   text() {
     return `### Who am I?
 I grew up in Beirut, Lebanon before moving to Montreal to pursue my undergraduate studies. I attended McGill University from 2013 to 2018 as a software engineering student.
+
 I then moved to London and attended Le Wagon's web development 9-week long intensive bootcamp. After graduating from their course I started working as a teacher assistant for a period of 4 months while simulateously freelancing for another software company called [Hoxton Digital](https://www.hoxton-digital.com).
+
 I currently am a full-time lead teacher and software engineer at Le Wagon London.
+
 I co-founded [Impact Lebanon](https://www.impactlebanon.org), an initiative incubator aiming at helping Lebanon go through its current financial crisis. After the huge explosion that hit us in August 4th, 2020, we wanted to help all the Lebanese who were heavily impacted by the explosion. We created a fundraiser and manage to raise as much as £6,603,009 that was distributed to vetted NGOs.
+
 I also co-founded [krowl.io](https://www.krowl.io), a virtual workspace to help students work from home. This is still a work in progress but a priliminary beta version is already online.
 
 ### Main projects
