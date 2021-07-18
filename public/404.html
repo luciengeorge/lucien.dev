@@ -3,6 +3,9 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
   <style>
     body {
       height:  100vh;
@@ -13,7 +16,7 @@
       background: #111827;
       margin: 0;
       color:  #ffffff;
-      font-family: "Sacramento", sans-serif;
+      font-family: 'Caveat', cursive;
       font-size: 18px;
     }
 
@@ -23,13 +26,15 @@
       color:  white;
     }
 
-    h1 {
-      margin: 0;
-      font-size: 6.2rem;
-      animation: flicker 1.5s infinite alternate;
+    .title-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction:  column;
+      padding: 2.4em;
       border: 0.2rem solid #fff;
+      animation: flicker-border 1.5s infinite alternate;
       border-radius: 2rem;
-      padding: 0.4em;
       box-shadow:
         0 0 .2rem #fff,
         0 0 .2rem #fff,
@@ -38,7 +43,13 @@
         0 0 2.8rem #0fa,
         inset 0 0 1.3rem #0fa;
     }
-    .neonText {
+
+    h1 {
+      margin: 0;
+      font-size: 8rem;
+      letter-spacing: 0.4rem;
+    }
+    h1, h3, a {
       color: #fff;
       text-shadow:
         0 0 7px #fff,
@@ -49,14 +60,13 @@
         0 0 92px #0fa,
         0 0 102px #0fa,
         0 0 151px #0fa;
+      animation: flicker 1.5s infinite alternate;
     }
 
     /* Flickering animation */
     @keyframes flicker {
-
       0%, 18%, 22%, 25%, 53%, 57%, 100% {
-
-          text-shadow:
+        text-shadow:
           0 0 4px #fff,
           0 0 11px #fff,
           0 0 19px #fff,
@@ -73,25 +83,32 @@
       }
     }
 
-    h2 {
-     font-size: 1.8rem;
-    }
-    .container {
-      margin-top: 20vh;
-    }
+    @keyframes flicker-border {
+      0%, 18%, 22%, 25%, 53%, 57%, 100% {
+        border-color: #fff;
+        box-shadow:
+          0 0 .2rem #fff,
+          0 0 .2rem #fff,
+          0 0 2rem #0fa,
+          0 0 0.8rem #0fa,
+          0 0 2.8rem #0fa,
+          inset 0 0 1.3rem #0fa;
+      }
 
-    h1, h2 {
-      text-align: center;
-      text-transform: uppercase;
-      font-weight: 400;
+      20%, 24%, 55% {
+        box-shadow: none;
+        border-color: transparent;
+      }
     }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
-  <h1>404</h1>
-  <p>It seems like you are lost. The page you are trying to access doesn't exist</p>
-  <a href="/">Return to the home page</a>
+  <div class="title-container">
+    <h1>404</h1>
+    <h2>It seems like you are lost. The page you are trying to access doesn't exist</h2>
+    <a href="/">Return to the home page</a>
+  </div>
 </body>
 </html>
