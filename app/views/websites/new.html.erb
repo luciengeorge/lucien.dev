@@ -1,0 +1,14 @@
+<%= content_for :meta_title, "New Website" %>
+
+<div class="grid grid-cols-12">
+  <div class="card">
+    <h2 class="mb-3 text-white text-center">New website</h2>
+    <%= simple_form_for @website do |f| %>
+      <div class="mb-3">
+        <%= f.input :url, placeholder: 'URL', wrapper_html: { class: 'mb-0' }, input_html: { class: 'form-input !rounded-md' }, label_html: { class: 'sr-only' } %>
+        <%= f.association :repo, prompt: 'Choose a repo', collection: @repos, label_html: { class: 'sr-only' }, input_html: { class: 'form-input mb-3 text-black' } %>
+      </div>
+      <%= f.submit class: 'btn-primary w-full' %>
+    <% end %>
+  </div>
+</div>

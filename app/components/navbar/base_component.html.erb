@@ -1,16 +1,18 @@
-<nav class="flex w-full items-center justify-end px-10 py-8" data-controller="menu" data-menu-active-class="active">
+<nav class="flex w-full items-center justify-end px-4 py-4" data-controller="menu" data-menu-active-class="active">
   <div class="menu-wrapper relative" data-action="click->menu#toggle keyup@window->menu#toggle">
-    <div class="cube-wrapper" data-menu-target="cubeWrapper">
-      <div class="cube">
-        <div class="face top" data-menu-target="face"></div>
-        <div class="face bottom" data-menu-target="face"></div>
-        <div class="face left" data-menu-target="face"></div>
-        <div class="face right" data-menu-target="face"></div>
-        <div class="face front" data-menu-target="face"></div>
-        <div class="face back" data-menu-target="face"></div>
+    <div class="menu-ring" data-menu-target="ring">
+      <div class="cube-wrapper" data-menu-target="cubeWrapper">
+        <div class="cube">
+          <div class="face top" data-menu-target="face"></div>
+          <div class="face bottom" data-menu-target="face"></div>
+          <div class="face left" data-menu-target="face"></div>
+          <div class="face right" data-menu-target="face"></div>
+          <div class="face front" data-menu-target="face"></div>
+          <div class="face back" data-menu-target="face"></div>
+        </div>
       </div>
     </div>
-    <div class="flex flex-col items-center justify-between menu absolute" data-menu-target="menu">
+    <div class="menu" data-menu-target="menu">
       <%= link_to root_path, class: class_names('nav-link', { active: current_page?(root_path) }) do %>
         <i class="fal fa-home-alt link-icon"></i>
       <% end %>
@@ -24,6 +26,12 @@
         <i class="fal fa-browser link-icon"></i>
       <% end %>
       <% if user_signed_in %>
+        <%= link_to new_website_path, class: class_names('nav-link', { active: current_page?(new_website_path) }) do %>
+          <div class="relative">
+            <i class="fal fa-browser link-icon"></i>
+            <i class="fal fa-plus link-icon absolute text-base bottom-0.5 right-2"></i>
+          </div>
+        <% end %>
       <% end %>
     </div>
   </div>

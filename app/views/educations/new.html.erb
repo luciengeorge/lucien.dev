@@ -1,7 +1,7 @@
 <%= content_for :meta_title, "New Education" %>
 
 <div class="grid grid-cols-12">
-  <div class="border border-white p-3 md:col-start-2 md:col-end-11 lg:col-start-4 lg:col-end-10 col-span-12 md:col-span-8 lg:col-span-6 rounded shadow-lg mb-4">
+  <div class="card">
     <h2 class="mb-3 text-white text-center">New school</h2>
     <%= simple_form_for @school do |f| %>
       <div class="mb-3">
@@ -11,12 +11,12 @@
       <%= f.submit class: 'btn-primary w-full' %>
     <% end %>
   </div>
-  <div class="border border-white p-3 md:col-start-2 md:col-end-11 lg:col-start-4 lg:col-end-10 col-span-12 md:col-span-8 lg:col-span-6 rounded shadow-lg">
+  <div class="card">
     <h2 class="mb-3 text-white text-center">New education</h2>
     <%= simple_form_for @education do |f| %>
       <div class="mb-3">
         <%= f.input :degree, placeholder: 'Name', wrapper_html: { class: 'mb-0' }, input_html: { class: 'form-input rounded-none rounded-t-md' }, label_html: { class: 'sr-only' } %>
-        <%= f.association :school, prompt: 'Choose a school', label_html: { class: 'sr-only' }, input_html: { class: 'form-input mb-3' } %>
+        <%= f.association :school, prompt: 'Choose a school', collection: @schools, label_html: { class: 'sr-only' }, input_html: { class: 'form-input mb-3' } %>
         <%= f.rich_text_area :description, input_html: { class: 'form-input' } %>
         <div class="flex items-center justify-around w-full">
           <%= f.input :start_date, html5: true, legend_tag: false, wrapper_html: { class: 'w-full date-wrapper mr-2' }, input_html: { class: '!w-full form-input' }, label_html: { class: 'sr-only' } %>

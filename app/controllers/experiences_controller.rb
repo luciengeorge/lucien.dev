@@ -20,6 +20,7 @@ class ExperiencesController < ApplicationController
 
   def new
     @experience = Experience.new
+    @companies = Company.order(:name)
     authorize @experience
   end
 
