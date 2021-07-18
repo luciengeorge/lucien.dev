@@ -43,10 +43,12 @@
   @apply mx-1;
 }
 
-.neon-text {
-  color: #fff;
-  text-shadow: 0 0 4px #fff;
+.link-icon {
+  color: #f5f5f5;
   font-size: 30px;
+  &:hover {
+    color: $white;
+  }
 }
 
 .menu {
