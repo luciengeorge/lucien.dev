@@ -1,6 +1,6 @@
 <%= content_for :meta_title, 'Websites' %>
 
-<div class="overflow-hidden w-full h-full"
+<div class="overflow-hidden w-screen fixed top-0 h-full"
      data-controller="carousel"
      data-carousel-current-value="0"
      data-carousel-next-value="1"
@@ -12,14 +12,7 @@
          data-index="<%= index %>"
          data-carousel-target="slide">
       <div class="grid grid-cols-2 grid-rows-2">
-        <% websites.each do |website| %>
-          <div class="col-span-1 row-span-1">
-            <div class="w-full h-full website-card relative" style="background-image: url(<%= website.image_url %>);">
-              <%= link_to '', website.url, target: :blank, class: 'absolute inset-0' %>
-
-            </div>
-          </div>
-        <% end %>
+        <%= render WebsitesComponent.new(websites: websites) %>
       </div>
     </div>
   <% end %>

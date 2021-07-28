@@ -1,0 +1,7 @@
+<% websites.each_with_index do |website, index| %>
+  <div class="<%= klasses(index) %>">
+    <div class="w-full h-full website-card relative" style="background-image: url(<%= website.image_url %>);">
+      <%= link_to '', website.url, target: :blank, class: 'absolute inset-0' %>
+    </div>
+  </div>
+<% end %>
