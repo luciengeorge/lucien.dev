@@ -1,0 +1,32 @@
+.website-card {
+  background-size: cover;
+  background-position: center;
+  filter: grayscale(100%);
+  @apply duration-700 transition-all;
+  &:hover {
+    filter: grayscale(0);
+  }
+}
+
+.website-navigation {
+  background: rgba(0, 0, 0, 0.4);
+  @apply rounded-md shadow;
+}
+
+.websites {
+  @apply transition-all duration-700 absolute w-full h-full overflow-hidden grid top-0;
+  right: 0;
+  &.next {
+    right: -100%;
+
+    .website-card {
+      transform: scale(0.8);
+    }
+  }
+  &.previous {
+    right: 100%;
+    .website-card {
+      transform: scale(0.8);
+    }
+  }
+}

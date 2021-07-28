@@ -31,7 +31,7 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="<%= class_names('!bg-white': current_page?(websites_path)) %>">
     <div data-controller="lazy-loader">
       <%= render FlashesComponent.new(notice: notice, alert: alert) %>
       <%= render Navbar::BaseComponent.new(user_signed_in: user_signed_in?) %>

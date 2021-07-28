@@ -3,7 +3,6 @@ class WebsitesController < ApplicationController
 
   def index
     @websites = policy_scope(Website).in_groups_of(Website::CHUNKS, false)
-    raise
   end
 
   def new
