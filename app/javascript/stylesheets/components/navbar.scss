@@ -6,22 +6,34 @@
   }
 }
 
+.menu-wrapper {
+  @apply flex justify-center;
+}
+
 .menu {
   height: 0;
   z-index: 100;
-  transform: translateX(-25%);
   top: 75px;
   overflow: hidden;
   @apply transition-all duration-500;
+  @apply flex flex-col items-center justify-start absolute pt-4;
   &.active {
-    height: 25vh;
+    height: calc(100vh - 100px);
   }
 }
 
 .nav-link {
-  @apply text-white transform hover:scale-105 transition-all;
+  @apply text-white transform hover:scale-105 transition-all mb-12;
   &.active {
     border-bottom: 3px solid white;
     padding-bottom: 5px;
+  }
+}
+
+.menu-ring {
+  @apply ring-2 p-6 ring-transparent ring-offset-transparent rounded-full transition-all duration-500;
+  &.active {
+    box-shadow: 0 0 15px $white;
+    @apply ring-white;
   }
 }

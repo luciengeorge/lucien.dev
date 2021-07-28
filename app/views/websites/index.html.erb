@@ -1,0 +1,32 @@
+<%= content_for :meta_title, 'Websites' %>
+
+<div class="overflow-hidden w-screen fixed top-0 h-full"
+     data-controller="carousel"
+     data-carousel-current-value="0"
+     data-carousel-next-value="1"
+     data-carousel-previous-value="-1"
+     data-carousel-next-class="next"
+     data-carousel-previous-class="previous">
+  <% @websites.each_with_index do |websites, index| %>
+    <div class="websites <%= class_names(active: index.zero?, next: index.positive?) %>"
+         data-index="<%= index %>"
+         data-carousel-target="slide">
+      <div class="grid grid-cols-2 grid-rows-2">
+        <%= render WebsitesComponent.new(websites: websites) %>
+      </div>
+    </div>
+  <% end %>
+  <div class="absolute rounded w-52 px-2 py-3 bg-transparent z-50 bottom-3 right-3">
+    <div class="relative">
+      <div class="h-full w-full filter blur absolute inset-0"></div>
+      <div class="flex items-center justify-between website-navigation relative z-50 p-2">
+        <button class="rounded w-14 h-14 flex items-center justify-center hover:bg-black focus:outline-none" data-action="click->carousel#previousSlide">
+          <i class="fal fa-chevron-left fa-3x"></i>
+        </button>
+        <button class="rounded w-14 h-14 flex items-center justify-center hover:bg-black focus:outline-none" data-action="click->carousel#nextSlide">
+          <i class="fal fa-chevron-right fa-3x"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,7 @@ class EducationsController < ApplicationController
   def new
     @education = Education.new
     @school = School.new
+    @schools = School.order(:name)
     authorize @education
   end
 
