@@ -14,5 +14,6 @@ class Website < ApplicationRecord
     self.title = ogp.title
     self.description = ogp.description
     self.image_url = ogp.images.first.url
+    self
   end
 end
