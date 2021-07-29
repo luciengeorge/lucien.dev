@@ -16,7 +16,7 @@
     <%= simple_form_for @education do |f| %>
       <div class="mb-3">
         <%= f.input :degree, placeholder: 'Name', wrapper_html: { class: 'mb-0' }, input_html: { class: 'form-input rounded-none rounded-t-md' }, label_html: { class: 'sr-only' } %>
-        <%= f.association :school, prompt: 'Choose a school', collection: @schools, label_html: { class: 'sr-only' }, input_html: { class: 'form-input mb-3' } %>
+        <%= f.association :school, prompt: 'Choose a school', collection: @schools, label_html: { class: 'sr-only' }, input_html: { class: 'form-input mb-3 text-black' } %>
         <%= f.rich_text_area :description, input_html: { class: 'form-input' } %>
         <div class="flex items-center justify-around w-full">
           <%= f.input :start_date, html5: true, legend_tag: false, wrapper_html: { class: 'w-full date-wrapper mr-2' }, input_html: { class: '!w-full form-input' }, label_html: { class: 'sr-only' } %>
