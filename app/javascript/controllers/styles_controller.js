@@ -67,7 +67,7 @@ pre {
   width: 100%;
   margin: 0 auto;
   overflow: scroll;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 130px);
   color: #ffffff;
   padding: 32px 24px;
   border-radius: 5px;
@@ -113,7 +113,7 @@ pre {
   transition: all 500ms;
   white-space: pre-wrap;
   line-height: initial;
-  max-height: calc(100vh - 100px);
+  max-height: calc(100vh - 130px);
   overflow: scroll;
   overflow-wrap: break-word;
   color: white;
