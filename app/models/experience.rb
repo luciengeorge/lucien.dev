@@ -9,6 +9,7 @@ class Experience < ApplicationRecord
   validate :start_before_end_date
 
   after_create :update_ranks
+  after_create :set_end_date_to_previous_experience
 
   enum job_type: %i[full_time part_time self_employed freelance contract internship apprenticeship temporary]
 
@@ -22,5 +23,9 @@ class Experience < ApplicationRecord
 
   def update_ranks
     UpdateExperienceRankJob.perform_later
+  end
+
+  def set_end_date_to_previous_experience
+    SetEndDateToPreviousExperienceJob.perform_later(self)
   end
 end

@@ -3,7 +3,7 @@ class UpdateExperienceRankJob < ApplicationJob
 
   def perform
     Experience.order(rank: :asc).find_each do |experience|
-      Experience.update rank: experience.rank + 1
+      experience.update rank: experience.rank + 1
     end
   end
 end
