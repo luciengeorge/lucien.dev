@@ -1,4 +1,5 @@
-<nav class="flex w-full items-center justify-end px-4 py-4 z-50 relative" data-controller="menu" data-menu-active-class="active">
+<nav class="flex w-full items-center justify-between px-4 py-4 z-50 relative" data-controller="menu" data-menu-active-class="active">
+  <%= image_tag 'logo.svg', class: 'logo' %>
   <div class="menu-wrapper relative" data-action="click->menu#toggle keyup@window->menu#toggle">
     <div class="menu-ring" data-menu-target="ring">
       <div class="cube-wrapper" data-menu-target="cubeWrapper">
