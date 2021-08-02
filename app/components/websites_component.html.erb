@@ -1,7 +1,13 @@
 <% websites.each_with_index do |website, index| %>
   <div class="<%= klasses(index) %>">
-    <div class="w-full h-full website-card relative" style="background-image: url(<%= website.image_url %>);">
-      <%= link_to '', website.url, target: :blank, class: 'absolute inset-0' %>
+    <div class="w-full h-full website-card relative">
+      <%= image_tag "website_default.png", alt: website.title, class: 'absolute inset-0 object-cover object-center w-full h-full', data: { src: website.decorate.cover_url, lazy_loader_target: 'image' } %>
+      <%= link_to website.url, target: :blank, class: 'absolute inset-0' do %>
+        <div class="website-card--layover">
+          <h3><%= website.title %></h3>
+          <h4 class="text-center font-light opacity-75"><%= website.decorate.short_description %></h4>
+        </div>
+      <% end %>
     </div>
   </div>
 <% end %>

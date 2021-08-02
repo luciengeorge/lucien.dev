@@ -5,6 +5,7 @@ class Website < ApplicationRecord
   before_save :extract_data
 
   CHUNKS = 4
+  MAX_CHARS = 100
 
   private
 
