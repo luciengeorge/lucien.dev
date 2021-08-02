@@ -4,6 +4,9 @@ import MarkdownIt from 'markdown-it';
 
 export default class extends Controller {
   static targets = [ 'markdown' ];
+  static values = {
+    imgUrl: String
+  };
 
   start() {
     writeText(this.text(), this.markdownTarget, 0, null, () => {
@@ -13,7 +16,7 @@ export default class extends Controller {
 
   render() {
     this.markdownTarget.classList.add('shrink-down');
-    const md = new MarkdownIt();
+    const md = new MarkdownIt({ html: true });
     const html = md.render(this.markdownTarget.innerHTML);
     this.markdownTarget.innerHTML = html;
     setTimeout(() => {
@@ -25,15 +28,19 @@ export default class extends Controller {
 
   text() {
     return `### Who am I?
-I grew up in Beirut, Lebanon before moving to Montreal to pursue my undergraduate studies. I attended McGill University from 2013 to 2018 as a software engineering student.
+That's me 👇✌️
+![Me](${this.imgUrlValue})
+I know I don't like much at the moment 😅 We'll fix that in a sec.
 
-I then moved to London and attended Le Wagon's web development 9-week long intensive bootcamp. After graduating from their course I started working as a teacher assistant for a period of 4 months while simulateously freelancing for another software company called [Hoxton Digital](https://www.hoxton-digital.com).
+I was born and raised in Beirut - Lebanon. I then moved to Montreal to pursue my undergraduate studies. I attended McGill University from 2013 to 2018 as a software engineering student where I learnt the dos and don'ts of software development.
 
-I currently am a full-time lead teacher and software engineer at Le Wagon London.
+After my graduation I moved to London and attended Le Wagon's web development 9-week long intensive bootcamp. A couple thousand lines of code and 3 web applications later, I started working as a teacher assistant for a period of 4 months while simulateously freelancing for another software company called [Hoxton Digital](https://www.hoxton-digital.com). At Hoxton Digital I was responsible for the development and maintenance of the company's ongoing projects.
 
-I co-founded [Impact Lebanon](https://www.impactlebanon.org), an initiative incubator aiming at helping Lebanon go through its current financial crisis. After the huge explosion that hit us in August 4th, 2020, we wanted to help all the Lebanese who were heavily impacted by the explosion. We created a fundraiser and manage to raise as much as £6,603,009 that was distributed to vetted NGOs.
+In May 2019, I got offered a full-time position at Le Wagon London as a lead teacher and software engineer. I got to be a member of their engineering team working on the company's internal product and the management of our web development and data science courses. I recently got promoted to engineering manager, meaning I am responsible for the well-being and growth of the London dev team.
 
-I also co-founded [krowl.io](https://www.krowl.io), a virtual workspace to help students work from home. This is still a work in progress but a priliminary beta version is already online.
+In Ocotber 2019, amidst of the chaos of the Lebanese financial crisis, I co-founded [Impact Lebanon](https://www.impactlebanon.org), an initiative incubator aiming at helping Lebanon go through its current financial crisis. After the huge explosion that hit us in August 4th, 2020, we desperately wanted to help all the Lebanese who were heavily impacted by the explosion. This led to the creation of a fundraiser. We managed to raise as much as £6,603,009 that was distributed to vetted NGOs.
+
+Moreover, I co-founded [krowl.io](https://www.krowl.io), a virtual workspace to help students work from home. This is still a work in progress but a MVP is already online.
 
 ### Main projects
 - [Impact Lebanon](https://www.impactlebanon.org)

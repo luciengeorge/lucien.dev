@@ -36,19 +36,15 @@ export default class extends Controller {
  * Hey! My name is Lucien 👋
  * I am a Web Developer from Beirut, Lebanon 🇱🇧
  *
- * How are you doing today?
+ * How are you doing?
  *
- * Don't mind me. I'm just coding this website at the moment.
+ * It's a beautiful day to code a website 👨‍💻
  *
- * I'll just inject some CSS into a <style> element
- * that I am writing right now
+ * I am just adding some style to this ugly page
  *
- * Let's give it a go!
+ * Let's see...
  *
- */
-
- /*
- * Let's start easy with some text styling
+ * How about we start easy with some text styling huh?
  */
 
 .live-text {
@@ -72,6 +68,7 @@ pre {
   padding: 32px 24px;
   border-radius: 5px;
   border: 1px solid white;
+  flex: 0 0 100%;
 }
 
 /*
@@ -88,12 +85,13 @@ pre em:not(.comment) { font-style: normal; }
 
 /*
  * Much better! Looks exactly like my text editor 👨‍💻
- * Anw, that's not why you're here. So let's get to it.
+ * Well that's great and all but that's not why you're here.
+ * So let's get to it.
  * Let me tell you a little bit more about myself.
  */
 
 /*
- * First, let's move this s*** over
+ * But first, let's move this s*** over
  */
 
 #flex {
@@ -145,18 +143,6 @@ pre {
   }
 }
 
-#markdown ul {
-  list-style: initial;
-  margin-top: -20px;
-  line-height: 1;
-}
-
-#markdown a {
-  color: #ffffff;
-  text-decoration: underline;
-  font-weight: 900;
-}
-
 /*
 * Okay we're ready now!
 */`;
@@ -166,7 +152,7 @@ pre {
     return `
 
 /*
-* This markdown looks like 💩 at the moment.
+* This text looks like 💩 at the moment.
 * Let's fix that. Shall we?
 *
 * Drum roll... 🥁
@@ -181,11 +167,37 @@ pre {
     return `
 
 /*
-* Boom! Much better! 😄
+* Boom 💥 Much better 😄
+* Ha there I am! A bit too big though 😅
+* Let's make that image smaller
 */
 
+#markdown img {
+  max-width: 40%;
+}
+
 /*
-* This was fun! Hope you enjoyed it as much as I did.
+ * Let's add some more styling to the text
+ */
+
+#markdown p {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#markdown ul {
+  list-style: initial;
+  margin-top: -20px;
+  line-height: 1;
+}
+
+#markdown a {
+  color: #ffffff;
+  text-decoration: underline;
+  font-weight: 900;
+}
+
+/*
+* TADA 🎉 This was fun! Hope you enjoyed it as much as I did.
 * Big thanks to Jake Albaugh and Samuel Reed
 * who were the first to do a page like this one.
 * The code used here was heavily inspired from their projects.
