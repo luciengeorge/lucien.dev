@@ -8,6 +8,7 @@ gem 'autoprefixer-rails'
 gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'devise'
+gem 'draper'
 gem 'faraday-http-cache'
 gem 'font-awesome-sass'
 gem 'geocoder'
