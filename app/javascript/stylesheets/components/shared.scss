@@ -33,3 +33,7 @@
 .card {
   @apply border border-white p-3 md:col-start-2 md:col-end-11 lg:col-start-4 lg:col-end-10 col-span-12 md:col-span-8 lg:col-span-6 rounded shadow-lg;
 }
+
+.font-75 {
+  font-size: 75% !important;
+}

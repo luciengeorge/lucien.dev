@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 class Experiences::ExperienceComponent < MainComponent
-  attr_reader :experience, :previous_experience, :next_experience
+  attr_reader :experience, :previous_experience, :next_experience, :download
 
-  def initialize(experience:, previous_experience:, next_experience:)
+  def initialize(experience:, previous_experience:, next_experience:, download:)
     @experience = experience
     @previous_experience = previous_experience
     @next_experience = next_experience
+    @download = download
   end
 
   def start_date

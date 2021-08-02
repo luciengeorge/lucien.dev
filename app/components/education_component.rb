@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class EducationComponent < MainComponent
-  attr_reader :education
+  attr_reader :education, :download
 
-  def initialize(education:)
+  def initialize(education:, download:)
     @education = education
+    @download = download
   end
 
   def date

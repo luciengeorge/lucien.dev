@@ -7,19 +7,19 @@
           <div class="h-2 w-2 rounded-full bg-gray-200 ring-8 ring-white"></div>
         </div>
       <% else %>
-        <%= image_tag company_logo, alt: company_name, class: 'h-10 w-10 rounded-full bg-white flex items-center justify-center ring-8 ring-white' %>
+        <%= image_tag company_logo, alt: company_name, class: "#{download ? 'h-10 w-10' : 'h-7 w-7'} rounded-full bg-white flex items-center justify-center ring-8 ring-white object-cover object-center" %>
       <% end %>
       <div class="min-w-0 flex-1 relative left-5">
         <div>
           <div class="text-sm">
             <% unless company == previous_company %>
-              <%= link_to company_name, company_website, class: 'font-medium text-gray-900', target: :blank %>
+              <%= link_to company_name, company_website, class: "font-medium text-gray-900 #{'font-75' unless download}", target: :blank %>
             <% end %>
           </div>
-          <p class="mt-0.5 text-sm text-gray-900"><%= experience.title %> - <%= job_type %></p>
-          <p class="text-sm text-gray-500"><%= start_date %> - <%= end_date %></p>
+          <p class="mt-0.5 text-sm text-gray-900 <%= 'font-75' unless download %>"><%= experience.title %> - <%= job_type %></p>
+          <p class="text-sm text-gray-500 <%= 'font-75' unless download %>"><%= start_date %> - <%= end_date %></p>
         </div>
-        <div class="mt-2 text-sm text-gray-700">
+        <div class="mt-2 text-sm text-gray-700 <%= 'font-75' unless download %>">
           <%= experience.description %>
         </div>
       </div>
