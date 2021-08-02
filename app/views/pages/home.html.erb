@@ -2,6 +2,7 @@
 
 <div class="container live-text pt-0"
      data-controller="styles markdown"
+     data-markdown-img-url-value="<%= asset_path('me.png') %>"
      data-action="styles-done->markdown#start markdown-done->styles#transition styles-transition-done->markdown#render markdown-rendered->styles#renderSuccess">
   <%#= link_to 'skip animation', '#', class: 'btn-primary mb-3 inline-block', data: { action: 'click->styles#skip' } %>
   <style id="style-tag" data-styles-target="style" data-open-comment="false"></style>
