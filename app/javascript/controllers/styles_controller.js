@@ -173,7 +173,8 @@ pre {
 */
 
 #markdown img {
-  max-width: 40%;
+  transition: all 500ms;
+  max-width: 35%;
 }
 
 /*
