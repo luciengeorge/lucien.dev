@@ -185,6 +185,22 @@ pre {
   color: rgba(255, 255, 255, 0.8);
 }
 
+#markdown h3 {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 1em;
+}
+
+#markdown h3::after {
+  content: '';
+  width: 50%;
+  height: 3px;
+  background: white;
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+}
+
 #markdown ul {
   list-style: initial;
   margin-top: -20px;
