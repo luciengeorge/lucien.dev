@@ -16,6 +16,7 @@ import 'stylesheets/tailwind/before.scss';
 import 'stylesheets/application.scss';
 import 'stylesheets/tailwind/after.scss';
 import 'aos/dist/aos.css';
+import gtag from './components/analytics';
 
 document.addEventListener('turbolinks:load', () => {
   AOS.init();

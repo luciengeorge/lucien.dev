@@ -1,34 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title><%= meta_title %></title>
-    <meta name="description" content="<%= meta_description %>">
+    <%= render 'shared/meta' %>
 
-    <!-- Facebook Open Graph data -->
-    <meta property="og:title" content="<%= meta_title %>" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="<%= request.original_url %>" />
-    <meta property="og:image" content="<%= meta_image %>" />
-    <meta property="og:description" content="<%= meta_description %>" />
-    <meta property="og:site_name" content="<%= meta_title %>" />
-
-    <!-- Twitter Card data -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="<%= DEFAULT_META["twitter_account"] %>">
-    <meta name="twitter:title" content="<%= meta_title %>">
-    <meta name="twitter:description" content="<%= meta_description %>">
-    <meta name="twitter:creator" content="<%= DEFAULT_META["twitter_account"] %>">
-    <meta name="twitter:image:src" content="<%= meta_image %>">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-
-    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.3/css/all.css" integrity="<%= Rails.application.credentials.font_awesome_integrity %>" crossorigin="anonymous">
-
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= favicon_link_tag 'favicon.svg', type: 'image/svg' %>
+    <%= stylesheet_link_tag 'https://pro.fontawesome.com/releases/v5.15.3/css/all.css', integrity: Rails.application.credentials.font_awesome_integrity, crossorigin: 'anonymous' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag "application", media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8YLBT9M560"></script>
   </head>
 
   <body class="<%= class_names('!bg-white': current_page?(websites_path)) %>">
