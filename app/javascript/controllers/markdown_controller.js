@@ -38,7 +38,7 @@ After my graduation I moved to London and attended Le Wagon's web development 9-
 
 In May 2019, I got offered a full-time position at Le Wagon London as a lead teacher and software engineer. I got to be a member of their engineering team working on the company's internal product and the management of our web development and data science courses. I recently got promoted to engineering manager, meaning I am responsible for the well-being and growth of the London dev team.
 
-In Ocotber 2019, amidst of the chaos of the Lebanese financial crisis, I co-founded [Impact Lebanon](https://www.impactlebanon.org), an initiative incubator aiming at helping Lebanon go through its current financial crisis. After the huge explosion that hit us in August 4th, 2020, we desperately wanted to help all the Lebanese who were heavily impacted by the explosion. This led to the creation of a fundraiser. We managed to raise as much as £6,603,009 that was distributed to vetted NGOs.
+In Ocotber 2019, amidst of the chaos of the Lebanese financial crisis, I co-founded [Impact Lebanon](https://www.impactlebanon.org), an initiative incubator aiming at helping Lebanon go through its current financial crisis. After the huge explosion that hit us in August 4th, 2020, we desperately wanted to help all the Lebanese who were heavily impacted by the explosion. This led to the creation of a fundraiser. We managed to raise mroe than £6,500,000 that was distributed to vetted NGOs.
 
 Moreover, I co-founded [krowl.io](https://www.krowl.io), a virtual workspace to help students work from home. This is still a work in progress but a MVP is already online.
 
