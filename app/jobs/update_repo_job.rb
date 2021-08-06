@@ -3,8 +3,8 @@ class UpdateRepoJob < ApplicationJob
 
   def perform(repo_gh_id)
     @repo_gh_id = repo_gh_id
-    @repo = Repo.find_by gh_id: @repo_gh_id
     @github_repo = $octokit.repo(@repo_gh_id)
+    @repo = Repo.find_by(gh_id: @repo_gh_id) || Repo.find_by(full_name: @github_repo.full_name)
     @repo.present? ? update_repo : create_repo
     UpdateRepoLanguagesJob.perform_later(@repo)
     UpdateRepoContributorsJob.perform_later(@repo)
@@ -14,6 +14,7 @@ class UpdateRepoJob < ApplicationJob
 
   def update_repo
     @repo.update!(
+      gh_id: @repo_gh_id,
       name: @github_repo.name,
       full_name: @github_repo.full_name,
       private: @github_repo.private,
