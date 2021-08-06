@@ -210,7 +210,6 @@ pre {
 #markdown a {
   color: #ffffff;
   text-decoration: underline;
-  font-weight: 900;
 }
 
 /*

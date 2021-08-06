@@ -27,7 +27,7 @@ export default class extends Controller {
   }
 
   text() {
-    return `### Who am I?
+    return `### About me
 That's me 👇✌️
 ![Me](${this.imgUrlValue})
 I know I don't like much at the moment 😅 We'll fix that in a sec.
@@ -67,6 +67,7 @@ Moreover, I co-founded [krowl.io](https://www.krowl.io), a virtual workspace to 
 * C#
 * C
 * git
+* Heroku
 
 ### Spoken languages
 * French (native)
