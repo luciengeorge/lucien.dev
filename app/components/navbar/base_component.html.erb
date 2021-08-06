@@ -19,14 +19,14 @@
       <%= link_to root_path, class: class_names('nav-link', { active: current_page?(root_path), '!border-black': current_page?(websites_path) }) do %>
         <i class="fal fa-home-alt link-icon <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
       <% end %>
-      <%= link_to repos_path, class: class_names('nav-link', { active: current_page?(repos_path), '!border-black': current_page?(websites_path) }) do %>
-        <i class="fab fa-github link-icon <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
+      <%= link_to websites_path, class: class_names('nav-link', { active: current_page?(websites_path), '!border-black': current_page?(websites_path) }) do %>
+        <i class="fal fa-browser link-icon <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
       <% end %>
       <%= link_to experiences_path, class: class_names('nav-link', { active: current_page?(experiences_path), '!border-black': current_page?(websites_path) }) do %>
         <i class="fal fa-file-user link-icon <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
       <% end %>
-      <%= link_to websites_path, class: class_names('nav-link', { active: current_page?(websites_path), '!border-black': current_page?(websites_path) }) do %>
-        <i class="fal fa-browser link-icon <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
+      <%= link_to repos_path, class: class_names('nav-link', { active: current_page?(repos_path), '!border-black': current_page?(websites_path) }) do %>
+        <i class="fab fa-github link-icon <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
       <% end %>
       <% if user_signed_in %>
         <%= link_to new_website_path, class: class_names('nav-link', { active: current_page?(new_website_path), '!border-black': current_page?(websites_path) }) do %>
