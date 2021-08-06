@@ -2,6 +2,6 @@ class UpdateWebsiteJob < ApplicationJob
   queue_as :default
 
   def perform(website)
-    website.save
+    website.save!
   end
 end

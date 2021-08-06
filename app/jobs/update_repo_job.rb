@@ -13,7 +13,7 @@ class UpdateRepoJob < ApplicationJob
   private
 
   def update_repo
-    @repo.update(
+    @repo.update!(
       name: @github_repo.name,
       full_name: @github_repo.full_name,
       private: @github_repo.private,
@@ -36,7 +36,7 @@ class UpdateRepoJob < ApplicationJob
   end
 
   def create_repo
-    @repo = Repo.create(
+    @repo = Repo.create!(
       gh_id: @repo_gh_id,
       name: @github_repo.name,
       full_name: @github_repo.full_name,

@@ -5,7 +5,7 @@ class UpdateRepoCommitsJob < ApplicationJob
     commits = $octokit.commits(repo.gh_id)
     commits.each do |commit|
       @commit = Commit.find_or_create_by(sha: commit.sha, url: commit.url, html_url: commit.html_url)
-      @commit.update(
+      @commit.update!(
         sha: commit.sha,
         message: commit.commit&.message,
         pushed_at: commit.commit&.author&.date,

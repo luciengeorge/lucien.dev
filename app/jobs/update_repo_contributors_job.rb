@@ -7,7 +7,7 @@ class UpdateRepoContributorsJob < ApplicationJob
 
     contributors.each do |contributor|
       @contributor = Contributor.find_or_create_by(gh_id: contributor.id)
-      @contributor.update(
+      @contributor.update!(
         login: contributor.login,
         gh_id: contributor.id,
         avatar_url: contributor.avatar_url,

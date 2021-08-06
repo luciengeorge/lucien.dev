@@ -7,12 +7,12 @@ class UpdateRepoLanguagesJob < ApplicationJob
     languages.each do |language, size|
       color = languages_json.dig(language.to_s, 'color')
       @language = Language.find_or_create_by(name: language.to_s)
-      @language.update(color: color) if @language.color.nil?
+      @language.update!(color: color) if @language.color.nil?
       repo_language = RepoLanguage.find_by repo: repo, language: @language
       if repo_language.present?
         repo_language.update(size: size)
       else
-        RepoLanguage.create(
+        RepoLanguage.create!(
           repo: repo,
           language: @language,
           size: size
