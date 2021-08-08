@@ -134,7 +134,7 @@ pre {
 
   pre {
     flex: 0 0 100%;
-    margin-left: 5px;
+    margin-left: 0;
   }
 
   #markdown {
