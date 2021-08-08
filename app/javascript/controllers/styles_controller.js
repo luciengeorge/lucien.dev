@@ -48,6 +48,7 @@ export default class extends Controller {
  */
 
 .live-text {
+  transition: all 500ms;
   font-size: 12px;
   line-height: 1.4;
   -webkit-font-smoothing: subpixel-antialiased;
