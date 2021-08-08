@@ -187,12 +187,14 @@ pre {
 }
 
 #markdown h3 {
+  transition: all 500ms;
   position: relative;
   display: inline-block;
   margin-bottom: 1em;
 }
 
 #markdown h3::after {
+  transition: all 500ms;
   content: '';
   width: 50%;
   height: 3px;
@@ -203,6 +205,7 @@ pre {
 }
 
 #markdown ul {
+  transition: all 500ms;
   list-style: initial;
   margin-top: -20px;
   line-height: 1;
