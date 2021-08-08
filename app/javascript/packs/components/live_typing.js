@@ -28,9 +28,9 @@ const writeChar = (char, target, styleTarget = null) => {
 }
 
 const time = () => {
-  if (skip()) return 0.001;
+  if (skip()) return 0;
 
-  return window.innerWidth <= 578 ? 4 : 16;
+  return 16;
 }
 
 const newInterval = (message, index) => {
@@ -51,9 +51,14 @@ const writeText = (message, target, index, styleTarget, callback) => {
     target.scrollTop = target.scrollHeight;
     writeChar(message[index++], target, styleTarget);
     const nextInterval = newInterval(message, index);
-    timeoutId = setTimeout(() => {
+    if(skip()) {
+      // if (timeoutId) window.clearTimeout(timeoutId);
       writeText(message, target, index, styleTarget, callback);
-    }, nextInterval);
+    } else {
+      timeoutId = setTimeout(() => {
+        writeText(message, target, index, styleTarget, callback);
+      }, nextInterval);
+    }
   } else {
     callback();
   }
@@ -63,4 +68,4 @@ const skip = () => {
   return document.querySelector('#style-text').dataset.skip === 'true';
 }
 
-export { writeText };
+export { writeText, skip };

@@ -16,6 +16,9 @@
 
 .shrink-down {
   animation: rotate 1s linear 1;
+  &-no-animation {
+    animation-duration: 0s !important;
+  }
 }
 
 @keyframes rotate {

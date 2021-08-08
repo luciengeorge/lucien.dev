@@ -13,7 +13,10 @@
   </head>
 
   <body class="<%= class_names('!bg-white': current_page?(websites_path)) %>">
-    <div data-controller="lazy-loader">
+    <div data-controller="lazy-loader <%= 'styles markdown' if current_page?(root_path) %>"
+         data-markdown-img-url-value="<%= asset_path('me.png') %>"
+         data-styles-no-transition-class="noTransition"
+         data-action="styles-done->markdown#start markdown-done->styles#transition styles-transition-done->markdown#render markdown-rendered->styles#renderSuccess">
       <%= render FlashesComponent.new(notice: notice, alert: alert) %>
       <%= render Navbar::BaseComponent.new(user_signed_in: user_signed_in?) %>
       <%= yield %>

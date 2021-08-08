@@ -2,10 +2,11 @@ import { Controller } from 'stimulus';
 import { writeText } from '../packs/components/live_typing';
 
 export default class extends Controller {
-  static targets = [ 'pre', 'style' ];
+  static targets = [ 'pre', 'style', 'skipCta' ];
+  static classes = [ 'noTransition' ];
 
   connect() {
-    writeText(this.text(), this.preTarget, 0, this.styleTarget, () => {
+    writeText(this.text, this.preTarget, 0, this.styleTarget, () => {
       this.element.dispatchEvent(new Event(`${this.identifier}-done`));
     });
   }
@@ -15,40 +16,51 @@ export default class extends Controller {
   }
 
   transition() {
-    writeText(this.transitionText(), this.preTarget, 0, this.styleTarget, () => {
+    writeText(this.transitionText, this.preTarget, 0, this.styleTarget, () => {
       this.element.dispatchEvent(new Event(`${this.identifier}-transition-done`));
     });
   }
 
   renderSuccess() {
-    writeText(this.transitionSuccessText(), this.preTarget, 0, this.styleTarget, () => {
+    writeText(this.transitionSuccessText, this.preTarget, 0, this.styleTarget, () => {
       this.preTarget.setAttribute('contenteditable', 'true');
+      this.skipCtaTarget.remove();
     });
   }
 
   skip(event) {
     event.preventDefault();
+    this.styleTarget.insertAdjacentHTML('afterbegin', `
+      * {
+        -webkit-transition: none !important;
+        -moz-transition: none !important;
+        -o-transition: none !important;
+        transition: none !important;
+      }`);
     this.preTarget.setAttribute('data-skip', true);
   }
 
-  text() {
+  get text() {
     return `/*
- * Hey! My name is Lucien 👋
- * I am a Web Developer from Beirut, Lebanon 🇱🇧
- *
- * How are you doing?
- *
- * It's a beautiful day to code a website 👨‍💻
- *
- * I am just adding some style to this ugly page
- *
- * Let's see...
- *
- * How about we start easy with some text styling huh?
- */
+* Hey! My name is Lucien 👋
+* I am a Web Developer from Beirut, Lebanon 🇱🇧
+*
+* How are you doing?
+*
+* It's a beautiful day to code a website 👨‍💻
+*
+* I am just adding some style to this ugly page
+*
+* Let's see...
+*
+* How about we start easy with some text styling huh?
+*/
+
+* {
+  transition: all 500ms;
+}
 
 .live-text {
-  transition: all 500ms;
   font-size: 12px;
   line-height: 1.4;
   -webkit-font-smoothing: subpixel-antialiased;
@@ -59,7 +71,6 @@ export default class extends Controller {
 */
 
 pre {
-  transition: all 500ms;
   white-space: pre-wrap;
   width: 100%;
   margin: 0 auto;
@@ -96,7 +107,6 @@ pre em:not(.comment) { font-style: normal; }
  */
 
 #flex {
-  transition: all 500ms;
   width: 100%;
   display: flex;
   align-items: start;
@@ -109,7 +119,6 @@ pre {
 }
 
 #markdown {
-  transition: all 500ms;
   white-space: pre-wrap;
   line-height: initial;
   max-height: calc(100vh - 130px);
@@ -149,7 +158,7 @@ pre {
 */`;
   }
 
-  transitionText() {
+  get transitionText() {
     return `
 
 /*
@@ -164,7 +173,7 @@ pre {
 */`;
   }
 
-  transitionSuccessText() {
+  get transitionSuccessText() {
     return `
 
 /*
@@ -174,7 +183,6 @@ pre {
 */
 
 #markdown img {
-  transition: all 500ms;
   max-width: 35%;
 }
 
@@ -187,14 +195,12 @@ pre {
 }
 
 #markdown h3 {
-  transition: all 500ms;
   position: relative;
   display: inline-block;
   margin-bottom: 1em;
 }
 
 #markdown h3::after {
-  transition: all 500ms;
   content: '';
   width: 50%;
   height: 3px;
@@ -205,7 +211,6 @@ pre {
 }
 
 #markdown ul {
-  transition: all 500ms;
   list-style: initial;
   margin-top: -20px;
   line-height: 1;

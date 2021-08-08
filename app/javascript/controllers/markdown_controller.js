@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import { writeText } from '../packs/components/live_typing';
+import { writeText, skip } from '../packs/components/live_typing';
 import MarkdownIt from 'markdown-it';
 
 export default class extends Controller {
@@ -9,24 +9,34 @@ export default class extends Controller {
   };
 
   start() {
-    writeText(this.text(), this.markdownTarget, 0, null, () => {
+    writeText(this.text, this.markdownTarget, 0, null, () => {
       this.element.dispatchEvent(new Event(`${this.identifier}-done`));
     });
   }
 
   render() {
-    this.markdownTarget.classList.add('shrink-down');
+    if (skip()) {
+      this.markdownTarget.classList.add('shrink-down-no-animation');
+    } else {
+      this.markdownTarget.classList.add('shrink-down');
+    }
     const md = new MarkdownIt({ html: true });
     const html = md.render(this.markdownTarget.innerHTML);
     this.markdownTarget.innerHTML = html;
-    setTimeout(() => {
+    if (skip()) {
       this.markdownTarget.classList.remove('shrink-down');
       this.markdownTarget.scrollTop = 0;
       this.element.dispatchEvent(new Event(`${this.identifier}-rendered`));
-    }, 1000);
+    } else {
+      setTimeout(() => {
+        this.markdownTarget.classList.remove('shrink-down');
+        this.markdownTarget.scrollTop = 0;
+        this.element.dispatchEvent(new Event(`${this.identifier}-rendered`));
+      }, 1000);
+    }
   }
 
-  text() {
+  get text() {
     return `### About me
 That's me 👇✌️
 ![Me](${this.imgUrlValue})
