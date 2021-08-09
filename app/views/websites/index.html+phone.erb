@@ -1,6 +1,6 @@
 <%= content_for :meta_title, 'Websites' %>
 
-<div class="overflow-hidden w-screen fixed top-0 h-full"
+<div class="overflow-hidden w-screen fixed min-h-wrapper"
      data-controller="carousel"
      data-carousel-current-value="0"
      data-carousel-next-value="1"
@@ -11,9 +11,7 @@
     <div class="websites <%= class_names(active: index.zero?, next: index.positive?) %>"
          data-index="<%= index %>"
          data-carousel-target="slide">
-      <div class="grid grid-cols-2 grid-rows-2">
-        <%= render Websites::WebsitesComponent.new(websites: websites) %>
-      </div>
+      <%= render Websites::WebsitesPhoneComponent.new(websites: websites) %>
     </div>
   <% end %>
   <%= render Websites::NavComponent.new %>

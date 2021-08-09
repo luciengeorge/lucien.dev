@@ -1,0 +1,11 @@
+<% websites.each_with_index do |website, index| %>
+  <div class="w-full h-full">
+    <%= link_to website.url, target: :blank do %>
+      <%= image_tag "loading.gif", alt: website.title, class: 'object-cover object-center w-full', data: { src: website.decorate.cover_url, lazy_loader_target: 'image' } %>
+      <div class="website-card--phone">
+        <h3><%= website.title %></h3>
+        <h4 class="font-light opacity-75"><%= website.description %></h4>
+      </div>
+    <% end %>
+  </div>
+<% end %>
