@@ -10,6 +10,10 @@
   color: $primary !important;
 }
 
+.min-h-wrapper {
+  min-height: calc(100vh - 100px);
+}
+
 .max-height-70 {
   max-height: 70vh;
 }

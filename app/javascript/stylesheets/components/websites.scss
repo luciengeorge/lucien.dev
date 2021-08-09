@@ -9,6 +9,13 @@
     @apply flex flex-col items-center justify-center;
     @apply p-4;
   }
+
+  &--phone {
+    @apply text-white;
+    @apply transition-all duration-700;
+    @apply flex flex-col;
+    @apply p-4;
+  }
 }
 
 .website-navigation {

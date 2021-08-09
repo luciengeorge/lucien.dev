@@ -4,6 +4,7 @@ class Website < ApplicationRecord
   validates :url, presence: true, format: { with: URI::DEFAULT_PARSER.make_regexp }
   before_save :extract_data
 
+  CHUNK = 1
   CHUNKS = 4
   MAX_CHARS = 100
 

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class WebsitesComponent < MainComponent
+class Websites::WebsitesComponent < MainComponent
   attr_reader :websites
 
   def initialize(websites:)

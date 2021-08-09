@@ -2,7 +2,8 @@ class WebsitesController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
 
   def index
-    @websites = policy_scope(Website).in_groups_of(Website::CHUNKS, false)
+    @websites = policy_scope(Website).in_groups_of(browser.device.mobile? ? Website::CHUNK : Website::CHUNKS, false)
+    render variant: :phone if browser.device.mobile?
   end
 
   def new
