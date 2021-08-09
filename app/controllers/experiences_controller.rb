@@ -25,7 +25,7 @@ class ExperiencesController < ApplicationController
   end
 
   def create
-    @experience = Experience.new(experience_params.merge(rank: 0))
+    @experience = Experience.new(experience_params.merge(rank: 1))
     authorize @experience
     if @experience.save
       redirect_to new_experience_path
