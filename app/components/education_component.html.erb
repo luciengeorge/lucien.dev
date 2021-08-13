@@ -1,6 +1,6 @@
 <div class="mb-3">
   <span class="text-sm text-gray-500 <%= 'font-75' unless download %>"><%= date %></span>
-  <h4 class="text-black <%= 'font-75' unless download %>"><%= education.degree %></h4>
+  <p class="font-bold text-sm text-gray-900 <%= 'font-75' unless download %>"><%= education.degree %></p>
   <span class="text-sm text-gray-700 <%= 'font-75' unless download %>"><%= school.name %> - <%= school.city %></span>
-  <div class="<%= 'font-75' unless download %>"><%= education.description %></div>
+  <div class="text-sm text-gray-700 <%= 'font-75' unless download %>"><%= education.description %></div>
 </div>
