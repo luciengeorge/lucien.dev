@@ -42,7 +42,7 @@ class ExperiencesController < ApplicationController
 
   def set_experiences
     @experiences = policy_scope(Experience).order(rank: :asc).includes(:rich_text_description, company: { photo_attachment: :blob })
-    @programming_languages = ['Ruby on Rails', 'Javascript', 'Python', 'SQL', 'HTML', 'CSS', 'React', 'git', 'Java', 'Kotlin']
+    @programming_languages = ['Ruby on Rails', 'Javascript', 'Python', 'SQL', 'HTML', 'CSS', 'React', 'Java', 'Kotlin', 'C#', 'XML', 'git', 'Heroku']
     @spoken_languages = %w[French English Arabic Spanish]
     @educations = Education.order(start_date: :desc).includes(:school, :rich_text_description)
   end
