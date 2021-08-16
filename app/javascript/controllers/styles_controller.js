@@ -53,12 +53,16 @@ export default class extends Controller {
 *
 * Let's see...
 *
-* How about we start easy with some text styling huh?
+* How about we start by animating everything!
 */
 
 * {
   transition: all 500ms;
 }
+
+/*
+* let's also add some basic text styling
+*/
 
 .live-text {
   font-size: 12px;
@@ -133,7 +137,7 @@ pre {
 }
 
 /*
-* let's make sure this is responsive
+* let's make sure this looks good on small screens
 */
 
 @media only screen and (max-width: 640px) {
