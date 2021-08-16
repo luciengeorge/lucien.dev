@@ -61,8 +61,8 @@ export default class extends Controller {
 }
 
 /*
-* let's also add some basic text styling
-*/
+ * let's also add some basic text styling
+ */
 
 .live-text {
   font-size: 12px;
@@ -71,8 +71,8 @@ export default class extends Controller {
 }
 
 /*
-* A bit boring 🤔. Let's pimp it a little and add some styling to the page.
-*/
+ * A bit boring 🤔. Let's pimp it a little and add some styling to the page.
+ */
 
 pre {
   white-space: pre-wrap;
@@ -137,8 +137,8 @@ pre {
 }
 
 /*
-* let's make sure this looks good on small screens
-*/
+ * let's make sure this looks good on small screens
+ */
 
 @media only screen and (max-width: 640px) {
   #flex {
@@ -158,8 +158,8 @@ pre {
 }
 
 /*
-* Okay we're ready now!
-*/`;
+ * Okay we're ready now!
+ */`;
   }
 
   get transitionText() {
@@ -181,10 +181,10 @@ pre {
     return `
 
 /*
-* Boom 💥 Much better 😄
-* Ha there I am! A bit too big though 😅
-* Let's make that image smaller
-*/
+ * Boom 💥 Much better 😄
+ * Ha there I am! A bit too big though 😅
+ * Let's make that image smaller
+ */
 
 #markdown img {
   max-width: 35%;
@@ -226,19 +226,19 @@ pre {
 }
 
 /*
-* TADA 🎉 This was fun! Hope you enjoyed it as much as I did.
-* Big thanks to Jake Albaugh and Samuel Reed
-* who were the first to do a page like this one.
-* The code used here was heavily inspired from their projects.
-*/
+ * TADA 🎉 This was fun! Hope you enjoyed it as much as I did.
+ * Big thanks to Jake Albaugh and Samuel Reed
+ * who were the first to do a page like this one.
+ * The code used here was heavily inspired from their projects.
+ */
 
 /*
-* The best part about this box is that it's completely editable.
-* So have fun, change some of the CSS, hell, break the page!
-*/
+ * The best part about this box is that it's completely editable.
+ * So have fun, change some of the CSS, hell, break the page!
+ */
 
 /*
-* Coded with love ✌️. Over and out.
-*/`;
+ * Coded with love ✌️. Over and out.
+ */`;
   }
 }
