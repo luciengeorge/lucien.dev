@@ -42,19 +42,19 @@ export default class extends Controller {
 
   get text() {
     return `/*
-* Hey! My name is Lucien 👋
-* I am a Web Developer from Beirut, Lebanon 🇱🇧
-*
-* How are you doing?
-*
-* It's a beautiful day to code a website 👨‍💻
-*
-* I am just adding some style to this ugly page
-*
-* Let's see...
-*
-* How about we start by animating everything!
-*/
+ * Hey! My name is Lucien 👋
+ * I am a Web Developer from Beirut, Lebanon 🇱🇧
+ *
+ * How are you doing?
+ *
+ * It's a beautiful day to code a website 👨‍💻
+ *
+ * I am just adding some style to this ugly page
+ *
+ * Let's see...
+ *
+ * How about we start by animating everything!
+ */
 
 * {
   transition: all 500ms;
@@ -166,15 +166,15 @@ pre {
     return `
 
 /*
-* This text looks like 💩 at the moment.
-* Let's fix that. Shall we?
-*
-* Drum roll... 🥁
-* 3...
-* 2...
-* 1...
-* Go!
-*/`;
+ * This text looks like 💩 at the moment.
+ * Let's fix that. Shall we?
+ *
+ * Drum roll... 🥁
+ * 3...
+ * 2...
+ * 1...
+ * Go!
+ */`;
   }
 
   get transitionSuccessText() {
