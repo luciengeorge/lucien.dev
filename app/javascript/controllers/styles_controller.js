@@ -44,15 +44,11 @@ export default class extends Controller {
     return `/*
  * Hey! My name is Lucien 👋
  * I am a Web Developer from Beirut, Lebanon 🇱🇧
- *
  * How are you doing?
  *
  * It's a beautiful day to code a website 👨‍💻
- *
  * I am just adding some style to this ugly page
- *
  * Let's see...
- *
  * How about we start by animating everything!
  */
 
