@@ -42,7 +42,7 @@ That's me 👇✌️
 ![Me](${this.imgUrlValue})
 I know I don't look like much at the moment 😅 We'll fix that in a sec.
 
-I was born and raised in Beirut - Lebanon. I then moved to Montreal to pursue my undergraduate studies. I attended McGill University from 2013 to 2018 as a software engineering student where I learnt the dos and don'ts of software development.
+I was born and raised in Beirut - Lebanon. I then moved to Montreal to pursue my undergraduate studies. I attended McGill University from 2013 to 2018 as a software engineering student where I wrote my first lines of code.
 
 After my graduation I moved to London and attended Le Wagon's web development 9-week long intensive bootcamp. A couple thousand lines of code and 3 web applications later, I started working as a teacher assistant for a period of 4 months while simulateously freelancing for another software company called [Hoxton Digital](https://www.hoxton-digital.com). At Hoxton Digital I was responsible for the development and maintenance of the company's ongoing projects.
 
