@@ -1,7 +1,7 @@
 class ExperiencePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      scope.all
+      scope.where(hidden: false)
     end
   end
 
