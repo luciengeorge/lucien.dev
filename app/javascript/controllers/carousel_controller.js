@@ -9,7 +9,8 @@ export default class extends Controller {
     previous: Number
   };
 
-  nextSlide() {
+  nextSlide(event) {
+    if(event.type === 'keyup' && event.key !== 'ArrowRight') return;
     if (!this.next) return;
 
     this.current.classList.add('previous');
@@ -19,7 +20,8 @@ export default class extends Controller {
     this.nextValue += 1;
   }
 
-  previousSlide() {
+  previousSlide(event) {
+    if(event.type === 'keyup' && event.key !== 'ArrowLeft') return;
     if (!this.previous) return;
 
     this.current.classList.add('next');
