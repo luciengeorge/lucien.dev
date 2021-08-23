@@ -1,9 +1,9 @@
 <li>
-  <div class="relative pb-4">
+  <div class="relative mb-2">
     <span class="absolute top-5 left-5 -ml-px <%= line_height_class %> w-0.5 bg-gray-200" aria-hidden="true"></span>
     <div class="relative flex items-start space-x-3">
       <% if company == previous_company %>
-        <div class="h-10 w-10 rounded-full flex items-center justify-center ring-white">
+        <div class="<%= download ? 'h-10 w-10' : 'h-7 w-7' %> rounded-full flex items-center justify-center ring-white">
           <div class="h-2 w-2 rounded-full bg-gray-200 ring-8 ring-white"></div>
         </div>
       <% else %>
@@ -13,13 +13,13 @@
         <div>
           <div class="text-sm">
             <% unless company == previous_company %>
-              <%= link_to company_name, company_website, class: "font-bold text-gray-900 #{'font-75' unless download}", target: :blank %>
+              <%= link_to company_name, company_website, class: "font-bold text-gray-900 #{'font-12p' unless download}", target: :blank %>
             <% end %>
           </div>
-          <p class="mt-0.5 text-sm text-gray-900 <%= 'font-75' unless download %>"><%= experience.title %> - <%= job_type %></p>
-          <p class="text-sm text-gray-500 <%= 'font-75' unless download %>"><%= start_date %> - <%= end_date %></p>
+          <p class="mt-0.5 text-gray-900 <%= download ? 'text-sm' : 'font-12p' %>"><%= experience.title %> - <%= job_type %></p>
+          <p class="text-gray-500 <%= download ? 'text-sm' : 'font-10p' %>"><%= start_date %> - <%= end_date %></p>
         </div>
-        <div class="mt-2 text-sm text-gray-700 <%= 'font-75' unless download %>">
+        <div class="mt-1 !text-gray-700 <%= download ? 'font-80' : 'font-10p' %>">
           <%= experience.description %>
         </div>
       </div>
