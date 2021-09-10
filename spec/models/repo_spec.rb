@@ -5,33 +5,64 @@ RSpec.describe Repo, type: :model do
     @repo = create(:repo)
   end
 
-  it "should have a name" do
-    repo = build(:repo, name: nil)
-    expect(repo).to be_invalid
-    expect(repo.errors.messages.keys).to include(:name)
+  describe '#name' do
+    it "should have a name" do
+      repo = build(:repo, name: nil)
+      expect(repo).to be_invalid
+      expect(repo.errors.messages.keys).to include(:name)
+    end
+
+    it "should return the repo's name" do
+      expect(@repo).to respond_to(:name)
+      expect(@repo.name).to eq('lucien-george.com')
+    end
   end
 
-  it "should have a gh_id" do
-    repo = build(:repo, gh_id: nil)
-    expect(repo).to be_invalid
-    expect(repo.errors.messages.keys).to include(:gh_id)
+  describe '#full_name' do
+    it "should have a unique full_name" do
+      repo = build(:repo)
+      expect(repo).to be_invalid
+      expect(repo.errors.messages.keys).to include(:full_name)
+    end
+
+    it "should return the repo's full_name" do
+      expect(@repo).to respond_to(:full_name)
+      expect(@repo.full_name).to eq('lucien-george/lucien-george.com')
+    end
   end
 
-  it "should have a unique gh_id" do
-    repo = build(:repo)
-    expect(repo).to be_invalid
-    expect(repo.errors.messages.keys).to include(:gh_id)
+  describe '#gh_id' do
+    it "should have a gh_id" do
+      repo = build(:repo, gh_id: nil)
+      expect(repo).to be_invalid
+      expect(repo.errors.messages.keys).to include(:gh_id)
+    end
+
+    it "should have a unique gh_id" do
+      repo = build(:repo)
+      expect(repo).to be_invalid
+      expect(repo.errors.messages.keys).to include(:gh_id)
+    end
+
+    it "should return the repo's gh_id" do
+      expect(@repo).to respond_to(:gh_id)
+      expect(@repo.gh_id).to eq(344446435)
+    end
   end
 
-  it "should have a unique full_name" do
-    repo = build(:repo)
-    expect(repo).to be_invalid
-    expect(repo.errors.messages.keys).to include(:full_name)
+  describe '#owner' do
+    it 'should have an owner' do
+      repo = build(:repo, owner: nil)
+      expect(repo).to be_invalid
+      expect(repo.errors.messages.keys).to include(:owner)
+    end
+
+    it "should store infos about the owner" do
+      expect(@repo.owner).to be_a(Hash)
+      expect(@repo.owner.keys).to contain_exactly('login', 'id', 'avatar_url', 'html_url', 'type')
+    end
   end
 
-  it "should store infos about the owner" do
-    expect(@repo.owner).to be_a(Hash)
-  end
 
   describe '#owner_login' do
     it "should return the login of the repo owner" do
@@ -77,9 +108,21 @@ RSpec.describe Repo, type: :model do
     end
   end
 
+  describe '#repo_contributors' do
+    it 'should return a collection of the repo_contributors' do
+      expect(@repo).to respond_to(:repo_contributors)
+    end
+  end
+
   describe '#contributors' do
     it "should return a collection of all the repo's contributors" do
       expect(@repo).to respond_to(:contributors)
+    end
+  end
+
+  describe '#repo_languages' do
+    it "should return a collection of the repo_languages" do
+      expect(@repo).to respond_to(:repo_languages)
     end
   end
 
