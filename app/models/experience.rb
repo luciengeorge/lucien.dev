@@ -17,7 +17,7 @@ class Experience < ApplicationRecord
   private
 
   def start_before_end_date
-    return if end_date.nil? || start_date.before?(end_date)
+    return if end_date.blank? || start_date&.before?(end_date)
 
     errors.add(:end_date, "should be after the start date")
   end
