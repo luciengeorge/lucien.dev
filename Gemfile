@@ -53,6 +53,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rspec-rails'
+  gem 'rexml'
 end
 
 group :development do
