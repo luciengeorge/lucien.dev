@@ -2,6 +2,7 @@ class Repo < ApplicationRecord
   validates :gh_id, presence: true, uniqueness: true
   validates :name, presence: true
   validates :full_name, presence: true, uniqueness: true
+  validates :owner, presence: true
 
   store :owner, accessors: %i[login id avatar_url html_url type], prefix: true, coder: JSON
 

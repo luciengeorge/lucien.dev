@@ -49,8 +49,12 @@ gem 'webpacker', '6.0.0.beta.6'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
+  gem 'factory_bot_rails'
+  gem 'faker'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'rexml'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -64,6 +68,8 @@ end
 
 group :test do
   gem 'capybara', '>= 3.26'
+  gem 'rspec-sidekiq'
   gem 'selenium-webdriver'
+  gem 'sidekiq-status'
   gem 'webdrivers'
 end

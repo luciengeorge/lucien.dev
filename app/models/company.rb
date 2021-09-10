@@ -4,7 +4,6 @@ class Company < ApplicationRecord
 
   geocoded_by :address
 
-  # validates :photo, presence: true
   validates :website, presence: true
   validates :address, presence: true
 
