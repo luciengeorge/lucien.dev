@@ -52,8 +52,10 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'rspec-rails'
   gem 'rexml'
+  gem 'rspec-rails'
+  gem 'rspec-sidekiq'
+  gem 'sidekiq-status'
 end
 
 group :development do

@@ -70,4 +70,20 @@ RSpec.describe Experience, type: :model do
       expect(@experience.end_date).to be_a(Date)
     end
   end
+
+  describe '#rank' do
+    it "should return the experience's rank" do
+      expect(@experience).to respond_to(:rank)
+      expect(@experience.rank).to be_an(Integer)
+    end
+
+    it "should update the rank after save" do
+      expect { create(:experience) }.to have_enqueued_job(UpdateExperienceRankJob)
+    end
+
+    it "should update other experiences' ranks on update" do
+      experience = create(:experience)
+      expect { experience.update rank: 3 }.to have_enqueued_job(UpdateExperienceRankJob)
+    end
+  end
 end
