@@ -41,6 +41,10 @@ jobs:
     steps:
       - name: Checkout repository # copies repo in runner
         uses: actions/checkout@v2 # short for https://github.com/actions/checkout
+      - name: Install idn
+        run: |
+          sudo apt-get install libldap2-dev
+          sudo apt-get install libidn11-dev
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1 # short for https://github.com/ruby/setup-ruby
         with:
