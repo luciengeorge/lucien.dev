@@ -36,10 +36,8 @@ RSpec.describe Language, type: :model do
   end
 
   describe '#color' do
-    it 'should have a color' do
-      language = build(:language, color: nil)
-      expect(language).to be_invalid
-      expect(language.errors.messages.keys).to include(:color)
+    it 'should return the language color' do
+      expect(@language).to respond_to(:color)
     end
   end
 end
