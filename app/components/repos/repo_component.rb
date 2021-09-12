@@ -16,6 +16,6 @@ class Repos::RepoComponent < MainComponent
   end
 
   def color(language)
-    language.color.present? ? language.color : '#cccccc'
+    language.color || '#cccccc'
   end
 end
