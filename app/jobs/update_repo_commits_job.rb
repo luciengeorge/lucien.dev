@@ -11,8 +11,7 @@ class UpdateRepoCommitsJob < ApplicationJob
         repo: repo,
         contributor: Contributor.find_by(login: commit.author&.login),
         url: commit.url,
-        html_url: commit.html_url,
-        sha: commit.sha
+        html_url: commit.html_url
       )
     end
     Repo.reset_counters(repo.id, :commits)
