@@ -4,7 +4,7 @@
   <%= render Repos::BreadcrumbsComponent.new(repo: repo) %>
   <div class="flex flex-wrap">
     <% repo.languages.each do |language| %>
-      <span class="badge mr-2 mb-2" style="background-color: <%= language.color %>33; color: <%= language.color %>; border-color: <%= language.color %>;"><%= language.name %></span>
+      <span class="badge mr-2 mb-2" style="background-color: <%= color(language) %>33; color: <%= color(language) %>; border-color: <%= color(language) %>;"><%= language.name %></span>
     <% end %>
   </div>
   <div class="flex flex-wrap items-end">

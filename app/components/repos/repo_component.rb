@@ -14,4 +14,8 @@ class Repos::RepoComponent < MainComponent
   def contributors
     repo.contributors
   end
+
+  def color(language)
+    language.color || '#cccccc'
+  end
 end
