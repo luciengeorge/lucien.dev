@@ -445,7 +445,7 @@ GEM
       unf_ext
     unf_ext (0.0.7.7)
     uniform_notifier (1.14.2)
-    view_component (2.36.0)
+    view_component (2.40.0)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
     warden (1.2.9)
