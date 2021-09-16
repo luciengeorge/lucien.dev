@@ -51,9 +51,11 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'launchy'
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'rexml'
+  gem 'rails-controller-testing'
   gem 'rspec-rails'
 end
 
