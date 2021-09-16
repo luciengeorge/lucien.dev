@@ -427,7 +427,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    tailwindcss-rails (0.4.3)
+    tailwindcss-rails (0.3.3)
       rails (>= 6.0.0)
     temple (0.8.2)
     thor (1.1.0)
@@ -529,7 +529,7 @@ DEPENDENCIES
   simple_form
   simple_form-tailwind
   spring
-  tailwindcss-rails (~> 0.4.3)
+  tailwindcss-rails (~> 0.3.3)
   turbolinks (~> 5)
   twitter-text
   tzinfo-data
