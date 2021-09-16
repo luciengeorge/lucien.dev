@@ -6,7 +6,7 @@
     "@neojp/tailwindcss-important-variant": "^1.0.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.1.3-1",
-    "@rails/activestorage": "^6.0.0",
+    "@rails/activestorage": "^6.1.4",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "^6.0.0-beta.5",
     "@tailwindcss/forms": "^0.2.1",
