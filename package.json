@@ -2,7 +2,7 @@
   "name": "lucien-george-com",
   "private": true,
   "dependencies": {
-    "@mdi/font": "^5.9.55",
+    "@mdi/font": "^6.1.95",
     "@neojp/tailwindcss-important-variant": "^1.0.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/actiontext": "^6.1.3-1",
