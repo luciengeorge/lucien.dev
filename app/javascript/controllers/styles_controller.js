@@ -71,16 +71,12 @@ export default class extends Controller {
  */
 
 pre {
+  max-height: calc(100vh - 130px);
   white-space: pre-wrap;
-  width: 100%;
   margin: 0 auto;
   overflow: scroll;
-  max-height: calc(100vh - 130px);
   color: #ffffff;
   padding: 32px 24px;
-  border-radius: 5px;
-  border: 1px solid white;
-  flex: 0 0 100%;
 }
 
 /*
@@ -103,20 +99,8 @@ pre em:not(.comment) { font-style: normal; }
  */
 
 /*
- * But first, let's move this s*** over
+ * But first, let's get the page ready
  */
-
-#flex {
-  width: 100%;
-  display: flex;
-  align-items: start;
-  justify-content: around;
-}
-
-pre {
-  flex: 0 0 50%;
-  margin-left: 5px;
-}
 
 #markdown {
   white-space: pre-wrap;
@@ -124,12 +108,8 @@ pre {
   max-height: calc(100vh - 130px);
   overflow: scroll;
   overflow-wrap: break-word;
-  color: white;
-  flex: 0 0 50%;
-  margin-right: 5px;
+  color: #000000;
   padding: 32px 24px;
-  border-radius: 5px;
-  border: 1px solid white;
 }
 
 /*
@@ -142,14 +122,22 @@ pre {
   }
 
   pre {
-    flex: 0 0 100%;
-    margin-left: 0;
+    color: #ffffff;
+    flex: 0 0 98%;
+    max-height: calc(50vh - 65px);
+    border-radius: 5px;
+    border: 1px solid white;
+    margin: 0 auto;
+    margin-bottom: 8px;
   }
 
   #markdown {
-    flex: 0 0 100%;
-    margin-right: 0;
-    margin-bottom: 10px;
+    color: #ffffff;
+    flex: 0 0 98%;
+    max-height: calc(50vh - 65px);
+    border-radius: 5px;
+    border: 1px solid white;
+    margin: 0 auto;
   }
 }
 
@@ -191,7 +179,7 @@ pre {
  */
 
 #markdown p {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 #markdown h3 {
@@ -204,7 +192,7 @@ pre {
   content: '';
   width: 50%;
   height: 3px;
-  background: white;
+  background: #000000;
   position: absolute;
   bottom: -3px;
   left: 0;
@@ -217,8 +205,22 @@ pre {
 }
 
 #markdown a {
-  color: #ffffff;
+  color: #000000;
   text-decoration: underline;
+}
+
+@media only screen and (max-width: 640px) {
+  #markdown p {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  #markdown h3::after {
+    background: #ffffff;
+  }
+
+  #markdown a {
+    color: #ffffff;
+  }
 }
 
 /*
