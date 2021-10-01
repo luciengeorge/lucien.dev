@@ -1,7 +1,7 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
-  static targets = [ 'menu', 'face', 'cubeWrapper', 'ring', 'background' ];
+  static targets = [ 'menu', 'face', 'cubeWrapper', 'ring', 'background', 'link' ];
   static classes = [ 'active', 'scale' ];
 
   toggle(event) {
@@ -11,14 +11,24 @@ export default class extends Controller {
       this.menuTarget.classList.remove(this.activeClass);
       this.cubeWrapperTarget.classList.remove(this.activeClass);
       this.ringTarget.classList.remove('active');
+      setTimeout(() => {
+        this.backgroundTarget.classList.add(this.scaleClass);
+      }, 500);
       this.faceTargets.forEach(target => target.classList.remove(this.activeClass));
-      this.backgroundTarget.classList.add(this.scaleClass);
+      this.linkTargets.forEach(target => target.classList.remove(this.activeClass));
     } else {
       this.menuTarget.classList.toggle(this.activeClass);
       this.cubeWrapperTarget.classList.toggle(this.activeClass);
       this.ringTarget.classList.toggle(this.activeClass);
-      this.backgroundTarget.classList.toggle(this.scaleClass);
+      if (this.backgroundTarget.classList.contains(this.scaleClass)) {
+        this.backgroundTarget.classList.toggle(this.scaleClass)
+      } else {
+        setTimeout(() => {
+          this.backgroundTarget.classList.toggle(this.scaleClass);
+        }, 500)
+      }
       this.faceTargets.forEach(target => target.classList.toggle(this.activeClass));
+      this.linkTargets.forEach(target => target.classList.toggle(this.activeClass));
     }
   }
 }
