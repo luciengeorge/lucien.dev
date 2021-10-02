@@ -6,10 +6,6 @@
   @apply w-full h-full flex justify-center items-center;
 }
 
-.text-primary {
-  color: $primary !important;
-}
-
 .min-h-wrapper {
   min-height: calc(100vh - 100px);
 }

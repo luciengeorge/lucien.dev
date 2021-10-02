@@ -27,7 +27,10 @@ a {
 }
 
 body {
-  @apply bg-gray-900;
+  background: linear-gradient(to left, $white 50%, #111827 50%);
+  @media only screen and (max-width: 640px) {
+    background: #111827;
+  }
   @apply text-white;
   min-height: 100vh;
 }

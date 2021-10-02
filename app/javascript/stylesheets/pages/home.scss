@@ -1,9 +1,25 @@
-#markdown {
-  flex: 0 0 0%;
+.live-text {
+  max-width: 100%;
 }
 
 pre, #markdown {
   max-width: 100%;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+  text-align: left;
+  flex: 0 0 50%;
+}
+
+@media only screen and (max-width: 640px) {
+  pre, #markdown {
+    max-width: 100%;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    text-align: left;
+    flex: 0 0 100%;
+  }
 }
 
 .notransition {

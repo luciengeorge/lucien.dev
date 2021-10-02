@@ -1,46 +1,41 @@
-<nav class="flex w-full items-center justify-between px-4 py-4 z-50 relative" data-controller="menu" data-menu-active-class="active">
-  <%= link_to root_path do %>
-    <%= image_tag 'logo.svg', class: 'logo', alt: 'logo' %>
-  <% end %>
-  <div class="flex items-center">
-    <% if current_page?(root_path) %>
-      <%= link_to 'skip animation', '#', class: 'btn-primary inline-block mr-3', data: { action: 'click->styles#skip', styles_target: 'skipCta', disable_with: 'skipping...' } %>
-    <% end %>
-    <div class="menu-wrapper relative" data-action="click->menu#toggle keyup@window->menu#toggle">
-      <div class="menu-ring" data-menu-target="ring">
-        <div class="cube-wrapper" data-menu-target="cubeWrapper">
-          <div class="cube">
-            <div class="face top" data-menu-target="face"></div>
-            <div class="face bottom" data-menu-target="face"></div>
-            <div class="face left" data-menu-target="face"></div>
-            <div class="face right" data-menu-target="face"></div>
-            <div class="face front" data-menu-target="face"></div>
-            <div class="face back" data-menu-target="face"></div>
-          </div>
-        </div>
-      </div>
-      <div class="menu" data-menu-target="menu">
-        <%= link_to root_path, class: class_names('nav-link', { active: current_page?(root_path), '!border-black': current_page?(websites_path) }) do %>
-          <i class="fal fa-home-alt link-icon <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
+<div data-controller="menu" data-menu-active-class="active" data-menu-scale-class="scale-0" data-menu-open-class="open">
+  <div class="fixed w-screen h-screen z-50 transform transition-none scale-0 flex items-center justify-center"
+       data-menu-target="background"
+       data-action="click->menu#toggle">
+    <div class="bg-black absolute w-screen h-screen"></div>
+    <div class="menu active grid grid-cols-2" data-menu-target="menu">
+      <%= link_to root_path, class: class_names('nav-link nav-link__home'), data: { menu_target: 'link', controller: 'tippy', tippy_content_value: 'Home' } do %>
+        <i class="fal fa-home-alt link-icon"></i>
+      <% end %>
+      <%= link_to websites_path, class: class_names('nav-link nav-link__websites'), data: { menu_target: 'link', controller: 'tippy', tippy_content_value: 'Websites' } do %>
+        <i class="fal fa-browser link-icon"></i>
+      <% end %>
+      <%= link_to experiences_path, class: class_names('nav-link nav-link__resume'), data: { menu_target: 'link', controller: 'tippy', tippy_content_value: 'Resume' } do %>
+        <i class="fal fa-file-user link-icon"></i>
+      <% end %>
+      <%= link_to repos_path, class: class_names('nav-link nav-link__repos'), data: { menu_target: 'link', controller: 'tippy', tippy_content_value: 'Github Repositories' } do %>
+        <i class="fab fa-github link-icon"></i>
+      <% end %>
+      <% if user_signed_in %>
+        <%= link_to new_website_path, class: class_names('nav-link nav-link__new-website'), data: { menu_target: 'link', controller: 'tippy', tippy_content_value: 'New Website' } do %>
+          <i class="fal fa-plus link-icon"></i>
         <% end %>
-        <%= link_to websites_path, class: class_names('nav-link', { active: current_page?(websites_path), '!border-black': current_page?(websites_path) }) do %>
-          <i class="fal fa-browser link-icon <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
-        <% end %>
-        <%= link_to experiences_path, class: class_names('nav-link', { active: current_page?(experiences_path), '!border-black': current_page?(websites_path) }) do %>
-          <i class="fal fa-file-user link-icon <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
-        <% end %>
-        <%= link_to repos_path, class: class_names('nav-link', { active: current_page?(repos_path), '!border-black': current_page?(websites_path) }) do %>
-          <i class="fab fa-github link-icon <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
-        <% end %>
-        <% if user_signed_in %>
-          <%= link_to new_website_path, class: class_names('nav-link', { active: current_page?(new_website_path), '!border-black': current_page?(websites_path) }) do %>
-            <div class="relative">
-              <i class="fal fa-browser link-icon <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
-              <i class="fal fa-plus link-icon absolute text-base bottom-0.5 right-2 <%= class_names('!text-black': current_page?(websites_path)) %>"></i>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
-</nav>
+  <nav class="flex w-full items-center justify-between p-4 z-50 relative">
+    <%= link_to root_path do %>
+      <%= image_tag 'logo.svg', class: 'logo', alt: 'logo' %>
+    <% end %>
+    <div class="flex items-center">
+      <% if current_page?(root_path) %>
+        <%= link_to '#', class: 'inline-block text-black mr-10 z-10', data: { action: 'click->styles#skip', controller: 'tippy', tippy_content_value: 'Skip animation', styles_target: 'skipCta', disable_with: 'skipping...' } do %>
+          <i class="fal fa-lg fa-fast-forward"></i>
+        <% end %>
+      <% end %>
+      <div class="burger burger-rotate" data-action="click->menu#toggle keyup@window->menu#toggle" data-menu-target="burger">
+        <div class="burger-lines"></div>
+      </div>
+    </div>
+  </nav>
+</div>
