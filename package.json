@@ -2,6 +2,7 @@
   "name": "lucien-george-com",
   "private": true,
   "dependencies": {
+    "@animated-burgers/burger-rotate": "^1.1.2",
     "@mdi/font": "^5.9.55",
     "@neojp/tailwindcss-important-variant": "^1.0.1",
     "@rails/actioncable": "^6.0.0",

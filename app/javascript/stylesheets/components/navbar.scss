@@ -6,10 +6,6 @@
   }
 }
 
-.menu-wrapper {
-  @apply flex justify-center;
-}
-
 .menu {
   z-index: 100;
   @apply transition-all duration-500;
@@ -54,12 +50,16 @@
   }
 }
 
-.menu-ring {
-  @apply ring-2 p-6 ring-transparent ring-offset-transparent rounded-full transition-all duration-500;
-  &.active {
-    box-shadow: 0 0 15px $white;
-    @apply ring-white;
-  }
+.burger .burger-lines,
+.burger .burger-lines:after,
+.burger .burger-lines:before {
+  background-color: $black;
+}
+
+.burger.open .burger-lines,
+.burger.open .burger-lines:after,
+.burger.open .burger-lines:before {
+  background-color: $white;
 }
 
 .logo {
