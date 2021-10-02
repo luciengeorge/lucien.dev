@@ -2,7 +2,7 @@
   <div class="fixed w-screen h-screen z-50 transform transition-none scale-0 flex items-center justify-center"
        data-menu-target="background"
        data-action="click->menu#toggle">
-    <div class="bg-black opacity-60 absolue w-screen h-screen"></div>
+    <div class="bg-black absolute w-screen h-screen"></div>
     <div class="menu active grid grid-cols-2" data-menu-target="menu">
       <%= link_to root_path, class: class_names('nav-link nav-link__home'), data: { menu_target: 'link', controller: 'tippy', tippy_content_value: 'Home' } do %>
         <i class="fal fa-home-alt link-icon"></i>
