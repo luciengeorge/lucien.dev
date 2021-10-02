@@ -44,7 +44,7 @@ gem 'turbolinks', '~> 5'
 gem 'twitter-text'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'view_component', require: 'view_component/engine'
-gem 'webpacker', '6.0.0.beta.6'
+gem 'webpacker', '6.0.0.rc.5'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
