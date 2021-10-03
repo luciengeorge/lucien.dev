@@ -43,16 +43,20 @@ export default class extends Controller {
   get text() {
     return `/*
  * Hey! My name is Lucien 👋
- * I am a Web Developer from Beirut, Lebanon 🇱🇧
+ * I am a Software Engineer from Beirut, Lebanon 🇱🇧
  * How are you doing?
  *
- * It's a beautiful day to code a website 👨‍💻
- * I am just adding some style to this ugly page
+ * It's a beautiful day to build a website 👨‍💻
+ * I am just adding some styles to this ugly page
  * Let's see...
- * How about we start by animating everything!
+ * How about we start by animating, well, everything!
  */
 
 * {
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  -ms-transition: all 500ms;
+  -o-transition: all 500ms;
   transition: all 500ms;
 }
 
