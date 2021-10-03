@@ -29,7 +29,7 @@
     <% end %>
     <div class="flex items-center">
       <% if current_page?(root_path) %>
-        <%= link_to '#', class: 'inline-block text-black mr-10 z-10', data: { action: 'click->styles#skip', controller: 'tippy', tippy_content_value: 'Skip animation', styles_target: 'skipCta', disable_with: 'skipping...' } do %>
+        <%= link_to '#', class: 'inline-block text-white sm:text-black mr-10 z-10', data: { action: 'click->styles#skip', controller: 'tippy', tippy_content_value: 'Skip animation', styles_target: 'skipCta', disable_with: 'skipping...' } do %>
           <i class="fal fa-lg fa-fast-forward"></i>
         <% end %>
       <% end %>
