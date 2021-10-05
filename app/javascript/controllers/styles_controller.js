@@ -71,7 +71,7 @@ export default class extends Controller {
 }
 
 /*
- * A bit boring 🤔. Let's pimp it a little and add some styling to the page.
+ * A bit boring 🤔. Let's pimp it up a little and add some styling to the page.
  */
 
 pre {
