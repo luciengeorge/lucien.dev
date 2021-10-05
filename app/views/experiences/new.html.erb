@@ -1,7 +1,7 @@
 <%= content_for :meta_title, "New Experience" %>
 
 <div class="grid grid-cols-12">
-  <div class="card">
+  <div class="card bg-primary">
     <h2 class="mb-3 text-white text-center">New experience</h2>
     <%= simple_form_for @experience do |f| %>
       <%= f.input :title, placeholder: 'Job title', wrapper_html: { class: 'mb-3' }, input_html: { class: 'form-input' }, label_html: { class: 'sr-only' } %>
