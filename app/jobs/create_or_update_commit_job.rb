@@ -2,6 +2,8 @@ class CreateOrUpdateCommitJob < ApplicationJob
   queue_as :default
 
   def perform(repo, commit)
+    return if commit[:sha].blank?
+
     @commit = Commit.find_or_create_by(sha: commit[:sha])
     @commit.update!(
       message: commit.dig(:commit, :message),
