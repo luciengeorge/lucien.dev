@@ -2,7 +2,7 @@ import { Controller } from 'stimulus';
 import { writeText } from '../packs/components/live_typing';
 
 export default class extends Controller {
-  static targets = [ 'pre', 'style', 'skipCta' ];
+  static targets = [ 'pre', 'style', 'skipCta', 'markdown' ];
   static classes = [ 'noTransition' ];
 
   connect() {
@@ -24,6 +24,8 @@ export default class extends Controller {
   renderSuccess() {
     writeText(this.transitionSuccessText, this.preTarget, 0, this.styleTarget, () => {
       this.preTarget.setAttribute('contenteditable', 'true');
+      this.preTarget.style.overflow = 'scroll';
+      this.markdownTarget.style.overflow = 'scroll';
       this.skipCtaTarget.remove();
     });
   }
@@ -78,7 +80,7 @@ pre {
   max-height: calc(100vh - 130px);
   white-space: pre-wrap;
   margin: 0 auto;
-  overflow: scroll;
+  overflow: hidden;
   color: #ffffff;
   padding: 32px 24px;
 }
@@ -110,7 +112,7 @@ pre em:not(.comment) { font-style: normal; }
   white-space: pre-wrap;
   line-height: initial;
   max-height: calc(100vh - 130px);
-  overflow: scroll;
+  overflow: hidden;
   overflow-wrap: break-word;
   color: #000000;
   padding: 32px 24px;
