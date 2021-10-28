@@ -32,7 +32,7 @@ body {
     background: #111827;
   }
   @apply text-white;
-  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
 }
 
 input.form-input {

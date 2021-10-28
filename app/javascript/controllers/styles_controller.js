@@ -77,7 +77,7 @@ export default class extends Controller {
  */
 
 pre {
-  max-height: calc(100vh - 130px);
+  max-height: calc(var(--vh, 1vh) * 100 - 130px);
   white-space: pre-wrap;
   margin: 0 auto;
   overflow: hidden;
@@ -111,7 +111,7 @@ pre em:not(.comment) { font-style: normal; }
 #markdown {
   white-space: pre-wrap;
   line-height: initial;
-  max-height: calc(100vh - 130px);
+  max-height: calc(var(--vh, 1vh) * 100 - 130px);
   overflow: hidden;
   overflow-wrap: break-word;
   color: #000000;

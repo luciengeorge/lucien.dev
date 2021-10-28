@@ -7,7 +7,7 @@
 }
 
 .min-h-wrapper {
-  min-height: calc(100vh - 100px);
+  min-height: calc(var(--vh, 1vh) * 100 - 100px);
 }
 
 .max-height-70 {
