@@ -5,10 +5,10 @@ namespace :db do
   task dump: [:environment] do
     status = system `git status --porcelain`
     if status.nil?
-      puts "Checking out to master..."
-      system "git checkout master"
+      puts "Checking out to main..."
+      system "git checkout main"
       puts "Pulling last version of the code..."
-      system "git pull origin master"
+      system "git pull origin main"
       puts "Dropping database..."
       system "rails db:drop"
       puts "Dumping db..."
