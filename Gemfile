@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.0'
+ruby '3.0.3'
 
 gem 'actionpack', '>= 6.1.3.2'
 gem 'addressable', '>= 2.8.0'
-gem 'appsignal', '~> 2.0'
+gem 'appsignal', '~> 3.0'
 gem 'autoprefixer-rails'
 gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.4.4', require: false
