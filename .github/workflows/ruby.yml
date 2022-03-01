@@ -40,7 +40,7 @@ jobs:
           - 6379:6379
     steps:
       - name: Checkout repository # copies repo in runner
-        uses: actions/checkout@v2 # short for https://github.com/actions/checkout
+        uses: actions/checkout@v3 # short for https://github.com/actions/checkout
       - name: Install idn
         run: |
           sudo apt-get install libldap2-dev
