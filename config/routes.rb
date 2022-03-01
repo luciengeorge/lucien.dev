@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, skip: :registrations
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do
