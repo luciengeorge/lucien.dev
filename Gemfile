@@ -5,7 +5,7 @@ ruby '3.0.3'
 
 gem 'actionpack', '>= 6.1.3.2'
 gem 'addressable', '>= 2.8.0'
-gem 'appsignal', '~> 2.0'
+gem 'appsignal'
 gem 'autoprefixer-rails'
 gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.4.4', require: false
@@ -43,7 +43,7 @@ gem 'tailwindcss-rails', '~> 0.3.3'
 gem 'turbolinks', '~> 5'
 gem 'twitter-text'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'view_component', require: 'view_component/engine'
+gem 'view_component'
 gem 'webpacker', '6.0.0.beta.6'
 
 group :development, :test do
