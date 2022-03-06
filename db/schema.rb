@@ -10,8 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
-
+ActiveRecord::Schema[7.0].define(version: 2022_03_01_193604) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,8 +19,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.text "body"
     t.string "record_type", null: false
     t.bigint "record_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
   end
 
@@ -30,7 +29,7 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.string "record_type", null: false
     t.bigint "record_id", null: false
     t.bigint "blob_id", null: false
-    t.datetime "created_at", null: false
+    t.datetime "created_at", precision: nil, null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
@@ -42,8 +41,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.text "metadata"
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
-    t.string "checksum", null: false
-    t.datetime "created_at", null: false
+    t.string "checksum"
+    t.datetime "created_at", precision: nil, null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
@@ -60,9 +59,9 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.string "sha"
     t.string "url"
     t.string "html_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.datetime "pushed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "pushed_at", precision: nil
     t.index ["contributor_id"], name: "index_commits_on_contributor_id"
     t.index ["repo_id"], name: "index_commits_on_repo_id"
   end
@@ -73,8 +72,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.string "address"
     t.float "latitude"
     t.float "longitude"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "contributors", force: :cascade do |t|
@@ -87,8 +86,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.integer "gh_id"
     t.string "gh_type"
     t.string "api_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "educations", force: :cascade do |t|
@@ -96,8 +95,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.date "start_date"
     t.date "end_date"
     t.string "degree"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["school_id"], name: "index_educations_on_school_id"
   end
 
@@ -105,8 +104,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.string "title"
     t.date "start_date"
     t.date "end_date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.bigint "company_id", null: false
     t.integer "job_type", default: 0, null: false
     t.integer "rank"
@@ -116,8 +115,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
 
   create_table "languages", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "color"
   end
 
@@ -125,8 +124,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.bigint "repo_id", null: false
     t.bigint "contributor_id", null: false
     t.integer "contribution_count"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["contributor_id"], name: "index_repo_contributors_on_contributor_id"
     t.index ["repo_id"], name: "index_repo_contributors_on_repo_id"
   end
@@ -135,8 +134,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.bigint "language_id", null: false
     t.bigint "repo_id", null: false
     t.integer "size"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["language_id"], name: "index_repo_languages_on_language_id"
     t.index ["repo_id"], name: "index_repo_languages_on_repo_id"
   end
@@ -149,15 +148,15 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.string "html_url"
     t.string "api_url"
     t.boolean "fork"
-    t.datetime "pushed_at"
+    t.datetime "pushed_at", precision: nil
     t.string "git_url"
     t.string "homepage"
     t.integer "size"
     t.integer "stars"
     t.integer "forks"
     t.integer "open_issues"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "gh_id"
     t.integer "commits_count"
   end
@@ -165,21 +164,21 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
   create_table "schools", force: :cascade do |t|
     t.string "name"
     t.string "city"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "reset_password_sent_at", precision: nil
+    t.datetime "remember_created_at", precision: nil
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
+    t.datetime "confirmed_at", precision: nil
+    t.datetime "confirmation_sent_at", precision: nil
     t.string "unconfirmed_email"
     t.boolean "admin", default: false, null: false
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -193,8 +192,8 @@ ActiveRecord::Schema[6.1].define(version: 2021_08_22_144231) do
     t.string "image_url"
     t.string "url"
     t.bigint "repo_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["repo_id"], name: "index_websites_on_repo_id"
   end
 

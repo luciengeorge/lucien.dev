@@ -18,6 +18,7 @@ gem 'geocoder'
 gem 'groupdate'
 gem 'grover', '~> 1.0'
 gem 'image_processing', '~> 1.2'
+gem 'importmap-rails'
 gem 'jbuilder', '~> 2.7'
 gem 'nokogiri', '>= 1.11.4'
 gem 'octokit', '~> 4.20'
@@ -38,12 +39,12 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'simple_form'
 gem 'simple_form-tailwind'
+gem 'stimulus-rails'
 gem 'tailwindcss-rails', '~> 0.3.3'
-gem 'turbolinks', '~> 5'
+gem 'turbo-rails'
 gem 'twitter-text'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'view_component'
-gem 'webpacker', '6.0.0.beta.6'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

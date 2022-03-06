@@ -1,12 +1,11 @@
-import { Application } from 'stimulus';
-import { definitionsFromContext } from 'stimulus/webpack-helpers';
-import LazyLoader from 'stimulus-lazy-loader';
-import { Tabs, Toggle, Slideover } from 'tailwindcss-stimulus-components';
+// Import and register all your controllers from the importmap under controllers/*
 
-const application = Application.start();
-application.register('lazy-loader', LazyLoader);
-application.register('tabs', Tabs);
-application.register('toggle', Toggle);
-application.register('slideover', Slideover);
-const context = require.context('controllers', true, /_controller\.js$/);
-application.load(definitionsFromContext(context));
+import { application } from "controllers/application"
+
+// Eager load all controllers defined in the import map under controllers/**/*_controller
+// import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
+// eagerLoadControllersFrom("controllers", application)
+
+// Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
+import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
+lazyLoadControllersFrom("controllers", application)

@@ -1,3 +1,4 @@
+
 require_relative "boot"
 
 require "rails/all"
@@ -6,13 +7,12 @@ require "rails/all"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module LucienGeorgeCom
+module LucienDev
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
     config.active_job.queue_adapter = :sidekiq
     config.active_record.cache_versioning = false
-    Webpacker::Compiler.env["TAILWIND_MODE"] = "build"
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
