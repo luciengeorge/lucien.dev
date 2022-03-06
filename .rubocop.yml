@@ -52,7 +52,7 @@ Layout/FirstHashElementIndentation:
 Layout/ClosingParenthesisIndentation:
   Enabled: false
 # increases the line length to 160 chars
-Metrics/LineLength:
+Layout/LineLength:
   Max: 160
 # increase the method length to 20 lines
 Metrics/MethodLength:

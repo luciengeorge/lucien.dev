@@ -1,6 +1,5 @@
 import "@hotwired/turbo-rails";
 import "controllers";
-import "trix";
 import "@rails/actiontext";
 import AOS from 'aos';
 import gtag from './components/analytics';
