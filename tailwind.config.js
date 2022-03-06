@@ -3,12 +3,13 @@ const colors = require('tailwindcss/colors');
 
 module.exports = {
   mode: 'jit',
-  purge: [
-    './app/**/*.html.erb',
+  content: [
+    './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
+    './app/assets/stylesheets/**/*.css',
     './app/javascript/**/*.js'
   ],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: 'media', // or 'class'
   corePlugins: {
     preflight: true
   },

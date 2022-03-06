@@ -3,14 +3,16 @@
   <head>
     <%= render MetaComponent.new %>
 
-    <%= stylesheet_link_tag "inter-font" %>
-    <%= stylesheet_link_tag "tailwind" %>
+    <%= stylesheet_link_tag "inter-font", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "tailwind", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag 'https://pro.fontawesome.com/releases/v5.15.3/css/all.css', integrity: Rails.application.credentials.font_awesome_integrity, crossorigin: 'anonymous' %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <%= javascript_importmap_tags %>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8YLBT9M560"></script>
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
   </head>
 
   <body class="<%= class_names('!bg-white': current_page?(websites_path) && !browser.device.mobile?) %>">

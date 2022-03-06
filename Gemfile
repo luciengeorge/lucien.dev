@@ -10,6 +10,7 @@ gem 'autoprefixer-rails'
 gem 'aws-sdk-s3', require: false
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'browser', '~> 5.3'
+gem 'cssbundling-rails'
 gem 'devise'
 gem 'draper'
 gem 'faraday-http-cache'

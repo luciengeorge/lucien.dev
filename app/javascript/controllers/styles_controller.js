@@ -6,7 +6,6 @@ export default class extends Controller {
   static classes = [ 'noTransition' ];
 
   connect() {
-    console.log('connected');
     writeText(this.text, this.preTarget, 0, this.styleTarget, () => {
       this.element.dispatchEvent(new Event(`${this.identifier}-done`));
     });

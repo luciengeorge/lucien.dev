@@ -124,6 +124,8 @@ GEM
     concurrent-ruby (1.1.9)
     connection_pool (2.2.5)
     crass (1.0.6)
+    cssbundling-rails (1.1.0)
+      railties (>= 6.0.0)
     devise (4.8.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -475,6 +477,7 @@ DEPENDENCIES
   bullet
   byebug
   capybara (>= 3.26)
+  cssbundling-rails
   devise
   dotenv-rails
   draper
