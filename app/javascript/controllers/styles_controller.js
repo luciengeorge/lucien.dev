@@ -1,11 +1,12 @@
-import { Controller } from 'stimulus';
-import { writeText } from '../packs/components/live_typing';
+import { Controller } from '@hotwired/stimulus';
+import { writeText } from '../components/live_typing';
 
 export default class extends Controller {
   static targets = [ 'pre', 'style', 'skipCta', 'markdown' ];
   static classes = [ 'noTransition' ];
 
   connect() {
+    console.log('connected');
     writeText(this.text, this.preTarget, 0, this.styleTarget, () => {
       this.element.dispatchEvent(new Event(`${this.identifier}-done`));
     });

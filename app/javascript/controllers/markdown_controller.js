@@ -1,5 +1,5 @@
-import { Controller } from 'stimulus';
-import { writeText, skip } from '../packs/components/live_typing';
+import { Controller } from '@hotwired/stimulus';
+import { writeText, skip } from '../components/live_typing';
 import MarkdownIt from 'markdown-it';
 
 export default class extends Controller {

@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%= render 'shared/meta' %>
+    <%= render MetaComponent.new %>
 
     <%= stylesheet_link_tag "inter-font" %>
     <%= stylesheet_link_tag "tailwind" %>
     <%= stylesheet_link_tag 'https://pro.fontawesome.com/releases/v5.15.3/css/all.css', integrity: Rails.application.credentials.font_awesome_integrity, crossorigin: 'anonymous' %>
-    <%#= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%#= stylesheet_pack_tag "application", media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%#= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
     <%= javascript_importmap_tags %>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
