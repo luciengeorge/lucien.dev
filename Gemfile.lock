@@ -249,8 +249,6 @@ GEM
     next_rails (1.0.4)
       colorize (>= 0.8.1)
     nio4r (2.5.8)
-    nokogiri (1.13.3-arm64-darwin)
-      racc (~> 1.4)
     nokogiri (1.13.3-x86_64-linux)
       racc (~> 1.4)
     numerizer (0.1.1)
@@ -521,6 +519,7 @@ DEPENDENCIES
   simple_form
   simple_form-tailwind
   spring
+  sprockets-rails
   stimulus-rails
   tailwindcss-rails (~> 0.3.3)
   turbo-rails

@@ -2,16 +2,21 @@ const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
 
 module.exports = {
-  mode: 'jit',
   content: [
-    './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
-    './app/assets/stylesheets/**/*.css',
-    './app/javascript/**/*.js'
+    './app/javascript/**/*.js',
+    './app/views/**/*'
   ],
   darkMode: 'media', // or 'class'
   corePlugins: {
     preflight: true
+  },
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
   variants: [
     'responsive',
@@ -35,6 +40,8 @@ module.exports = {
   ],
   plugins: [
     require('@tailwindcss/forms'),
-    require('tailwindcss-important')
+    require('tailwindcss-important'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'),
   ],
 }
