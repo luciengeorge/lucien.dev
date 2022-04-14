@@ -1,11 +1,13 @@
 const plugin = require('tailwindcss/plugin');
 const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: [
+    './app/views/**/*.html.erb',
     './app/helpers/**/*.rb',
-    './app/javascript/**/*.js',
-    './app/views/**/*'
+    './app/assets/stylesheets/**/*.css',
+    './app/javascript/**/*.js'
   ],
   darkMode: 'media', // or 'class'
   corePlugins: {
@@ -39,9 +41,9 @@ module.exports = {
     'active'
   ],
   plugins: [
-    require('@tailwindcss/forms'),
-    require('tailwindcss-important'),
-    require('@tailwindcss/aspect-ratio'),
-    require('@tailwindcss/typography'),
+    // require('@tailwindcss/forms'),
+    // require('tailwindcss-important'),
+    // require('@tailwindcss/aspect-ratio'),
+    // require('@tailwindcss/typography'),
   ],
 }
