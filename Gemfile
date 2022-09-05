@@ -39,7 +39,7 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'simple_form'
 gem 'simple_form-tailwind'
-gem 'tailwindcss-rails', '~> 0.3.3'
+gem 'tailwindcss-rails', '~> 2.0.13'
 gem 'turbolinks', '~> 5'
 gem 'twitter-text'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
