@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.3'
+ruby '3.1.0'
 
 gem 'actionpack', '>= 6.1.3.2'
 gem 'addressable', '>= 2.8.0'
@@ -26,6 +26,7 @@ gem 'pagy', '~> 3.5'
 gem 'pg', '~> 1.1'
 gem 'postmark-rails'
 gem 'prawn'
+gem 'psych', '< 4'
 gem 'puma', '>= 5.3.1'
 gem 'pundit', '~> 2.1'
 gem 'rack-canonical-host'
