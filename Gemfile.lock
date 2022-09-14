@@ -547,7 +547,7 @@ DEPENDENCIES
   webpacker (= 6.0.0.beta.6)
 
 RUBY VERSION
-   ruby 3.1.0p0
+   ruby 3.0.3p157
 
 BUNDLED WITH
-   2.3.7
+   2.3.5
