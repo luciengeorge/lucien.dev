@@ -35,15 +35,6 @@ class ApplicationController < ActionController::Base
     store_location_for(:user, request.fullpath)
   end
 
-  def tag_request
-    return if !user_signed_in? || !defined?(Appsignal)
-
-    Appsignal.tag_request(
-      username: current_user.username,
-      user_id: current_user.id
-    )
-  end
-
   def not_found
     respond_to do |format|
       format.html { render_not_found_template }
