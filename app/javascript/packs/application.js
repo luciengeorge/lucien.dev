@@ -21,6 +21,6 @@ import gtag from './components/analytics';
 
 document.addEventListener('turbolinks:load', () => {
   const vh = window.innerHeight * 0.01;
-  document.documentElement.setProperty('--vh', `${vh}px`);
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
   AOS.init();
 });
