@@ -29,12 +29,14 @@
     "mini-css-extract-plugin": "^1.4.1",
     "places.js": "1.16.1",
     "popper.js": "^1.16.1",
-    "postcss": "^8.2.10",
+    "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
-    "postcss-import": "^14.0.1",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "postcss-import": "^15.1.0",
     "postcss-loader": "^5.2.0",
-    "postcss-nested": "^5.0.5",
-    "postcss-preset-env": "^6.7.0",
+    "postcss-nested": "^6.0.1",
+    "postcss-preset-env": "^9.3.0",
+    "postcss-scss": "^4.0.9",
     "process": "^0.11.10",
     "punycode": "^2.1.1",
     "puppeteer": "^10.0.0",
@@ -42,6 +44,7 @@
     "sass-loader": "^11.0.1",
     "stimulus-lazy-loader": "^1.1.2",
     "style-loader": "^2.0.0",
+    "tailwindcss": "^3.3.5",
     "tailwindcss-important": "^1.0.0",
     "tailwindcss-stimulus-components": "^2.1.2",
     "tippy.js": "^6.3.1",
@@ -56,6 +59,7 @@
     "defaults"
   ],
   "scripts": {
-    "build": "webpack --config webpack.config.js"
+    "build": "webpack --config webpack.config.js",
+    "build:css": "postcss ./app/assets/stylesheets/application.scss -o ./app/assets/builds/application.css"
   }
 }

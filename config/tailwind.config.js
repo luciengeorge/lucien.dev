@@ -3,13 +3,11 @@ const plugin = require('tailwindcss/plugin')
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  mode: 'jit',
   content: [
     './public/*.html',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
     './app/views/**/*.{erb,haml,html,slim}',
-    './app/components/**/*.{erb,html}',
     './app/**/*.html.erb',
   ],
   theme: {
@@ -18,10 +16,6 @@ module.exports = {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
       },
     },
-  },
-  darkMode: 'media',
-  corePlugins: {
-    preflight: true,
   },
   variants: [
     'responsive',

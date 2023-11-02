@@ -1,6 +1,4 @@
 // External libraries
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
 // Graphical variables
 @import 'config/fonts.scss';
 @import 'config/colors.scss';
@@ -9,3 +7,7 @@
 // Your CSS partials
 @import 'components/index.scss';
 @import 'pages/index.scss';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
