@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.0.3'
+ruby '3.2.2'
 
 gem 'actionpack', '>= 6.1.3.2'
 gem 'addressable', '>= 2.8.0'
@@ -15,7 +15,7 @@ gem 'faraday-http-cache'
 gem 'font-awesome-sass'
 gem 'geocoder'
 gem 'groupdate'
-gem 'grover', '~> 1.0'
+gem 'grover'
 gem 'image_processing', '~> 1.2'
 gem 'jbuilder', '~> 2.7'
 gem 'nokogiri', '>= 1.11.4'
@@ -41,7 +41,6 @@ gem 'simple_form'
 gem 'simple_form-tailwind'
 gem 'tailwindcss-rails', '~> 0.3.3'
 gem 'turbolinks', '~> 5'
-gem 'twitter-text'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'view_component', require: 'view_component/engine'
 gem 'webpacker', '6.0.0.beta.6'
