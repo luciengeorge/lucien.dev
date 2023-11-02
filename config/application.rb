@@ -12,7 +12,7 @@ module LucienGeorgeCom
     config.load_defaults 6.1
     config.active_job.queue_adapter = :sidekiq
     config.active_record.cache_versioning = false
-    Webpacker::Compiler.env["TAILWIND_MODE"] = "build"
+    config.action_view.form_with_generates_remote_forms = false
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files

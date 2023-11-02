@@ -1,12 +1,12 @@
-import { Controller } from 'stimulus';
-import places from 'places.js';
+import {Controller} from '@hotwired/stimulus'
+import places from 'places.js'
 
 export default class extends Controller {
-  static targets = [ 'input' ];
+  static targets = ['input']
 
   connect() {
     places({
-      container: this.inputTarget
-    });
+      container: this.inputTarget,
+    })
   }
 }

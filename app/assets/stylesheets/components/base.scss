@@ -31,7 +31,7 @@ body {
   @media only screen and (max-width: 640px) {
     background: #111827;
   }
-  @apply text-white;
+  color: white;
   min-height: calc(var(--vh, 1vh) * 100);
 }
 

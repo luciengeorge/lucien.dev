@@ -4,12 +4,12 @@
     <%= render 'shared/meta' %>
 
     <%= stylesheet_link_tag 'https://pro.fontawesome.com/releases/v5.15.3/css/all.css', integrity: Rails.application.credentials.font_awesome_integrity, crossorigin: 'anonymous' %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_pack_tag "application", media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", media: 'all', "data-turbo-track": "reload" %>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-8YLBT9M560"></script>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body class="<%= class_names('!bg-white': current_page?(websites_path) && !browser.device.mobile?) %>">

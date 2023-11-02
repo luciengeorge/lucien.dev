@@ -39,11 +39,11 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'simple_form'
 gem 'simple_form-tailwind'
-gem 'tailwindcss-rails', '~> 0.3.3'
-gem 'turbolinks', '~> 5'
+gem "tailwindcss-rails"
+gem "turbo-rails"
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'view_component', require: 'view_component/engine'
-gem 'webpacker', '6.0.0.beta.6'
+gem 'view_component'
+gem "jsbundling-rails"
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

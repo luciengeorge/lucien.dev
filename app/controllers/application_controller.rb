@@ -1,11 +1,12 @@
 class ApplicationController < ActionController::Base
+  include Turbo::Redirection
+  include Pundit
+  include Pagy::Backend
+
   before_action :authenticate_user!
   before_action :store_user_location!, if: :storable_location?
   after_action :verify_authorized, except: :index, unless: :skip_pundit?
   after_action :verify_policy_scoped, only: :index, unless: :skip_pundit?
-
-  include Pundit
-  include Pagy::Backend
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
   rescue_from Pundit::NotDefinedError, with: :not_found
