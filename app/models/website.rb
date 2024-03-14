@@ -15,7 +15,11 @@ class Website < ApplicationRecord
     ogp = OGP::OpenGraph.new(response)
     self.title = ogp.title
     self.description = ogp.description
-    self.image_url = ogp.images.first.url
+    image_url = ogp.images.first.url
+    if image_url.start_with?('/')
+      image_url = URI.join(ogp.url, image_url).to_s
+    end
+    self.image_url = image_url
     self
   end
 end
