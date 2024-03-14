@@ -1,10 +1,8 @@
 import {Application} from '@hotwired/stimulus'
 import {definitionsFromContext} from '@hotwired/stimulus-webpack-helpers'
-import * as LazyLoader from 'stimulus-lazy-loader'
 import {Tabs, Toggle, Slideover} from 'tailwindcss-stimulus-components'
 
 const application = Application.start()
-application.register('lazy-loader', LazyLoader)
 application.register('tabs', Tabs)
 application.register('toggle', Toggle)
 application.register('slideover', Slideover)

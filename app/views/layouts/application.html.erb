@@ -13,7 +13,7 @@
   </head>
 
   <body class="<%= class_names('!bg-white': current_page?(websites_path) && !browser.device.mobile?) %>">
-    <div data-controller="lazy-loader <%= 'styles markdown' if current_page?(root_path) %>"
+    <div data-controller="<%= 'styles markdown' if current_page?(root_path) %>"
          data-markdown-img-url-value="https://s3.eu-west-2.amazonaws.com/lucien-george.com/static/me.png"
          data-styles-no-transition-class="noTransition"
          data-action="styles-done->markdown#start markdown-done->styles#transition styles-transition-done->markdown#render markdown-rendered->styles#renderSuccess">

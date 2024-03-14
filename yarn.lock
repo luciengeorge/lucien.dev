@@ -5737,13 +5737,6 @@ statuses@2.0.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
 
-stimulus-lazy-loader@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/stimulus-lazy-loader/-/stimulus-lazy-loader-2.0.2.tgz#c6352621c20f26c5511620b7ffe89d5c572dca99"
-  integrity sha512-q9kiMmDfcZ7SROdbXgnU5JPGg15ttAxEbnxueXjg24KeL4+ibX1hKim7IPilIIG9mqWrdM7PonndDyRubLqV2w==
-  dependencies:
-    "@hotwired/stimulus" "^3.2.2"
-
 streamx@^2.13.0, streamx@^2.15.0:
   version "2.16.1"
   resolved "https://registry.yarnpkg.com/streamx/-/streamx-2.16.1.tgz#2b311bd34832f08aa6bb4d6a80297c9caef89614"

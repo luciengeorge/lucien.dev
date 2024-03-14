@@ -1,7 +1,7 @@
 <% websites.each_with_index do |website, index| %>
   <div class="<%= klasses(index) %>">
     <div class="w-full h-full website-card relative">
-      <%= image_tag "loading.gif", alt: website.title, class: 'absolute inset-0 object-contain md:object-cover object-center w-full h-full', data: { src: website.decorate.cover_url, lazy_loader_target: 'image' } %>
+      <%= image_tag website.decorate.cover_url, alt: website.title, class: 'absolute inset-0 object-contain md:object-cover object-center w-full h-full', loading: 'lazy' %>
       <%= link_to website.url, target: :blank, class: 'absolute inset-0' do %>
         <div class="website-card--layover">
           <h3><%= website.title %></h3>
