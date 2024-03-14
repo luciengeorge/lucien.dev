@@ -3,6 +3,6 @@ module.exports = {
     require('tailwindcss')('./app/javascript/stylesheets/tailwind.config.js'),
     require('postcss-import'),
     require('postcss-nested'),
-    require('autoprefixer')
-  ]
+    require('autoprefixer'),
+  ],
 }

@@ -1,118 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-  <title>The page you were looking for doesn't exist (404)</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap" rel="stylesheet">
-  <script>
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  </script>
-  <style>
-    body {
-      height:   calc(var(--vh, 1vh) * 100);
-      display:  flex;
-      align-items:  center;
-      justify-content: center;
-      flex-direction: column;
-      background: #111827;
-      margin: 0;
-      color:  #ffffff;
-      font-family: 'Caveat', cursive;
-      font-size: 18px;
-    }
-
-    a {
-      font-weight:  bold;
-      text-decoration: underline;
-      color:  white;
-    }
-
-    .title-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction:  column;
-      padding: 2.4em;
-      border: 0.2rem solid #fff;
-      animation: flicker-border 1.5s infinite alternate;
-      border-radius: 2rem;
-      box-shadow:
-        0 0 .2rem #fff,
-        0 0 .2rem #fff,
-        0 0 2rem #0fa,
-        0 0 0.8rem #0fa,
-        0 0 2.8rem #0fa,
-        inset 0 0 1.3rem #0fa;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 8rem;
-      letter-spacing: 0.4rem;
-    }
-    h1, h2, a {
-      color: #fff;
-      text-shadow:
-        0 0 7px #fff,
-        0 0 10px #fff,
-        0 0 21px #fff,
-        0 0 42px #0fa,
-        0 0 82px #0fa,
-        0 0 92px #0fa,
-        0 0 102px #0fa,
-        0 0 151px #0fa;
-      animation: flicker 1.5s infinite alternate;
-    }
-
-    /* Flickering animation */
-    @keyframes flicker {
-      0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        text-shadow:
-          0 0 4px #fff,
-          0 0 11px #fff,
-          0 0 19px #fff,
-          0 0 40px #0fa,
-          0 0 80px #0fa,
-          0 0 90px #0fa,
-          0 0 100px #0fa,
-          0 0 150px #0fa;
-
+  <head>
+    <title>The page you were looking for doesn't exist (404)</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      let vh = window.innerHeight * 0.01
+      document.documentElement.style.setProperty('--vh', `${vh}px`)
+    </script>
+    <style>
+      body {
+        height: calc(var(--vh, 1vh) * 100);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #111827;
+        margin: 0;
+        color: #ffffff;
+        font-family: 'Caveat', cursive;
+        font-size: 18px;
       }
 
-      20%, 24%, 55% {
-        text-shadow: none;
+      a {
+        font-weight: bold;
+        text-decoration: underline;
+        color: white;
       }
-    }
 
-    @keyframes flicker-border {
-      0%, 18%, 22%, 25%, 53%, 57%, 100% {
-        border-color: #fff;
+      .title-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 2.4em;
+        border: 0.2rem solid #fff;
+        animation: flicker-border 1.5s infinite alternate;
+        border-radius: 2rem;
         box-shadow:
-          0 0 .2rem #fff,
-          0 0 .2rem #fff,
+          0 0 0.2rem #fff,
+          0 0 0.2rem #fff,
           0 0 2rem #0fa,
           0 0 0.8rem #0fa,
           0 0 2.8rem #0fa,
           inset 0 0 1.3rem #0fa;
       }
 
-      20%, 24%, 55% {
-        box-shadow: none;
-        border-color: transparent;
+      h1 {
+        margin: 0;
+        font-size: 8rem;
+        letter-spacing: 0.4rem;
       }
-    }
-  </style>
-</head>
+      h1,
+      h2,
+      a {
+        color: #fff;
+        text-shadow:
+          0 0 7px #fff,
+          0 0 10px #fff,
+          0 0 21px #fff,
+          0 0 42px #0fa,
+          0 0 82px #0fa,
+          0 0 92px #0fa,
+          0 0 102px #0fa,
+          0 0 151px #0fa;
+        animation: flicker 1.5s infinite alternate;
+      }
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="title-container">
-    <h1>422</h1>
-    <h2>The change you wanted was rejected.</h2>
-    <a href="/">Return to the home page</a>
-  </div>
-</body>
+      /* Flickering animation */
+      @keyframes flicker {
+        0%,
+        18%,
+        22%,
+        25%,
+        53%,
+        57%,
+        100% {
+          text-shadow:
+            0 0 4px #fff,
+            0 0 11px #fff,
+            0 0 19px #fff,
+            0 0 40px #0fa,
+            0 0 80px #0fa,
+            0 0 90px #0fa,
+            0 0 100px #0fa,
+            0 0 150px #0fa;
+        }
+
+        20%,
+        24%,
+        55% {
+          text-shadow: none;
+        }
+      }
+
+      @keyframes flicker-border {
+        0%,
+        18%,
+        22%,
+        25%,
+        53%,
+        57%,
+        100% {
+          border-color: #fff;
+          box-shadow:
+            0 0 0.2rem #fff,
+            0 0 0.2rem #fff,
+            0 0 2rem #0fa,
+            0 0 0.8rem #0fa,
+            0 0 2.8rem #0fa,
+            inset 0 0 1.3rem #0fa;
+        }
+
+        20%,
+        24%,
+        55% {
+          box-shadow: none;
+          border-color: transparent;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="rails-default-error-page">
+    <!-- This file lives in public/404.html -->
+    <div class="title-container">
+      <h1>422</h1>
+      <h2>The change you wanted was rejected.</h2>
+      <a href="/">Return to the home page</a>
+    </div>
+  </body>
 </html>

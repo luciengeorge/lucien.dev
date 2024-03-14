@@ -45,7 +45,11 @@
     @apply col-span-1;
     transform: translateY(50vh);
   }
-  &__home.active, &__websites.active, &__resume.active, &__repos.active, &__new-website.active {
+  &__home.active,
+  &__websites.active,
+  &__resume.active,
+  &__repos.active,
+  &__new-website.active {
     transform: translateX(0) translateY(0);
   }
 }

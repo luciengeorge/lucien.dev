@@ -9,8 +9,12 @@
 }
 
 @keyframes turn {
-  from { transform: rotate3d(0, 0, 0, 0); }
-  to { transform: rotate3d(1, 1, 0, 360deg); }
+  from {
+    transform: rotate3d(0, 0, 0, 0);
+  }
+  to {
+    transform: rotate3d(1, 1, 0, 360deg);
+  }
 }
 
 .cube {
@@ -27,7 +31,6 @@
     transform: rotate3d(1, 1, 0, 45deg);
   }
 }
-
 
 .face {
   width: 20px;

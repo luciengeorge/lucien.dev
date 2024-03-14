@@ -2,7 +2,8 @@
   max-width: 100%;
 }
 
-pre, #markdown {
+pre,
+#markdown {
   max-width: 100%;
   overflow: hidden;
   overflow-wrap: break-word;
@@ -12,7 +13,8 @@ pre, #markdown {
 }
 
 @media only screen and (max-width: 640px) {
-  pre, #markdown {
+  pre,
+  #markdown {
     max-width: 100%;
     overflow: hidden;
     overflow-wrap: break-word;

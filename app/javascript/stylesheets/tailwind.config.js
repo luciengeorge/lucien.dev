@@ -1,16 +1,16 @@
-const plugin = require('tailwindcss/plugin');
-const colors = require('tailwindcss/colors');
+const plugin = require('tailwindcss/plugin')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
   mode: 'jit',
   purge: [
     './app/**/*.html.erb',
     './app/helpers/**/*.rb',
-    './app/javascript/**/*.js'
+    './app/javascript/**/*.js',
   ],
   darkMode: false, // or 'media' or 'class'
   corePlugins: {
-    preflight: true
+    preflight: true,
   },
   variants: [
     'responsive',
@@ -30,10 +30,7 @@ module.exports = {
     'hover',
     'focus',
     'focus-visible',
-    'active'
+    'active',
   ],
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('tailwindcss-important')
-  ],
+  plugins: [require('@tailwindcss/forms'), require('tailwindcss-important')],
 }
