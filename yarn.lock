@@ -2218,7 +2218,7 @@ core-util-is@~1.0.0:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.3.tgz#a6042d3634c2b27e9328f837b965fac83808db85"
   integrity sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==
 
-cosmiconfig@9.0.0:
+cosmiconfig@9.0.0, cosmiconfig@^9.0.0:
   version "9.0.0"
   resolved "https://registry.yarnpkg.com/cosmiconfig/-/cosmiconfig-9.0.0.tgz#34c3fc58287b915f3ae905ab6dc3de258b55ad9d"
   integrity sha512-itvL5h8RETACmOTFc4UfIyB2RfEHi71Ax6E/PivVxq9NseKbOWpeyHEOIbmAw1rs8Ak0VursQNww7lf7YtUwzg==
@@ -3682,6 +3682,11 @@ jest-worker@^27.4.5:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
+jiti@^1.20.0:
+  version "1.21.0"
+  resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.0.tgz#7c97f8fe045724e136a397f7340475244156105d"
+  integrity sha512-gFqAIbuKyyso/3G2qhiO2OM6shY6EPP/R0+mkDbyspxKazh8BXDC5FiFsUjlczgdNz/vfra0da2y+aHrusLG/Q==
+
 jquery@^3.6.0:
   version "3.7.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
@@ -4688,14 +4693,14 @@ postcss-load-config@^3.1.0:
     lilconfig "^2.0.5"
     yaml "^1.10.2"
 
-postcss-loader@^5.2.0:
-  version "5.3.0"
-  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-5.3.0.tgz#1657f869e48d4fdb018a40771c235e499ee26244"
-  integrity sha512-/+Z1RAmssdiSLgIZwnJHwBMnlABPgF7giYzTN2NOfr9D21IJZ4mQC1R2miwp80zno9M4zMD/umGI8cR+2EL5zw==
+postcss-loader@^8.1.1:
+  version "8.1.1"
+  resolved "https://registry.yarnpkg.com/postcss-loader/-/postcss-loader-8.1.1.tgz#2822589e7522927344954acb55bbf26e8b195dfe"
+  integrity sha512-0IeqyAsG6tYiDRCYKQJLAmgQr47DX6N7sFSWvQxt6AcupX8DIdmykuk/o/tx0Lze3ErGHJEp5OSRxrelC6+NdQ==
   dependencies:
-    cosmiconfig "^7.0.0"
-    klona "^2.0.4"
-    semver "^7.3.4"
+    cosmiconfig "^9.0.0"
+    jiti "^1.20.0"
+    semver "^7.5.4"
 
 postcss-logical@^3.0.0:
   version "3.0.0"
@@ -5397,7 +5402,7 @@ selfsigned@^1.10.8:
   dependencies:
     node-forge "^0.10.0"
 
-semver@7.6.0, semver@^7.3.4, semver@^7.3.5:
+semver@7.6.0, semver@^7.3.5, semver@^7.5.4:
   version "7.6.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-7.6.0.tgz#1a46a4db4bffcccd97b743b5005c8325f23d4e2d"
   integrity sha512-EnwXhrlwXMk9gKu5/flx5sv/an57AkRplG3hTK68W7FRDN+k+OWBj65M7719OkA82XLBxrcX0KSHj+X5COhOVg==
