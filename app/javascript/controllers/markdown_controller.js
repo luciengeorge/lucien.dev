@@ -1,38 +1,38 @@
-import { Controller } from 'stimulus';
-import { writeText, skip } from '../packs/components/live_typing';
-import MarkdownIt from 'markdown-it';
+import {Controller} from '@hotwired/stimulus'
+import {writeText, skip} from '../packs/components/live_typing'
+import MarkdownIt from 'markdown-it'
 
 export default class extends Controller {
-  static targets = [ 'markdown' ];
+  static targets = ['markdown']
   static values = {
-    imgUrl: String
-  };
+    imgUrl: String,
+  }
 
   start() {
     writeText(this.text, this.markdownTarget, 0, null, () => {
-      this.element.dispatchEvent(new Event(`${this.identifier}-done`));
-    });
+      this.element.dispatchEvent(new Event(`${this.identifier}-done`))
+    })
   }
 
   render() {
     if (skip()) {
-      this.markdownTarget.classList.add('shrink-down-no-animation');
+      this.markdownTarget.classList.add('shrink-down-no-animation')
     } else {
-      this.markdownTarget.classList.add('shrink-down');
+      this.markdownTarget.classList.add('shrink-down')
     }
-    const md = new MarkdownIt({ html: true });
-    const html = md.render(this.markdownTarget.innerHTML);
-    this.markdownTarget.innerHTML = html;
+    const md = new MarkdownIt({html: true})
+    const html = md.render(this.markdownTarget.innerHTML)
+    this.markdownTarget.innerHTML = html
     if (skip()) {
-      this.markdownTarget.classList.remove('shrink-down');
-      this.markdownTarget.scrollTop = 0;
-      this.element.dispatchEvent(new Event(`${this.identifier}-rendered`));
+      this.markdownTarget.classList.remove('shrink-down')
+      this.markdownTarget.scrollTop = 0
+      this.element.dispatchEvent(new Event(`${this.identifier}-rendered`))
     } else {
       setTimeout(() => {
-        this.markdownTarget.classList.remove('shrink-down');
-        this.markdownTarget.scrollTop = 0;
-        this.element.dispatchEvent(new Event(`${this.identifier}-rendered`));
-      }, 1000);
+        this.markdownTarget.classList.remove('shrink-down')
+        this.markdownTarget.scrollTop = 0
+        this.element.dispatchEvent(new Event(`${this.identifier}-rendered`))
+      }, 1000)
     }
   }
 
@@ -91,6 +91,6 @@ In January 2022, I accepted a job offer at [Shopify](https://www.shopify.com) as
 * [me@lucien-george.com](mailto:me@lucien-george.com)
 * [+44 7845 714513](tel:+447845714513)
 * [GitHub](https://github.com/lucien-george)
-* [LinkedIn](https://www.linkedin.com/in/luciengeorge)`;
+* [LinkedIn](https://www.linkedin.com/in/luciengeorge)`
   }
 }

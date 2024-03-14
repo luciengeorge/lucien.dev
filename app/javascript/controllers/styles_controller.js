@@ -1,45 +1,59 @@
-import { Controller } from 'stimulus';
-import { writeText } from '../packs/components/live_typing';
+import {Controller} from '@hotwired/stimulus'
+import {writeText} from '../packs/components/live_typing'
 
 export default class extends Controller {
-  static targets = [ 'pre', 'style', 'skipCta', 'markdown' ];
-  static classes = [ 'noTransition' ];
+  static targets = ['pre', 'style', 'skipCta', 'markdown']
+  static classes = ['noTransition']
 
   connect() {
     writeText(this.text, this.preTarget, 0, this.styleTarget, () => {
-      this.element.dispatchEvent(new Event(`${this.identifier}-done`));
-    });
+      this.element.dispatchEvent(new Event(`${this.identifier}-done`))
+    })
   }
 
   updateStyles(event) {
-    this.styleTarget.innerText = event.currentTarget.innerText.replace('<br>', '');
+    this.styleTarget.innerText = event.currentTarget.innerText.replace(
+      '<br>',
+      '',
+    )
   }
 
   transition() {
     writeText(this.transitionText, this.preTarget, 0, this.styleTarget, () => {
-      this.element.dispatchEvent(new Event(`${this.identifier}-transition-done`));
-    });
+      this.element.dispatchEvent(
+        new Event(`${this.identifier}-transition-done`),
+      )
+    })
   }
 
   renderSuccess() {
-    writeText(this.transitionSuccessText, this.preTarget, 0, this.styleTarget, () => {
-      this.preTarget.setAttribute('contenteditable', 'true');
-      this.preTarget.style.overflow = 'scroll';
-      this.markdownTarget.style.overflow = 'scroll';
-      this.skipCtaTarget.remove();
-    });
+    writeText(
+      this.transitionSuccessText,
+      this.preTarget,
+      0,
+      this.styleTarget,
+      () => {
+        this.preTarget.setAttribute('contenteditable', 'true')
+        this.preTarget.style.overflow = 'scroll'
+        this.markdownTarget.style.overflow = 'scroll'
+        this.skipCtaTarget.remove()
+      },
+    )
   }
 
   skip(event) {
-    event.preventDefault();
-    this.styleTarget.insertAdjacentHTML('afterbegin', `
+    event.preventDefault()
+    this.styleTarget.insertAdjacentHTML(
+      'afterbegin',
+      `
       * {
         -webkit-transition: none !important;
         -moz-transition: none !important;
         -o-transition: none !important;
         transition: none !important;
-      }`);
-    this.preTarget.setAttribute('data-skip', true);
+      }`,
+    )
+    this.preTarget.setAttribute('data-skip', true)
   }
 
   get text() {
@@ -149,7 +163,7 @@ pre em:not(.comment) { font-style: normal; }
 
 /*
  * Okay we're ready now!
- */`;
+ */`
   }
 
   get transitionText() {
@@ -164,7 +178,7 @@ pre em:not(.comment) { font-style: normal; }
  * 2...
  * 1...
  * Go!
- */`;
+ */`
   }
 
   get transitionSuccessText() {
@@ -243,6 +257,6 @@ pre em:not(.comment) { font-style: normal; }
 
 /*
  * Coded with love ✌️. Over and out.
- */`;
+ */`
   }
 }
