@@ -47,7 +47,7 @@ jobs:
           # runs 'bundle install' and caches installed gems automatically
           bundler-cache: true
       - name: Set up Node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
       - name: Get Yarn cache directory path
