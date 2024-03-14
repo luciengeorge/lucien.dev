@@ -1,5 +1,5 @@
 import {Application} from '@hotwired/stimulus'
-import {definitionsFromContext} from 'stimulus/webpack-helpers'
+import {definitionsFromContext} from '@hotwired/stimulus-webpack-helpers'
 import * as LazyLoader from 'stimulus-lazy-loader'
 import {Tabs, Toggle, Slideover} from 'tailwindcss-stimulus-components'
 
