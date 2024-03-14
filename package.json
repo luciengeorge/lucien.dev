@@ -5,6 +5,7 @@
     "@animated-burgers/burger-rotate": "^1.1.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.20.7",
     "@hotwired/stimulus": "^3.2.2",
+    "@hotwired/stimulus-webpack-helpers": "^1.0.1",
     "@mdi/font": "^5.9.55",
     "@neojp/tailwindcss-important-variant": "^1.0.1",
     "@rails/actioncable": "^6.0.0",
