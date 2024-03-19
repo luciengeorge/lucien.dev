@@ -9,7 +9,7 @@ class ExperiencesController < ApplicationController
       format.pdf do
         grover = Grover.new(resume_experiences_url, format: 'A4')
         pdf = grover.to_pdf
-        send_data(pdf, filename: 'lucien_george_resume.pdf')
+        send_data(pdf, filename: 'resume.pdf')
       end
     end
   end
