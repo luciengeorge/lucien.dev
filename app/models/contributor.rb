@@ -3,5 +3,5 @@ class Contributor < ApplicationRecord
   has_many :repos, through: :repo_contributors
   has_many :commits, dependent: :destroy
 
-  ME = 'lucien-george'.freeze
+  ME = 'luciengeorge'.freeze
 end
