@@ -249,7 +249,7 @@ GEM
     ogp (0.5.0)
       oga (~> 3.3)
     orm_adapter (0.5.0)
-    pagy (3.11.0)
+    pagy (8.4.4)
     pdf-core (0.10.0)
     pg (1.5.6)
     postmark (1.25.0)
@@ -520,7 +520,7 @@ DEPENDENCIES
   nokogiri (>= 1.11.4)
   octokit (~> 4.20)
   ogp
-  pagy (~> 3.5)
+  pagy (~> 8.4)
   pg (~> 1.1)
   postmark-rails
   prawn
