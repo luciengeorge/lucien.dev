@@ -62,5 +62,6 @@
   },
   "browserslist": [
     "defaults"
-  ]
+  ],
+  "heroku-postbuild": "mkdir ./.cache && mv /app/.cache/puppeteer ./.cache"
 }
