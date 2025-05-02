@@ -14,7 +14,7 @@ RSpec.describe Company, type: :model do
 
     it "should return the company's website" do
       expect(@company).to respond_to(:website)
-      expect(@company.website).to eq('www.lucien-george.com')
+      expect(@company.website).to eq('www.lucien.dev')
     end
   end
 

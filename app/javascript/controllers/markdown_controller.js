@@ -58,7 +58,7 @@ In January 2022, I accepted a job offer at [Shopify](https://www.shopify.com) as
 - [Impact Lebanon](https://www.impactlebanon.org)
 - [Thawra Chronicles](https://www.thawra-chronicles.org)
 - [Krowl](https://www.krowl.io)
-- [lucien-george.com](https://www.lucien-george.com)
+- [lucien.dev](https://www.lucien.dev)
 - [idk](https://idk-app.herokuapp.com)
 - [ports](https://ports-idk.herokuapp.com)
 
@@ -88,9 +88,9 @@ In January 2022, I accepted a job offer at [Shopify](https://www.shopify.com) as
 * Spanish (basic)
 
 ### Contact
-* [me@lucien-george.com](mailto:me@lucien-george.com)
-* [+44 7845 714513](tel:+447845714513)
-* [GitHub](https://github.com/lucien-george)
+* [lucienkgeorge@gmail.com](mailto:lucienkgeorge@gmail.com)
+* [+33 7 86 26 07 51](tel:+33786260751)
+* [GitHub](https://github.com/luciengeorge)
 * [LinkedIn](https://www.linkedin.com/in/luciengeorge)`
   }
 }

@@ -14,7 +14,7 @@ RSpec.describe Repo, type: :model do
 
     it "should return the repo's name" do
       expect(@repo).to respond_to(:name)
-      expect(@repo.name).to eq('lucien-george.com')
+      expect(@repo.name).to eq('lucien.dev')
     end
   end
 
@@ -27,7 +27,7 @@ RSpec.describe Repo, type: :model do
 
     it "should return the repo's full_name" do
       expect(@repo).to respond_to(:full_name)
-      expect(@repo.full_name).to eq('lucien-george/lucien-george.com')
+      expect(@repo.full_name).to eq('luciengeorge/lucien.dev')
     end
   end
 
