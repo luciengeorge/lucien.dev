@@ -42,9 +42,8 @@ jobs:
         uses: actions/setup-node@v4 # Updated to v4
         with:
           node-version: '20'
-          cache: 'yarn'
       - name: Install JavaScript dependencies
-        run: yarn install --frozen-lockfile
+        run: yarn install
       - name: Create database
         run: |
           bundle exec rails db:create
