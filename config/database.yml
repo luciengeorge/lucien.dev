@@ -83,4 +83,17 @@ production:
   <<: *default
   database: lucien_george_com_production
   username: lucien_george_com
-  password: <%= ENV['LUCIEN_GEORGE_COM_DATABASE_PASSWORD'] %>
+  password: <%= ENV["LUCIEN_GEORGE_COM_DATABASE_PASSWORD"] %>
+
+# Rails 8 - Solid Queue configuration (optional separate database)
+# Uncomment if you want to use a separate database for job queuing
+# solid_queue:
+#   development:
+#     adapter: postgresql
+#     database: lucien_george_com_solid_queue_development
+#   test:
+#     adapter: postgresql
+#     database: lucien_george_com_solid_queue_test
+#   production:
+#     adapter: postgresql
+#     database: lucien_george_com_solid_queue_production

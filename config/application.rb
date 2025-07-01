@@ -9,9 +9,12 @@ Bundler.require(*Rails.groups)
 module LucienGeorgeCom
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.2
-    config.active_job.queue_adapter = :sidekiq
+    config.load_defaults 8.0
+    config.active_job.queue_adapter = :solid_queue
     config.active_record.cache_versioning = false
+    
+    # Rails 8 configurations
+    config.cache_store = :solid_cache_store
     
     # Configuration for the application, engines, and railties goes here.
     #

@@ -8,7 +8,7 @@ def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")
 end
 
-puts "== Setting up Rails 7.2 and TailwindCSS 4.1 =="
+puts "== Setting up Rails 8.0 and TailwindCSS 4.0 =="
 
 puts "== Installing Ruby dependencies =="
 system! "gem install bundler --conservative"
@@ -17,20 +17,34 @@ system! "bundle check || bundle install"
 puts "== Installing JavaScript dependencies =="
 if File.exist?("yarn.lock")
   system! "yarn install"
-else
+elsif File.exist?("package.json")
   system! "npm install"
 end
 
-puts "== Generating Rails 7 configuration files =="
+puts "== Generating Rails 8 configuration files =="
 system! "bin/rails importmap:install"
-system! "bin/rails turbo:install:redis"
+system! "bin/rails turbo:install"
 system! "bin/rails stimulus:install"
 
-puts "== Setting up TailwindCSS =="
-system! "bin/rails tailwindcss:install"
+puts "== Setting up Solid Queue (Rails 8) =="
+system! "bin/rails generate solid_queue:install"
+
+puts "== Setting up Solid Cache (Rails 8) =="
+system! "bin/rails generate solid_cache:install"
+
+puts "== Setting up TailwindCSS 4.0 =="
+system! "./bin/build-tailwind"
 
 puts "== Preparing database =="
 system! "bin/rails db:prepare"
+
+puts "== Installing Solid Queue migrations =="
+system! "bin/rails solid_queue:install:migrations"
+system! "bin/rails db:migrate"
+
+puts "== Installing Solid Cache migrations =="
+system! "bin/rails solid_cache:install:migrations"
+system! "bin/rails db:migrate"
 
 puts "== Removing sample files =="
 FileUtils.rm_f("app/views/layouts/application.html.erb.sample") if File.exist?("app/views/layouts/application.html.erb.sample")
@@ -39,12 +53,20 @@ puts "== Restarting application server =="
 system! "bin/rails restart"
 
 puts ""
-puts "🎉 Upgrade complete!"
+puts "🎉 Rails 8.0 and TailwindCSS 4.0 upgrade complete!"
+puts ""
+puts "New Rails 8 features enabled:"
+puts "✅ Solid Queue (database-backed job processing)"
+puts "✅ Solid Cache (database-backed caching)"
+puts "✅ TailwindCSS 4.0 with modern CSS features"
+puts "✅ Turbo 8 for enhanced navigation"
+puts "✅ Stimulus 3.2.2 for interactive components"
 puts ""
 puts "Next steps:"
 puts "1. Start the server: bin/rails server"
-puts "2. Visit http://localhost:3000 to test the application"
-puts "3. Run tests: bin/rspec"
-puts "4. Check for any styling issues with TailwindCSS v4.1"
+puts "2. Start background workers: bin/rails solid_queue:start"
+puts "3. Visit http://localhost:3000 to test the application"
+puts "4. Run tests: bin/rspec"
+puts "5. Monitor job queue at /solid_queue (if admin panel is set up)"
 puts ""
 puts "See UPGRADE_GUIDE.md for detailed information about the changes."

@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.3.0'
 
-gem 'actionpack', '>= 7.2.0'
+gem 'actionpack', '>= 8.0.0'
 gem 'addressable', '>= 2.8.0'
 gem 'autoprefixer-rails'
 gem 'aws-sdk-s3', require: false
@@ -29,7 +29,7 @@ gem 'psych', '< 4'
 gem 'puma', '>= 5.3.1'
 gem 'pundit', '~> 2.1'
 gem 'rack-canonical-host'
-gem 'rails', '~> 7.2.0'
+gem 'rails', '~> 8.0.0'
 gem 'rails_admin', '~> 3.0'
 gem 'redis', '~> 5.0'
 gem 'redis-rails'
@@ -39,14 +39,21 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'simple_form'
 gem 'simple_form-tailwind'
-gem 'tailwindcss-rails', '~> 3.0'
 gem 'view_component'
 
-# Add modern Rails 7 asset handling
+# Rails 8 modern asset handling
 gem 'importmap-rails'
 gem 'turbo-rails'
 gem 'stimulus-rails'
 gem 'sprockets-rails'
+
+# Rails 8 new features
+gem 'solid_cache'
+gem 'solid_queue'
+gem 'solid_cable'
+
+# TailwindCSS 4.0 (standalone)
+gem 'tailwindcss-ruby', '~> 4.0'
 
 gem 'twitter-text'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

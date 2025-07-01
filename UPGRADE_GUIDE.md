@@ -1,30 +1,31 @@
-# Rails 7.2 and TailwindCSS 4.1 Upgrade Guide
+# Rails 8.0 and TailwindCSS 4.0 Upgrade Guide
 
-This document outlines the upgrade from Rails 6.1.3.1 to Rails 7.2 and TailwindCSS 2.1.1 to 4.1.11.
+This document outlines the upgrade from Rails 6.1.3.1 to Rails 8.0 and TailwindCSS 2.1.1 to 4.0.
 
 ## Summary of Changes
 
-### Rails Upgrade (6.1.3.1 → 7.2)
-- ✅ Updated Rails gem to `~> 7.2.0`
+### Rails Upgrade (6.1.3.1 → 8.0.0)
+- ✅ Updated Rails gem to `~> 8.0.0`
 - ✅ Removed Webpacker and Turbolinks
-- ✅ Added modern Rails 7 asset handling: importmap-rails, turbo-rails, stimulus-rails
+- ✅ Added modern Rails 8 asset handling: importmap-rails, turbo-rails, stimulus-rails
+- ✅ Integrated Rails 8 new features: Solid Queue, Solid Cache, Solid Cable
 - ✅ Updated Stimulus to current stable version (3.2.2)
 - ✅ Converted Turbolinks events to Turbo events
-- ✅ Updated application layout files for Rails 7 asset system
+- ✅ Updated application layout files for Rails 8 asset system
 
-### TailwindCSS Upgrade (2.1.1 → 4.1.11)
-- ✅ Updated TailwindCSS to `~> 4.1.11`
-- ✅ Updated tailwindcss-rails gem to `~> 3.0`
+### TailwindCSS Upgrade (2.1.1 → 4.0)
+- ✅ Updated to TailwindCSS 4.0 with massive performance improvements
+- ✅ Migrated to standalone CLI approach (no PostCSS dependency)
 - ✅ Converted SCSS files to CSS with CSS custom properties
-- ✅ Updated PostCSS configuration for TailwindCSS v4.1
-- ✅ Created new CSS structure compatible with TailwindCSS v4
+- ✅ Created modern CSS structure with @layer and @theme directives
+- ✅ Updated color palette to OKLCH format for better vibrancy
 
 ### JavaScript/Asset Pipeline Changes
 - ✅ Migrated from Webpacker to Importmap
-- ✅ Updated package.json dependencies
+- ✅ Updated package.json dependencies (removed build tools)
 - ✅ Created new application.js entry point
 - ✅ Moved components to new structure
-- ✅ Updated Stimulus controllers for Rails 7
+- ✅ Updated Stimulus controllers for Rails 8
 
 ## Installation Steps
 
@@ -34,13 +35,13 @@ This document outlines the upgrade from Rails 6.1.3.1 to Rails 7.2 and TailwindC
 # Install Ruby dependencies
 bundle install
 
-# Install JavaScript dependencies (if using npm packages)
+# Install JavaScript dependencies (minimal now)
 yarn install
 # or
 npm install
 ```
 
-### 2. Generate Rails 7 Configuration
+### 2. Generate Rails 8 Configuration
 
 ```bash
 # Generate importmap configuration
@@ -52,68 +53,88 @@ rails turbo:install
 # Generate Stimulus configuration
 rails stimulus:install
 
-# Install TailwindCSS for Rails
-rails tailwindcss:install
+# Install Solid Queue (database-backed jobs)
+rails generate solid_queue:install
+
+# Install Solid Cache (database-backed caching)
+rails generate solid_cache:install
 ```
 
-### 3. Database Updates
+### 3. Set up TailwindCSS 4.0
 
 ```bash
-# Run any pending migrations
+# Build TailwindCSS using standalone CLI
+./bin/build-tailwind
+
+# For development with file watching:
+./bin/build-tailwind --watch
+```
+
+### 4. Database Updates
+
+```bash
+# Run pending migrations
 rails db:migrate
 
-# Check for Rails 7 compatibility issues
+# Install Solid Queue migrations
+rails solid_queue:install:migrations
+rails db:migrate
+
+# Install Solid Cache migrations  
+rails solid_cache:install:migrations
+rails db:migrate
+
+# Check for Rails 8 compatibility issues
 rails app:update
 ```
 
-### 4. Update Configuration
+### 5. Update Configuration
 
-The following files have been updated for Rails 7.2 compatibility:
+The following files have been updated for Rails 8.0 compatibility:
 
-- `config/application.rb` - Updated to load Rails 7.2 defaults
+- `config/application.rb` - Updated to load Rails 8.0 defaults
 - `config/boot.rb` - Updated for modern bundler
 - `config/importmap.rb` - New importmap configuration
-- `postcss.config.js` - Updated for TailwindCSS v4.1
+- `config/tailwind.config.js` - TailwindCSS 4.0 configuration
+- `config/initializers/solid_queue.rb` - Solid Queue configuration
+- `config/initializers/solid_cache.rb` - Solid Cache configuration
 
-### 5. Asset Pipeline Changes
+### 6. Asset Pipeline Changes
 
 **Removed Files:**
 - `babel.config.js` (Webpacker)
 - `config/webpacker.yml` (Webpacker)
+- `postcss.config.js` (TailwindCSS 4.0 doesn't need PostCSS)
 
 **New Files:**
 - `app/javascript/application.js` (Main entry point)
 - `app/javascript/controllers/application.js` (Stimulus config)
 - `config/importmap.rb` (Import maps)
-- `app/assets/stylesheets/application.css` (Main CSS with TailwindCSS v4.1)
+- `app/assets/stylesheets/application.css` (Main CSS with TailwindCSS 4.0)
+- `bin/build-tailwind` (TailwindCSS build script)
+- `config/tailwind.config.js` (TailwindCSS 4.0 configuration)
 
-### 6. JavaScript Structure Changes
+### 7. JavaScript Structure Changes
 
 ```
 app/javascript/
 ├── application.js          # Main entry point (NEW)
 ├── controllers/
 │   ├── application.js      # Stimulus application (NEW)
-│   ├── index.js           # Updated for Rails 7
+│   ├── index.js           # Updated for Rails 8
 │   └── *_controller.js    # Existing controllers (unchanged)
 └── components/
     ├── analytics.js       # Updated for Turbo events
     └── live_typing.js     # Moved from packs/
 ```
 
-### 7. CSS Structure Changes
+### 8. CSS Structure Changes
 
 ```
 app/assets/stylesheets/
-├── application.css        # Main CSS file with TailwindCSS v4.1 (NEW)
-├── config/
-│   ├── fonts.css         # Converted from SCSS
-│   ├── colors.css        # CSS custom properties
-│   └── shared.css        # Basic styles
-├── components/
-│   └── index.css         # Component styles
-└── pages/
-    └── index.css         # Page-specific styles
+├── application.css        # Main CSS file with TailwindCSS 4.0 (NEW)
+└── builds/
+    └── tailwind.css       # Generated TailwindCSS output (NEW)
 ```
 
 ## Breaking Changes to Address
@@ -123,15 +144,40 @@ app/assets/stylesheets/
 - `turbolinks:visit` → `turbo:visit`
 - Update any custom JavaScript event listeners
 
-### 2. TailwindCSS v4.1 Changes
-- Color palette updated to OKLCH format
-- Some utility class names changed (see TailwindCSS v4 upgrade guide)
-- Configuration now in CSS instead of JavaScript
+### 2. TailwindCSS v4.0 Changes
+- Color palette updated to OKLCH format for better vibrancy
+- Configuration now in JavaScript file instead of CSS-first approach
+- Standalone CLI replaces PostCSS plugin
+- Some utility class names may have changed
 
 ### 3. Webpacker → Importmap
 - No more `javascript_pack_tag` or `stylesheet_pack_tag`
 - Use `javascript_importmap_tags` instead
 - CSS handled through asset pipeline
+
+### 4. Sidekiq → Solid Queue
+- Job processing now uses database instead of Redis
+- Update Procfile and deployment scripts
+- Monitor jobs through Rails admin interface
+
+## Rails 8 New Features
+
+### 1. Solid Queue
+- **Database-backed job processing** instead of Redis
+- Better reliability and persistence
+- Built-in web UI for monitoring jobs
+- Automatic scaling based on queue depth
+
+### 2. Solid Cache
+- **Database-backed caching** instead of Redis/Memcached
+- Persistent across server restarts
+- Better for applications with infrequent cache misses
+- Simpler deployment (no additional services)
+
+### 3. Solid Cable (optional)
+- Database-backed Action Cable adapter
+- Eliminates Redis dependency for WebSockets
+- Better for low-traffic real-time features
 
 ## Testing the Upgrade
 
@@ -140,13 +186,26 @@ app/assets/stylesheets/
 rails server
 ```
 
-### 2. Check for Issues
+### 2. Start Background Workers
+```bash
+# In a separate terminal
+rails solid_queue:start
+```
+
+### 3. Build CSS (Development)
+```bash
+# In a separate terminal for file watching
+./bin/build-tailwind --watch
+```
+
+### 4. Check for Issues
 - Verify all pages load correctly
 - Test JavaScript functionality
 - Confirm Stimulus controllers work
 - Validate CSS/TailwindCSS styling
+- Test job processing with Solid Queue
 
-### 3. Run Tests
+### 5. Run Tests
 ```bash
 # Run full test suite
 rspec
@@ -155,41 +214,36 @@ rspec
 rspec spec/system/
 ```
 
-## Potential Issues and Solutions
-
-### 1. Missing JavaScript Dependencies
-If you see import errors, you may need to pin additional packages in `config/importmap.rb`:
-
-```ruby
-pin "package-name", to: "https://cdn.skypack.dev/package-name"
-```
-
-### 2. CSS Styling Issues
-- Check that custom CSS classes are properly converted from SCSS
-- Verify TailwindCSS v4.1 class compatibility
-- Update any hardcoded colors to use new OKLCH format
-
-### 3. Stimulus Controller Issues
-- Ensure all controllers import from the new paths
-- Check that `application` instance is properly exported
-- Verify controller registration in `index.js`
-
-### 4. Turbo Navigation Issues
-- Update event listeners from Turbolinks to Turbo
-- Check form submissions work with Turbo
-- Verify analytics and tracking code
-
 ## Performance Benefits
 
-### Rails 7.2
-- Improved asset loading with importmap
-- Better caching with Turbo Drive
-- Reduced JavaScript bundle size
+### Rails 8.0 Improvements
+- **No Redis Required**: Database-backed queue and cache reduce infrastructure complexity
+- **Better Reliability**: Jobs and cache persist across server restarts
+- **Simpler Deployment**: Fewer moving parts and dependencies
+- **Modern Standards**: Latest web platform features built-in
 
-### TailwindCSS v4.1
-- Significant build performance improvements (3-5x faster)
-- Modern CSS features (cascade layers, color-mix())
-- Reduced CSS output size
+### TailwindCSS v4.0 Improvements
+- **Massive Speed Boost**: Up to 10x faster builds
+- **Standalone CLI**: No Node.js build pipeline required
+- **Modern CSS**: Native cascade layers, container queries, advanced color spaces
+- **Smaller Bundles**: Better tree-shaking and optimization
+
+## Deployment Considerations
+
+### 1. Infrastructure Changes
+- **Remove Redis** if only used for jobs/cache (optional)
+- **Update Procfile** for Solid Queue workers
+- **Database scaling** may be needed for high job volume
+
+### 2. Environment Variables
+- Remove Redis connection strings if not needed elsewhere
+- Add database connection pooling for job workers
+- Update cache configuration
+
+### 3. Monitoring
+- Set up database monitoring for job queue tables
+- Monitor Solid Cache performance
+- Update logging for new job processing
 
 ## Rollback Plan
 
@@ -199,13 +253,14 @@ If issues arise, you can rollback by:
 2. Or revert specific files:
    - `git checkout HEAD~1 -- Gemfile Gemfile.lock`
    - `git checkout HEAD~1 -- package.json`
-   - `git checkout HEAD~1 -- app/views/layouts/`
+   - `git checkout HEAD~1 -- config/application.rb`
 
 ## Resources
 
-- [Rails 7.2 Release Notes](https://guides.rubyonrails.org/7_2_release_notes.html)
-- [TailwindCSS v4.0 Upgrade Guide](https://tailwindcss.com/docs/upgrade-guide)
-- [Importmap for Rails](https://github.com/rails/importmap-rails)
+- [Rails 8.0 Release Notes](https://guides.rubyonrails.org/8_0_release_notes.html)
+- [TailwindCSS v4.0 Documentation](https://tailwindcss.com/docs)
+- [Solid Queue Documentation](https://github.com/rails/solid_queue)
+- [Solid Cache Documentation](https://github.com/rails/solid_cache)
 - [Turbo Documentation](https://turbo.hotwired.dev/)
 - [Stimulus Documentation](https://stimulus.hotwired.dev/)
 
@@ -214,5 +269,6 @@ If issues arise, you can rollback by:
 1. Test thoroughly in development
 2. Deploy to staging environment
 3. Run full test suite
-4. Monitor for any performance regressions
-5. Update documentation for team members
+4. Monitor database performance with new queue/cache tables
+5. Update team documentation for Rails 8 workflows
+6. Consider removing Redis if no longer needed

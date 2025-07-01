@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+
+# TailwindCSS 4.0 build script for Rails 8
+# This script builds the TailwindCSS file using the standalone CLI
+
+set -e
+
+echo "Building TailwindCSS..."
+
+# Check if tailwindcss executable exists
+if ! command -v tailwindcss &> /dev/null; then
+  echo "TailwindCSS CLI not found. Installing..."
+  
+  # Download TailwindCSS standalone CLI based on platform
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    # macOS
+    curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-macos-x64
+    chmod +x tailwindcss-macos-x64
+    sudo mv tailwindcss-macos-x64 /usr/local/bin/tailwindcss
+  elif [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    # Linux
+    curl -sLO https://github.com/tailwindlabs/tailwindcss/releases/latest/download/tailwindcss-linux-x64
+    chmod +x tailwindcss-linux-x64
+    sudo mv tailwindcss-linux-x64 /usr/local/bin/tailwindcss
+  else
+    echo "Unsupported platform. Please install TailwindCSS CLI manually."
+    echo "Visit: https://github.com/tailwindlabs/tailwindcss/releases/latest"
+    exit 1
+  fi
+fi
+
+# Build TailwindCSS
+tailwindcss \
+  --input app/assets/stylesheets/application.css \
+  --output app/assets/builds/tailwind.css \
+  --config config/tailwind.config.js \
+  ${@}
+
+echo "TailwindCSS build complete!"
