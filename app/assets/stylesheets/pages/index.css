@@ -1,0 +1,12 @@
+/* Page-specific styles */
+/* For now, most page styling should use Tailwind utilities in templates */
+
+/* Home page specific styles if needed */
+.home-hero {
+  @apply bg-gradient-to-br from-blue-900 to-purple-900 text-white;
+}
+
+/* Experience pages specific styles if needed */
+.experience-card {
+  @apply transition-transform hover:scale-105;
+}

@@ -1,10 +1,11 @@
-import {Application} from '@hotwired/stimulus'
-import {definitionsFromContext} from '@hotwired/stimulus-webpack-helpers'
-import {Tabs, Toggle, Slideover} from 'tailwindcss-stimulus-components'
+import { application } from "./application"
+import { Tabs, Toggle, Slideover } from 'tailwindcss-stimulus-components'
 
-const application = Application.start()
+// Register TailwindCSS stimulus components
 application.register('tabs', Tabs)
 application.register('toggle', Toggle)
 application.register('slideover', Slideover)
-const context = require.context('controllers', true, /_controller\.js$/)
-application.load(definitionsFromContext(context))
+
+// Eager load all controllers defined in the import map under controllers/**/*_controller
+import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
+eagerLoadControllersFrom("controllers", application)

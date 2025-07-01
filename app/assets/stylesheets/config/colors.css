@@ -1,0 +1,12 @@
+/* Define custom color variables */
+:root {
+  --color-red: #7f1d1d;
+  --color-blue: #1e3a8a;
+  --color-yellow: #fbbf24;
+  --color-orange: #78350f;
+  --color-green: #064e3b;
+  --color-gray: #111827;
+  --color-light-gray: #9ca3af;
+  --color-white: #ffffff;
+  --color-black: #000000;
+}

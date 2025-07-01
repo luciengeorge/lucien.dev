@@ -1,0 +1,10 @@
+/* Import Google fonts */
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+/* Define fonts using CSS custom properties */
+:root {
+  --font-body: 'Work Sans', 'Helvetica', sans-serif;
+  --font-headers: 'Nunito', 'Helvetica', sans-serif;
+  --font-neon: 'Indie Flower', cursive;
+}

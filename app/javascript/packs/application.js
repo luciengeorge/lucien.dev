@@ -3,9 +3,8 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
-require('@rails/ujs').start()
-require('turbolinks').start()
-require('@rails/activestorage').start()
+// Note: This file is deprecated in favor of app/javascript/application.js for Rails 7+
+import "@hotwired/turbo-rails"
 require('channels')
 require('trix')
 require('@rails/actiontext')
@@ -19,7 +18,7 @@ import 'aos/dist/aos.css'
 import '@animated-burgers/burger-rotate/dist/styles.css'
 import gtag from './components/analytics'
 
-document.addEventListener('turbolinks:load', () => {
+document.addEventListener('turbo:load', () => {
   const vh = window.innerHeight * 0.01
   document.documentElement.style.setProperty('--vh', `${vh}px`)
   AOS.init()

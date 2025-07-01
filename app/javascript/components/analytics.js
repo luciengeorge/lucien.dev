@@ -3,6 +3,8 @@ function gtag() {
   dataLayer.push(arguments)
 }
 gtag('js', new Date())
+
+// Updated for Turbo instead of Turbolinks
 document.addEventListener('turbo:visit', (event) => {
   gtag('config', 'G-8YLBT9M560', {
     page_location: window.location.href,

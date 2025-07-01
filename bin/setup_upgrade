@@ -1,0 +1,50 @@
+#!/usr/bin/env ruby
+require "fileutils"
+
+# Add to front of file
+$LOAD_PATH.unshift File.expand_path("../lib", __dir__)
+
+def system!(*args)
+  system(*args) || abort("\n== Command #{args} failed ==")
+end
+
+puts "== Setting up Rails 7.2 and TailwindCSS 4.1 =="
+
+puts "== Installing Ruby dependencies =="
+system! "gem install bundler --conservative"
+system! "bundle check || bundle install"
+
+puts "== Installing JavaScript dependencies =="
+if File.exist?("yarn.lock")
+  system! "yarn install"
+else
+  system! "npm install"
+end
+
+puts "== Generating Rails 7 configuration files =="
+system! "bin/rails importmap:install"
+system! "bin/rails turbo:install:redis"
+system! "bin/rails stimulus:install"
+
+puts "== Setting up TailwindCSS =="
+system! "bin/rails tailwindcss:install"
+
+puts "== Preparing database =="
+system! "bin/rails db:prepare"
+
+puts "== Removing sample files =="
+FileUtils.rm_f("app/views/layouts/application.html.erb.sample") if File.exist?("app/views/layouts/application.html.erb.sample")
+
+puts "== Restarting application server =="
+system! "bin/rails restart"
+
+puts ""
+puts "🎉 Upgrade complete!"
+puts ""
+puts "Next steps:"
+puts "1. Start the server: bin/rails server"
+puts "2. Visit http://localhost:3000 to test the application"
+puts "3. Run tests: bin/rspec"
+puts "4. Check for any styling issues with TailwindCSS v4.1"
+puts ""
+puts "See UPGRADE_GUIDE.md for detailed information about the changes."

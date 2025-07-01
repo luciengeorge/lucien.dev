@@ -3,7 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.3.0'
 
-gem 'actionpack', '>= 6.1.3.2'
+gem 'actionpack', '>= 7.2.0'
 gem 'addressable', '>= 2.8.0'
 gem 'autoprefixer-rails'
 gem 'aws-sdk-s3', require: false
@@ -29,9 +29,9 @@ gem 'psych', '< 4'
 gem 'puma', '>= 5.3.1'
 gem 'pundit', '~> 2.1'
 gem 'rack-canonical-host'
-gem 'rails', '~> 6.1.3.1'
-gem 'rails_admin', '~> 2.0'
-gem 'redis', '~> 4.0'
+gem 'rails', '~> 7.2.0'
+gem 'rails_admin', '~> 3.0'
+gem 'redis', '~> 5.0'
 gem 'redis-rails'
 gem 'rest-client'
 gem 'sass-rails', '>= 6'
@@ -39,12 +39,17 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'simple_form'
 gem 'simple_form-tailwind'
-gem 'tailwindcss-rails', '~> 0.3.3'
-gem 'turbolinks', '~> 5'
+gem 'tailwindcss-rails', '~> 3.0'
+gem 'view_component'
+
+# Add modern Rails 7 asset handling
+gem 'importmap-rails'
+gem 'turbo-rails'
+gem 'stimulus-rails'
+gem 'sprockets-rails'
+
 gem 'twitter-text'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'view_component'
-gem 'webpacker', '6.0.0.beta.6'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+}
+
+/* Import custom styles */
+@import "config/fonts.css";
+@import "config/colors.css";
+@import "config/shared.css";
+@import "components/index.css";
+@import "pages/index.css";
