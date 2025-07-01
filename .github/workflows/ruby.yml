@@ -7,43 +7,37 @@ jobs:
   test:
     env:
       RAILS_ENV: test
-      DATABASE_URL: postgres://postgres:postgres@localhost:5432/lucien_george_com_test
-    runs-on: ubuntu-latest # runner
+      DATABASE_URL: postgresql://postgres:postgres@localhost/test
+    runs-on: ubuntu-latest
+    
     services:
-      # Label used to access the service container
       postgres:
-        # Docker Hub image
         image: postgres:15
-        # Provide the password for postgres
         env:
           POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: test
         ports:
           - 5432:5432
-        # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
           --health-retries 5
-      # Redis removed - Rails 8 uses Solid Queue (database-backed)
+
     steps:
-      - name: Checkout repository # copies repo in runner
-        uses: actions/checkout@v4 # Updated to v4
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libpq-dev libldap2-dev libidn11-dev
+          sudo apt-get install -y libpq-dev
+
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: '3.3.0'
           bundler-cache: true
-      - name: Set up Node.js
-        uses: actions/setup-node@v4 # Updated to v4
-        with:
-          node-version: '20'
-      - name: Install JavaScript dependencies
-        run: yarn install
       - name: Create database
         run: |
           bundle exec rails db:create
