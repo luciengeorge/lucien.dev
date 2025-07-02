@@ -54,24 +54,24 @@ Both `application.css` and `application.scss` existed and both compile to `appli
 - **Updated**: `app/assets/stylesheets/application.scss` with basic styles
 - **Modified**: `app/assets/config/manifest.js` to specifically link `application.css` instead of all CSS files
 
-## NEW Issue: JavaScript Asset Precompilation Error
+## NEW Issue: JavaScript Asset Precompilation Error (PERSISTENT)
 Server started but pages showed: `Asset 'application.js' was not declared to be precompiled in production`
 
 ### Root Cause
-The app is using Rails 7 importmap for JavaScript, but the asset pipeline configuration wasn't properly set for development.
+Complex importmap configuration issues that persist despite asset compilation fixes.
 
-### Additional Fixes Applied
+### Temporary Solution Applied
 
-### 8. Fixed JavaScript Asset Configuration
-- **Added**: `config.assets.compile = true` in development environment
-- **Cleaned**: Asset manifest to only link CSS files (importmap handles JavaScript)
+### 8. Temporarily Disabled JavaScript Loading
+- **Commented out**: `javascript_importmap_tags` in both layout files
+- **Reason**: Get the basic app working first, then fix JavaScript separately
+- **Added**: `config.assets.compile = true` in development (kept for when we re-enable JS)
 
 ## What Should Now Work
 - ✅ Rails server should start without LoadError
 - ✅ SCSS files should compile properly without conflicts
-- ✅ JavaScript should load properly via importmap
+- ✅ Pages should load without JavaScript errors
 - ✅ Basic styling should work (buttons, forms, layout)
-- ✅ Interactive elements should work (Stimulus controllers)
 - ✅ File uploads will work using local disk storage
 - ✅ Email delivery will work (files in dev, SMTP in prod)
 - ✅ Caching will work using memory store
@@ -89,36 +89,34 @@ The app is using Rails 7 importmap for JavaScript, but the asset pipeline config
 - ❌ No rack-canonical-host domain redirects
 - ❌ No Font Awesome icons (temporarily disabled)
 - ❌ Custom component styles from JavaScript directory (temporarily simplified)
+- ❌ **JavaScript functionality temporarily disabled** (Stimulus controllers, Turbo, etc.)
 
 ## Commands to Run
-After these changes, you need to run:
-```bash
-bundle install
-```
-
-Then restart your Rails server:
+After these changes, restart your Rails server:
 ```bash
 bin/rails server
 ```
 
-## Adding Font Awesome Back Later
-Once the app is working, you can add Font Awesome back by:
+**The app should now load without errors!** 🎉
 
-1. Add to Gemfile:
-```ruby
-gem 'font-awesome-sass'
+## Re-enabling JavaScript Later
+Once the basic app is confirmed working, re-enable JavaScript by:
+
+1. **Uncomment in both layout files**:
+```erb
+<%= javascript_importmap_tags %>
 ```
 
-2. Uncomment in `app/assets/stylesheets/application.scss`:
-```scss
-@import 'font-awesome-sprockets';
-@import 'font-awesome';
-```
+2. **If still having issues, try alternative approaches**:
+   - Use traditional JavaScript includes
+   - Check environment variables
+   - Debug importmap configuration
 
-3. Run `bundle install` and restart server.
-
-## Re-enabling Custom Styles
-The app originally had custom SCSS components in `app/javascript/stylesheets/`. Once basic functionality is working, you can gradually re-add these by importing them in `application.scss`.
+## Adding Features Back Later
+1. **Font Awesome icons**
+2. **Custom styling components**
+3. **JavaScript interactivity**
+4. **Cloud services** (AWS, Redis, etc.)
 
 ## Next Steps
-The server should now start successfully and pages should load with working JavaScript functionality. The app will have basic styling and all core functionality should work. You can incrementally add back styling and visual enhancements later.
+The server should now start successfully and pages should load. The core functionality will work, just without JavaScript interactivity for now. Once confirmed working, we can tackle the JavaScript loading separately.
