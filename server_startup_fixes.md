@@ -54,10 +54,24 @@ Both `application.css` and `application.scss` existed and both compile to `appli
 - **Updated**: `app/assets/stylesheets/application.scss` with basic styles
 - **Modified**: `app/assets/config/manifest.js` to specifically link `application.css` instead of all CSS files
 
+## NEW Issue: JavaScript Asset Precompilation Error
+Server started but pages showed: `Asset 'application.js' was not declared to be precompiled in production`
+
+### Root Cause
+The app is using Rails 7 importmap for JavaScript, but the asset pipeline configuration wasn't properly set for development.
+
+### Additional Fixes Applied
+
+### 8. Fixed JavaScript Asset Configuration
+- **Added**: `config.assets.compile = true` in development environment
+- **Cleaned**: Asset manifest to only link CSS files (importmap handles JavaScript)
+
 ## What Should Now Work
 - ✅ Rails server should start without LoadError
 - ✅ SCSS files should compile properly without conflicts
+- ✅ JavaScript should load properly via importmap
 - ✅ Basic styling should work (buttons, forms, layout)
+- ✅ Interactive elements should work (Stimulus controllers)
 - ✅ File uploads will work using local disk storage
 - ✅ Email delivery will work (files in dev, SMTP in prod)
 - ✅ Caching will work using memory store
@@ -107,4 +121,4 @@ gem 'font-awesome-sass'
 The app originally had custom SCSS components in `app/javascript/stylesheets/`. Once basic functionality is working, you can gradually re-add these by importing them in `application.scss`.
 
 ## Next Steps
-The server should now start successfully and pages should load without CSS compilation conflicts. The app will have basic styling and all core functionality should work. You can incrementally add back styling and visual enhancements later.
+The server should now start successfully and pages should load with working JavaScript functionality. The app will have basic styling and all core functionality should work. You can incrementally add back styling and visual enhancements later.
