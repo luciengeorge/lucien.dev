@@ -21,6 +21,11 @@ gem 'pundit', '~> 2.1'
 gem 'pagy', '~> 3.5'
 gem 'octokit', '~> 4.20'
 gem 'faraday-http-cache'
+gem 'faraday-retry'
+
+# Form handling
+gem 'simple_form'
+gem 'simple_form-tailwind'
 
 # Additional gems actually used
 gem 'jbuilder', '~> 2.7'
