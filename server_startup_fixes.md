@@ -36,16 +36,14 @@ The app has SCSS files that need compilation, but we were missing the SCSS compi
 
 ### 5. Added SCSS Support (Gemfile)
 - **Added**: `sassc-rails` gem for SCSS compilation
-- **Added**: `font-awesome-sass` gem since SCSS files import font-awesome
 
-### 6. Fixed Font-Awesome Import (app/assets/stylesheets/application.scss)
-- **Added**: `@import 'font-awesome-sprockets';` before the main import
-- **Fixed**: Font-awesome import to work with the sass gem
+### 6. Temporarily Disabled Font-Awesome (app/assets/stylesheets/application.scss)
+- **Commented out**: `@import 'font-awesome-sprockets';` and `@import 'font-awesome';`
+- **Reason**: To get the app working first, can add font-awesome back later
 
 ## What Should Now Work
 - ✅ Rails server should start without LoadError
 - ✅ SCSS files should compile properly
-- ✅ Font-awesome icons should load
 - ✅ File uploads will work using local disk storage
 - ✅ Email delivery will work (files in dev, SMTP in prod)
 - ✅ Caching will work using memory store
@@ -61,6 +59,7 @@ The app has SCSS files that need compilation, but we were missing the SCSS compi
 - ❌ No Bullet N+1 query detection
 - ❌ No letter_opener email preview in development
 - ❌ No rack-canonical-host domain redirects
+- ❌ No Font Awesome icons (temporarily disabled)
 
 ## Commands to Run
 After these changes, you need to run:
@@ -72,6 +71,22 @@ Then restart your Rails server:
 ```bash
 bin/rails server
 ```
+
+## Adding Font Awesome Back Later
+Once the app is working, you can add Font Awesome back by:
+
+1. Add to Gemfile:
+```ruby
+gem 'font-awesome-sass'
+```
+
+2. Uncomment in `app/assets/stylesheets/application.scss`:
+```scss
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+```
+
+3. Run `bundle install` and restart server.
 
 ## Next Steps
 The server should now start successfully and pages should load without SCSS compilation errors. You can re-add specific services later if needed by:
