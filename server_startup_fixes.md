@@ -41,9 +41,23 @@ The app has SCSS files that need compilation, but we were missing the SCSS compi
 - **Commented out**: `@import 'font-awesome-sprockets';` and `@import 'font-awesome';`
 - **Reason**: To get the app working first, can add font-awesome back later
 
+## NEW Issue: CSS File Conflict
+Server started but pages showed: `Multiple files with the same output path cannot be linked ("application.css")`
+
+### Root Cause
+Both `application.css` and `application.scss` existed and both compile to `application.css`, causing a Sprockets conflict.
+
+### Additional Fixes Applied
+
+### 7. Resolved CSS File Conflict
+- **Deleted**: `app/assets/stylesheets/application.css` (the duplicate file)
+- **Updated**: `app/assets/stylesheets/application.scss` with basic styles
+- **Modified**: `app/assets/config/manifest.js` to specifically link `application.css` instead of all CSS files
+
 ## What Should Now Work
 - ✅ Rails server should start without LoadError
-- ✅ SCSS files should compile properly
+- ✅ SCSS files should compile properly without conflicts
+- ✅ Basic styling should work (buttons, forms, layout)
 - ✅ File uploads will work using local disk storage
 - ✅ Email delivery will work (files in dev, SMTP in prod)
 - ✅ Caching will work using memory store
@@ -60,6 +74,7 @@ The app has SCSS files that need compilation, but we were missing the SCSS compi
 - ❌ No letter_opener email preview in development
 - ❌ No rack-canonical-host domain redirects
 - ❌ No Font Awesome icons (temporarily disabled)
+- ❌ Custom component styles from JavaScript directory (temporarily simplified)
 
 ## Commands to Run
 After these changes, you need to run:
@@ -88,8 +103,8 @@ gem 'font-awesome-sass'
 
 3. Run `bundle install` and restart server.
 
+## Re-enabling Custom Styles
+The app originally had custom SCSS components in `app/javascript/stylesheets/`. Once basic functionality is working, you can gradually re-add these by importing them in `application.scss`.
+
 ## Next Steps
-The server should now start successfully and pages should load without SCSS compilation errors. You can re-add specific services later if needed by:
-1. Adding the gem back to Gemfile
-2. Updating the environment configurations
-3. Setting up the required credentials/environment variables
+The server should now start successfully and pages should load without CSS compilation conflicts. The app will have basic styling and all core functionality should work. You can incrementally add back styling and visual enhancements later.
