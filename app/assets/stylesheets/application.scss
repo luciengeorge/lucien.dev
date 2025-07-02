@@ -12,8 +12,15 @@
  */
 
 // External libraries
-// @import 'font-awesome-sprockets';
-// @import 'font-awesome';
+@import 'font-awesome-sprockets';
+@import 'font-awesome';
+
+// Import the custom styles from JavaScript directory
+@import '../javascript/stylesheets/config/fonts';
+@import '../javascript/stylesheets/config/colors';
+@import '../javascript/stylesheets/config/shared';
+@import '../javascript/stylesheets/components/index';
+@import '../javascript/stylesheets/pages/index';
 
 // Basic reset and typography
 body {

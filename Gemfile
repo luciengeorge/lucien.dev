@@ -15,6 +15,7 @@ gem 'turbo-rails'
 gem 'stimulus-rails'
 gem 'sprockets-rails'
 gem 'sassc-rails'
+gem 'font-awesome-sass'
 
 # Essential for existing functionality
 gem 'devise'

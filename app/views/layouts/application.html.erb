@@ -5,6 +5,22 @@
 
     <%= stylesheet_link_tag 'https://pro.fontawesome.com/releases/v5.15.3/css/all.css', integrity: Rails.application.credentials.font_awesome_integrity, crossorigin: 'anonymous' %>
     <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
+    
+    <!-- Basic JavaScript via CDN -->
+    <script src="https://unpkg.com/@hotwired/turbo@7.3.0/dist/turbo.es2017-umd.js"></script>
+    <script src="https://unpkg.com/@hotwired/stimulus@3.2.2/dist/stimulus.umd.js"></script>
+    
+    <!-- Basic Stimulus setup -->
+    <script>
+      window.Stimulus = Application.start()
+      
+      // Basic viewport height calculation
+      document.addEventListener('turbo:load', () => {
+        const vh = window.innerHeight * 0.01
+        document.documentElement.style.setProperty('--vh', `${vh}px`)
+      })
+    </script>
+    
     <%# Temporarily disabled while fixing asset issues %>
     <%# javascript_importmap_tags %>
 
