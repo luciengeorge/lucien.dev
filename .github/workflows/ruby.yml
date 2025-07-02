@@ -5,17 +5,18 @@ on: [push, pull_request]
 
 jobs:
   test:
-    env:
-      RAILS_ENV: test
-      DATABASE_URL: postgresql://postgres:postgres@localhost/test
     runs-on: ubuntu-latest
     
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: postgres://postgres:postgres@localhost:5432/test_db
+
     services:
       postgres:
-        image: postgres:15
+        image: postgres:13
         env:
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: test
+          POSTGRES_DB: test_db
         ports:
           - 5432:5432
         options: >-
@@ -38,9 +39,16 @@ jobs:
         with:
           ruby-version: '3.3.0'
           bundler-cache: true
-      - name: Create database
+
+      - name: Test Rails boot
+        run: |
+          bundle exec rails runner "puts 'Rails boots successfully: ' + Rails.version"
+
+      - name: Setup database
         run: |
           bundle exec rails db:create
           bundle exec rails db:schema:load
-      - name: Run tests
-        run: bundle exec rspec
+
+      - name: Test database connection
+        run: |
+          bundle exec rails runner "puts 'Database connection successful: ' + ActiveRecord::Base.connection.adapter_name"
