@@ -1,14 +1,15 @@
-import {Controller} from '@hotwired/stimulus'
-import {enter, leave} from 'el-transition'
+import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ['menu', 'button']
+  static targets = ["menu", "button"]
 
   toggle() {
-    if (this.menuTarget.classList.contains('hidden')) {
-      enter(this.menuTarget)
-    } else {
-      leave(this.menuTarget)
+    this.menuTarget.classList.toggle("hidden")
+  }
+
+  hide(event) {
+    if (!this.element.contains(event.target)) {
+      this.menuTarget.classList.add("hidden")
     }
   }
 }

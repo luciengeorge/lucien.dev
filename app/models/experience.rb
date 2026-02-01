@@ -12,7 +12,7 @@ class Experience < ApplicationRecord
   after_save :update_ranks, if: :saved_change_to_rank?
   after_destroy :update_ranks_after_destroy
 
-  enum job_type: %i[full_time part_time self_employed freelance contract internship apprenticeship temporary]
+  enum :job_type, %i[full_time part_time self_employed freelance contract internship apprenticeship temporary]
 
   SPOKEN_LANGUAGES = %w[French English Arabic Spanish].freeze
   PROGRAMMING_LANGUAGES = ['React Router', 'Remix', 'Ruby on Rails', 'Typescript', 'Javascript', 'React', 'React Native', 'Python', 'Fast API', 'SQL', 'HTML', 'CSS', 'Java', 'Kotlin', 'C#', 'Swift'].freeze

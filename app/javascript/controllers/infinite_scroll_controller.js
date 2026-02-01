@@ -1,13 +1,22 @@
-import {Controller} from '@hotwired/stimulus'
-import Rails from '@rails/ujs'
-import _ from 'lodash'
+import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ['entries', 'pagination', 'loader', 'image']
+  static targets = ["entries", "pagination", "loader", "image"]
   static offset = 300
 
   initialize() {
-    this.scroll = _.throttle(this.scroll, 500)
+    this.scroll = this.throttle(this.scroll.bind(this), 500)
+  }
+
+  throttle(func, limit) {
+    let inThrottle
+    return function(...args) {
+      if (!inThrottle) {
+        func.apply(this, args)
+        inThrottle = true
+        setTimeout(() => inThrottle = false, limit)
+      }
+    }
   }
 
   scroll() {
@@ -19,7 +28,7 @@ export default class extends Controller {
       body.offsetHeight,
       html.clientHeight,
       html.scrollHeight,
-      html.offsetHeight,
+      html.offsetHeight
     )
 
     if (
@@ -31,32 +40,37 @@ export default class extends Controller {
     }
   }
 
-  loadNextData(url) {
-    this.loaderTarget.classList.remove('hidden')
+  async loadNextData(url) {
+    this.loaderTarget.classList.remove("hidden")
     window.scrollTo({
       top: document.body.scrollHeight,
-      behavior: 'smooth',
+      behavior: "smooth"
     })
-    Rails.ajax({
-      type: 'GET',
-      url: url,
-      dataType: 'json',
-      success: (data) => {
-        this.entriesTarget.insertAdjacentHTML('beforeend', data.entries)
-        this.paginationTarget.innerHTML = data.pagination
-        this.loaderTarget.classList.add('hidden')
-        const observer = new IntersectionObserver(
-          (entries, observer) => {
-            entries.forEach((entry) => {
-              entry.target.src = entry.target.dataset.src
-              observer.unobserve(entry.target)
-            })
-          },
-          {rootMargin: '0px'},
-        )
-        this.imageTargets.forEach((target) => observer.observe(target))
-        this.element.dispatchEvent(new Event('loaded'))
-      },
-    })
+
+    try {
+      const response = await fetch(url, {
+        headers: { Accept: "application/json" }
+      })
+      const data = await response.json()
+
+      this.entriesTarget.insertAdjacentHTML("beforeend", data.entries)
+      this.paginationTarget.innerHTML = data.pagination
+      this.loaderTarget.classList.add("hidden")
+
+      const observer = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            entry.target.src = entry.target.dataset.src
+            observer.unobserve(entry.target)
+          })
+        },
+        { rootMargin: "0px" }
+      )
+      this.imageTargets.forEach((target) => observer.observe(target))
+      this.element.dispatchEvent(new Event("loaded"))
+    } catch (error) {
+      console.error("Error loading next page:", error)
+      this.loaderTarget.classList.add("hidden")
+    }
   }
 }

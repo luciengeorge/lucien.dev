@@ -1,15 +1,15 @@
-import {Controller} from '@hotwired/stimulus'
+import { Controller } from "@hotwired/stimulus"
 
 export default class extends Controller {
-  static targets = ['menu', 'background', 'link', 'burger']
-  static classes = ['active', 'scale', 'open']
+  static targets = ["menu", "background", "link", "burger"]
+  static classes = ["active", "scale", "open"]
 
   toggle(event) {
-    if (event.type === 'keyup' && event.key !== 'Escape') return
+    if (event.type === "keyup" && event.key !== "Escape") return
 
     if (
-      (event.type === 'keyup' && event.key === 'Escape') ||
-      (event.type === 'click' && event.currentTarget === this.backgroundTarget)
+      (event.type === "keyup" && event.key === "Escape") ||
+      (event.type === "click" && event.currentTarget === this.backgroundTarget)
     ) {
       this.menuTarget.classList.remove(this.activeClass)
       this.burgerTarget.classList.remove(this.openClass)
@@ -17,7 +17,7 @@ export default class extends Controller {
         this.backgroundTarget.classList.add(this.scaleClass)
       }, 500)
       this.linkTargets.forEach((target) =>
-        target.classList.remove(this.activeClass),
+        target.classList.remove(this.activeClass)
       )
     } else {
       this.menuTarget.classList.toggle(this.activeClass)
@@ -30,7 +30,7 @@ export default class extends Controller {
         }, 500)
       }
       this.linkTargets.forEach((target) =>
-        target.classList.toggle(this.activeClass),
+        target.classList.toggle(this.activeClass)
       )
     }
   }
