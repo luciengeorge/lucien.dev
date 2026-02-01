@@ -13,6 +13,7 @@
 ActiveRecord::Schema[8.1].define(version: 2021_08_22_144231) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
+  enable_extension "pg_stat_statements"
 
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
