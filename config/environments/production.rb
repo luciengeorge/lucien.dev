@@ -6,7 +6,7 @@ Rails.application.configure do
   config.action_mailer.postmark_settings   = { api_token: Rails.application.credentials.postmark_api_token }
   config.action_mailer.delivery_method = :postmark
   # Code is not reloaded between requests.
-  config.cache_classes = true
+  config.enable_reloading = false
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
@@ -100,7 +100,7 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   if ENV['REDISCLOUD_URL']
-    config.cache_store = :redis_store, ENV['REDISCLOUD_URL'], { expires_in: 1.day }
+    config.cache_store = :redis_cache_store, { url: ENV['REDISCLOUD_URL'], expires_in: 1.day }
     config.action_controller.enable_fragment_cache_logging = true
   end
 

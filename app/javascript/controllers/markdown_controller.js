@@ -1,35 +1,75 @@
-import {Controller} from '@hotwired/stimulus'
-import {writeText, skip} from '../packs/components/live_typing'
-import MarkdownIt from 'markdown-it'
+import { Controller } from "@hotwired/stimulus"
+
+const skip = () => {
+  return document.querySelector("#style-text")?.dataset?.skip === "true"
+}
+
+const writeChar = (char, target) => {
+  target.innerHTML = target.innerHTML + char
+}
+
+const time = () => {
+  if (skip()) return 0
+  return 16
+}
+
+const newInterval = (message, index) => {
+  if (skip()) return time()
+  const comma = /\D[\,]\s$/
+  const endOfBlock = /[^\/]\n\n$/
+  const endOfSentence = /[\.\?\!]\s$/
+  const slice = message.slice(index - 2, index + 1)
+  if (comma.test(slice)) return time() * 30
+  if (endOfBlock.test(slice)) return time() * 50
+  if (endOfSentence.test(slice)) return time() * 70
+  return time()
+}
+
+const writeText = (message, target, index, callback) => {
+  if (index < message.length) {
+    target.scrollTop = target.scrollHeight
+    writeChar(message[index++], target)
+    const nextInterval = newInterval(message, index)
+    if (skip()) {
+      writeText(message, target, index, callback)
+    } else {
+      setTimeout(() => {
+        writeText(message, target, index, callback)
+      }, nextInterval)
+    }
+  } else {
+    callback()
+  }
+}
 
 export default class extends Controller {
-  static targets = ['markdown']
+  static targets = ["markdown"]
   static values = {
-    imgUrl: String,
+    imgUrl: String
   }
 
   start() {
-    writeText(this.text, this.markdownTarget, 0, null, () => {
+    writeText(this.text, this.markdownTarget, 0, () => {
       this.element.dispatchEvent(new Event(`${this.identifier}-done`))
     })
   }
 
   render() {
     if (skip()) {
-      this.markdownTarget.classList.add('shrink-down-no-animation')
+      this.markdownTarget.classList.add("shrink-down-no-animation")
     } else {
-      this.markdownTarget.classList.add('shrink-down')
+      this.markdownTarget.classList.add("shrink-down")
     }
-    const md = new MarkdownIt({html: true})
+    const md = window.markdownit({ html: true })
     const html = md.render(this.markdownTarget.innerHTML)
     this.markdownTarget.innerHTML = html
     if (skip()) {
-      this.markdownTarget.classList.remove('shrink-down')
+      this.markdownTarget.classList.remove("shrink-down")
       this.markdownTarget.scrollTop = 0
       this.element.dispatchEvent(new Event(`${this.identifier}-rendered`))
     } else {
       setTimeout(() => {
-        this.markdownTarget.classList.remove('shrink-down')
+        this.markdownTarget.classList.remove("shrink-down")
         this.markdownTarget.scrollTop = 0
         this.element.dispatchEvent(new Event(`${this.identifier}-rendered`))
       }, 1000)

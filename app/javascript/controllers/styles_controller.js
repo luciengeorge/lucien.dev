@@ -1,9 +1,78 @@
-import {Controller} from '@hotwired/stimulus'
-import {writeText} from '../packs/components/live_typing'
+import { Controller } from "@hotwired/stimulus"
+
+const skip = () => {
+  return document.querySelector("#style-text")?.dataset?.skip === "true"
+}
+
+const writeChar = (char, target, styleTarget = null) => {
+  let text
+  if (styleTarget) {
+    let openCommentValue = styleTarget.dataset.openComment === "true"
+    if (char === "/" && openCommentValue === false) {
+      styleTarget.setAttribute("data-open-comment", true)
+      text = target.innerHTML + char
+    } else if (char === "/" && openCommentValue === true) {
+      styleTarget.setAttribute("data-open-comment", false)
+      text = target.innerHTML.replace(
+        /(\/[^\/]*\*)$/,
+        '<em class="comment">$1/</em>'
+      )
+    } else if (char === ":") {
+      text = target.innerHTML.replace(
+        /([a-zA-Z- ^\n]*)$/,
+        '<em class="key">$1</em>:'
+      )
+    } else if (char === ";") {
+      text = target.innerHTML.replace(/([^:]*)$/, '<em class="value">$1</em>;')
+    } else if (char === "{") {
+      text = target.innerHTML.replace(/(.*)$/, '<em class="selector">$1</em>{')
+    } else {
+      text = target.innerHTML + char
+    }
+    styleTarget.insertAdjacentHTML("beforeend", char)
+  } else {
+    text = target.innerHTML + char
+  }
+  target.innerHTML = text
+}
+
+const time = () => {
+  if (skip()) return 0
+  return 16
+}
+
+const newInterval = (message, index) => {
+  if (skip()) return time()
+  const comma = /\D[\,]\s$/
+  const endOfBlock = /[^\/]\n\n$/
+  const endOfSentence = /[\.\?\!]\s$/
+  const slice = message.slice(index - 2, index + 1)
+  if (comma.test(slice)) return time() * 30
+  if (endOfBlock.test(slice)) return time() * 50
+  if (endOfSentence.test(slice)) return time() * 70
+  return time()
+}
+
+const writeText = (message, target, index, styleTarget, callback) => {
+  if (index < message.length) {
+    target.scrollTop = target.scrollHeight
+    writeChar(message[index++], target, styleTarget)
+    const nextInterval = newInterval(message, index)
+    if (skip()) {
+      writeText(message, target, index, styleTarget, callback)
+    } else {
+      setTimeout(() => {
+        writeText(message, target, index, styleTarget, callback)
+      }, nextInterval)
+    }
+  } else {
+    callback()
+  }
+}
 
 export default class extends Controller {
-  static targets = ['pre', 'style', 'skipCta', 'markdown']
-  static classes = ['noTransition']
+  static targets = ["pre", "style", "skipCta", "markdown"]
+  static classes = ["noTransition"]
 
   connect() {
     writeText(this.text, this.preTarget, 0, this.styleTarget, () => {
@@ -13,15 +82,15 @@ export default class extends Controller {
 
   updateStyles(event) {
     this.styleTarget.innerText = event.currentTarget.innerText.replace(
-      '<br>',
-      '',
+      "<br>",
+      ""
     )
   }
 
   transition() {
     writeText(this.transitionText, this.preTarget, 0, this.styleTarget, () => {
       this.element.dispatchEvent(
-        new Event(`${this.identifier}-transition-done`),
+        new Event(`${this.identifier}-transition-done`)
       )
     })
   }
@@ -33,27 +102,27 @@ export default class extends Controller {
       0,
       this.styleTarget,
       () => {
-        this.preTarget.setAttribute('contenteditable', 'true')
-        this.preTarget.style.overflow = 'scroll'
-        this.markdownTarget.style.overflow = 'scroll'
+        this.preTarget.setAttribute("contenteditable", "true")
+        this.preTarget.style.overflow = "scroll"
+        this.markdownTarget.style.overflow = "scroll"
         this.skipCtaTarget.remove()
-      },
+      }
     )
   }
 
   skip(event) {
     event.preventDefault()
     this.styleTarget.insertAdjacentHTML(
-      'afterbegin',
+      "afterbegin",
       `
       * {
         -webkit-transition: none !important;
         -moz-transition: none !important;
         -o-transition: none !important;
         transition: none !important;
-      }`,
+      }`
     )
-    this.preTarget.setAttribute('data-skip', true)
+    this.preTarget.setAttribute("data-skip", true)
   }
 
   get text() {
