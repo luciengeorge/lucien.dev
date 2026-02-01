@@ -1,10 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* Google Fonts */
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap');
+
+@import "tailwindcss";
+@config "../../../config/tailwind.config.js";
+@plugin "@tailwindcss/forms";
 
 /* Color variables */
 :root {
@@ -203,13 +203,25 @@
   .burger .burger-lines,
   .burger .burger-lines:after,
   .burger .burger-lines:before {
-    background-color: var(--black);
+    background-color: var(--black) !important;
   }
 
-  .burger.open .burger-lines,
+  .burger {
+    color: var(--black) !important;
+  }
+
+  .burger.open .burger-lines {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+
   .burger.open .burger-lines:after,
   .burger.open .burger-lines:before {
-    background-color: var(--white);
+    background-color: var(--white) !important;
+  }
+
+  .burger.open {
+    color: var(--white) !important;
   }
 
   .logo { width: 30px; }
