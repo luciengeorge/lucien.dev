@@ -6,6 +6,6 @@ class WebsiteDecorator < Draper::Decorator
   end
 
   def short_description
-    description.truncate(Website::MAX_CHARS)
+    description&.truncate(Website::MAX_CHARS)
   end
 end
