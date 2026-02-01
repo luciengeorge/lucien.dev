@@ -14,7 +14,7 @@ namespace :db do
       puts "Dumping db..."
       system "heroku pg:pull DATABASE_URL lucien_george_com_development --app lucien-george"
       system "bundle install"
-      system "yarn install"
+      system "npm install"
       puts "Migrating..."
       system "rails db:migrate"
       puts "Done."
