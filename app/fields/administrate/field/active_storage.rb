@@ -1,3 +1,5 @@
+require "administrate/field/base"
+
 module Administrate
   module Field
     class ActiveStorage < Administrate::Field::Base

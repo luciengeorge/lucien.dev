@@ -1,4 +1,5 @@
 require "administrate/base_dashboard"
+require "administrate/field/active_storage"
 
 class CompanyDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
