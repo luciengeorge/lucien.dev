@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, skip: :registrations
   require "sidekiq/web"
   authenticate :user, ->(user) { user.admin? } do
@@ -8,6 +7,24 @@ Rails.application.routes.draw do
   direct :cdn do |blob| # use cdn_url() helper
     File.join(Rails.application.credentials.aws[:cloudfront_url], blob.key)
   end
+
+  namespace :admin do
+    resources :commits
+    resources :companies
+    resources :contributors
+    resources :educations
+    resources :experiences
+    resources :languages
+    resources :repo_contributors
+    resources :repo_languages
+    resources :repos
+    resources :schools
+    resources :users
+    resources :websites
+
+    root to: "users#index"
+  end
+
   root to: 'pages#home'
   resources :repos, only: :index
   resources :companies, only: [ :new, :create ]
