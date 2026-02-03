@@ -1,4 +1,5 @@
 require "active_support/core_ext/integer/time"
+require "openssl"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
@@ -99,8 +100,16 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  if ENV['REDISCLOUD_URL']
-    config.cache_store = :redis_cache_store, { url: ENV['REDISCLOUD_URL'], expires_in: 1.day }
+  if ENV["REDISCLOUD_URL"] || ENV["REDIS_URL"]
+    redis_url = ENV["REDISCLOUD_URL"] || ENV["REDIS_URL"]
+    ssl_options =
+      if redis_url.start_with?("rediss://")
+        { ssl_params: { verify_mode: OpenSSL::SSL::VERIFY_NONE } }
+      else
+        {}
+      end
+
+    config.cache_store = :redis_cache_store, { url: redis_url, expires_in: 1.day }.merge(ssl_options)
     config.action_controller.enable_fragment_cache_logging = true
   end
 
