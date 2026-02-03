@@ -7,8 +7,7 @@ class ExperiencesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        grover = Grover.new(resume_experiences_url, format: 'A4', launch_args: ['--no-sandbox'])
-        pdf = grover.to_pdf
+        pdf = FerrumPdf.new(resume_experiences_url, format: "A4").to_pdf
         send_data(pdf, filename: 'resume.pdf')
       end
     end

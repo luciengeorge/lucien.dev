@@ -10,5 +10,6 @@ module LucienGeorgeCom
     config.active_job.queue_adapter = :sidekiq
     config.autoload_paths << Rails.root.join("app/fields")
     config.eager_load_paths << Rails.root.join("app/fields")
+    config.add_autoload_paths_to_load_path = true
   end
 end
