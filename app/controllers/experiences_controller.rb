@@ -7,8 +7,11 @@ class ExperiencesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        pdf = FerrumPdf.new(resume_experiences_url, format: "A4").to_pdf
-        send_data(pdf, filename: 'resume.pdf')
+        render ferrum_pdf: { pdf_options: { format: "A4" } },
+               template: "experiences/resume",
+               layout: "full_screen",
+               disposition: :inline,
+               filename: "resume.pdf"
       end
     end
   end
