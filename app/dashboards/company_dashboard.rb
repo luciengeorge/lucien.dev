@@ -5,6 +5,7 @@ class CompanyDashboard < Administrate::BaseDashboard
     experiences: Field::HasMany,
     id: Field::Number,
     name: Field::String,
+    photo: Field::ActiveStorage,
     address: Field::String,
     website: Field::String,
     latitude: Field::Number.with_options(decimals: 2),
@@ -24,6 +25,7 @@ class CompanyDashboard < Administrate::BaseDashboard
     experiences
     id
     name
+    photo
     address
     website
     latitude
@@ -34,6 +36,7 @@ class CompanyDashboard < Administrate::BaseDashboard
 
   FORM_ATTRIBUTES = %i[
     name
+    photo
     address
     website
     latitude
