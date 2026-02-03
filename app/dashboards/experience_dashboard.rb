@@ -6,6 +6,7 @@ class ExperienceDashboard < Administrate::BaseDashboard
     id: Field::Number,
     title: Field::String,
     description: Field::RichText,
+    photo: Field::ActiveStorage,
     start_date: Field::Date,
     end_date: Field::Date,
     job_type: Field::Select.with_options(searchable: false, collection: ->(field) { field.resource.class.job_types.keys }),
@@ -27,6 +28,7 @@ class ExperienceDashboard < Administrate::BaseDashboard
     id
     title
     description
+    photo
     start_date
     end_date
     job_type
@@ -40,6 +42,7 @@ class ExperienceDashboard < Administrate::BaseDashboard
     company
     title
     description
+    photo
     start_date
     end_date
     job_type

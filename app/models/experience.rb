@@ -2,6 +2,7 @@ class Experience < ApplicationRecord
   belongs_to :company
 
   has_rich_text :description
+  has_one_attached :photo
 
   validates :title, presence: true
   validates :description, presence: true

@@ -8,3 +8,4 @@ pin_all_from "app/javascript/controllers", under: "controllers", preload: true
 
 pin "trix"
 pin "@rails/actiontext", to: "actiontext.esm.js"
+pin "@rails/activestorage", to: "activestorage.esm.js"
