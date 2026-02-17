@@ -15,8 +15,8 @@ class Experience < ApplicationRecord
 
   enum :job_type, %i[full_time part_time self_employed freelance contract internship apprenticeship temporary]
 
-  SPOKEN_LANGUAGES = %w[French English Arabic Spanish].freeze
-  PROGRAMMING_LANGUAGES = ['React Router', 'Remix', 'Ruby on Rails', 'Typescript', 'Javascript', 'React', 'React Native', 'Python', 'Fast API', 'SQL', 'HTML', 'CSS', 'Java', 'Kotlin', 'C#', 'Swift'].freeze
+  SPOKEN_LANGUAGES = %w[French English Arabic].freeze
+  PROGRAMMING_LANGUAGES = ['React Router', 'Remix', 'Next.js', 'Ruby on Rails', 'Typescript', 'Javascript', 'React', 'React Native', 'Python', 'Fast API', 'SQL', 'HTML', 'CSS', 'Java', 'Kotlin', 'Swift'].freeze
 
   private
 
